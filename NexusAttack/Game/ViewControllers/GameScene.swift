@@ -95,7 +95,7 @@ class GameScene: SCNScene {
         graph.remove(nodesToRemove)
     }
     
-    // lane 60 x 8
+    // lane 61 x 8
     // spawnArea 22 x 31
     
     func loadMap() {
@@ -109,10 +109,10 @@ class GameScene: SCNScene {
         baseModel.materials.first?.diffuse.contents = UIColor.clear
         base = SCNNode(geometry: baseModel)
         base.position.y = -0.1
-        worldNode.addChildNode(base)
+        //worldNode.addChildNode(base)
         
         let floor = Floor()
-        worldNode.addChildNode(floor)
+        //worldNode.addChildNode(floor)
         
         nexus1 = Nexus(player: player1, position: SCNVector3(x: -47, y: 0, z:0))
         nexus2 = Nexus(player: player2, position: SCNVector3(x: 47, y: 0, z:0))
@@ -149,7 +149,9 @@ class GameScene: SCNScene {
 }
 
 protocol GameUtilityDelegate {
-    func pathFrom(startPosition: SCNVector3, endPosition: SCNVector3) -> [GKGridGraphNode]?
+    func searchForValidNode(from position: int2, skip: Int) -> GKGridGraphNode?
+    func pathFrom(start: int2, end: int2) -> [GKGridGraphNode]?
+    func isValidNodeInGrid(nodePosition: vector_int2) -> Bool
     func closestEnemyTo(object: BaseOwnedObject) -> BaseOwnedObject?
     func spawn(unit: Unit) -> Bool
     func spawn(building: Building) -> Bool
@@ -160,14 +162,16 @@ protocol GameUtilityDelegate {
 }
 
 extension GameScene: GameUtilityDelegate {
-    func searchForValidNode(from position: int2) -> GKGridGraphNode? {
-        var x: Int32 = position.x
-        var y: Int32 = position.y
+    func searchForValidNode(from position: int2, skip: Int = 0) -> GKGridGraphNode? {
+        var x: Int32 = 0
+        var y: Int32 = 0
         var dx: Int32 = 0
         var dy: Int32 = -1
-        for _ in 0..<100 {
-            if let node = graph.node(atGridPosition: int2(x, y)) {
-                return node
+        for i in 0..<100 {
+            if i >= skip {
+                if let node = graph.node(atGridPosition: int2(x, y) + position) {
+                    return node
+                }
             }
             if x == y || (x < 0 && x == -y) || (x > 0 && x == 1-y) {
                 let temp = dx
@@ -177,18 +181,23 @@ extension GameScene: GameUtilityDelegate {
             x += dx
             y += dy
         }
+        print("Unable to find node!!!")
         return nil
     }
     
-    func pathFrom(startPosition: SCNVector3, endPosition: SCNVector3) -> [GKGridGraphNode]? {
-        let start = int2(Int32(startPosition.x.rounded(.toNearestOrAwayFromZero)), Int32(startPosition.z.rounded(.toNearestOrAwayFromZero)))
-        let end = int2(Int32(endPosition.x.rounded(.toNearestOrAwayFromZero)), Int32(endPosition.z.rounded(.toNearestOrAwayFromZero)))
+    func isValidNodeInGrid(nodePosition: vector_int2) -> Bool {
+        return (self.graph.node(atGridPosition: nodePosition) != nil)
+    }
+    
+    func pathFrom(start: int2, end: int2) -> [GKGridGraphNode]? {
         guard
             let startNode = graph.node(atGridPosition: start),
             let endNode = graph.node(atGridPosition: end)
         else {
             print("Error!, nodes not in grid")
             print(start.x, start.y)
+            print(end.x, end.y)
+            assert(graph.node(atGridPosition: end) != nil)
             if let node = searchForValidNode(from: start) {
                 return [node]
             } else {
@@ -245,6 +254,7 @@ extension GameScene: GameUtilityDelegate {
             self.units.append(unit)
             unit.team.add(unit: unit)
             worldNode.addChildNode(unit)
+            print("Spawned Unit at:", unit.position.to_int2())
             return true
         }
         return false
@@ -253,8 +263,12 @@ extension GameScene: GameUtilityDelegate {
     func spawn(building: Building) -> Bool {
         // Check to make sure they can actually place it
         if let nodesToRemove = building.occupiedNodesInGraph(graph: graph, generateNodes: false) {
-            building.owner.spendMinerals(building.cost)
+            let nodes = nodesToRemove as! [GKGridGraphNode]
+            for node in nodes {
+                print("Removing1:", node.gridPosition.x, node.gridPosition.y)
+            }
             graph.remove(nodesToRemove)
+            building.owner.spendMinerals(building.cost)
             self.buildings.append(building)
             building.team.add(building: building)
             worldNode.addChildNode(building)

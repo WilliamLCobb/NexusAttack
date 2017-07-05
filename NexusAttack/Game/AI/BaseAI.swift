@@ -22,7 +22,8 @@ class BaseAI {
         self.player = player
         gameUtility = globalGameUtility
         buildings = [AttackSpawner(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
-                     RangedSpawner(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1)]
+                     RangedSpawner(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
+                     AttackSpawner(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1)]
         nextBuilding = buildings.first
         
     }

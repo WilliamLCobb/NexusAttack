@@ -98,10 +98,14 @@ class BaseObject: SCNNode {
         }
     }
     
-    @discardableResult func addHealthBar(y: Float, health: Float, size: HealthBarSize) -> HealthBar {
-        self.healthBar = HealthBar(maxHealth: health, position: SCNVector3(x: 0, y: y, z: 0), size: size, host: self)
+    @discardableResult func addHealthBar(y: Float, health: Float, size: HealthBarSize, showsProgress: Bool) -> HealthBar {
+        self.healthBar = HealthBar(maxHealth: health, position: SCNVector3(x: 0, y: y, z: 0), size: size, showsProgress: showsProgress)
         self.addChildNode(healthBar!)
         return healthBar!
+    }
+    
+    func targetPositionFromPosition(_ position: SCNVector3) -> int2 {
+        return self.presentation.position.to_int2()
     }
     
     //https://stackoverflow.com/questions/12435671/quaternion-lookat-function
@@ -129,7 +133,6 @@ class BaseObject: SCNNode {
         self.modelNode.rotation = newRotation
     }
     
-    // just in case you need that function also
     // https://github.com/dotnet/corefx/issues/71
     func CreateFromAxisAngle(axis: SCNVector3, angle: Float) -> SCNVector4 {
 //        let halfAngle = angle * 0.5

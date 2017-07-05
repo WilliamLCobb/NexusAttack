@@ -9,21 +9,21 @@
 import UIKit
 import SceneKit
 
-//       22                        22
-//     --------                   --------  15.5
-//     |      |       60          |      |
-//     |      |___________________|      |  10.5
+//       23                          23
+//     --------                   --------  15
+//     |      |       61          |      |
+//     |      |___________________|      |  10
 //     |                                 |
 //     |                                 |
-//     |      |-------------------|      |  2.5
+//     |      |-------------------|      |  2
 // 31  |      |                   |      |  0
-//     |      |-------------------|      | -2.5
+//     |      |-------------------|      | -2
 //     |                                 |
 //     |                                 |
-//     |      |___________________|      | -10.5
+//     |      |___________________|      | -10
 //     |      |                   |      |
-//     --------                   --------  -15.5
-//   -52     -30       0        30      52
+//     --------                   --------  -15
+//   -53     -30       0        30      53
 //
 
 class Floor: BaseObject {
@@ -47,22 +47,22 @@ class Floor: BaseObject {
     }
     
     override func configureObject() {
-        let buildZoneAModel = SCNBox(width: 22, height: 0.1, length: 31, chamferRadius: 0.0)
+        let buildZoneAModel = SCNBox(width: 23, height: 0.1, length: 31, chamferRadius: 0.0)
         buildZoneAModel.materials.first?.diffuse.contents = green
         let buildZoneANode = addGeometry(model: buildZoneAModel)
-        buildZoneANode.position = SCNVector3(x: -41, y: 0, z: 0)
+        buildZoneANode.position = SCNVector3(x: -42, y: 0, z: 0)
         
-        let buildZoneBModel = SCNBox(width: 22, height: 0.1, length: 31, chamferRadius: 0.0)
+        let buildZoneBModel = SCNBox(width: 23, height: 0.1, length: 31, chamferRadius: 0.0)
         buildZoneBModel.materials.first?.diffuse.contents = green
         let buildZoneBNode = addGeometry(model: buildZoneBModel)
-        buildZoneBNode.position = SCNVector3(x: 41, y: 0, z: 0)
+        buildZoneBNode.position = SCNVector3(x: 42, y: 0, z: 0)
         
-        let lane1Model = SCNBox(width: 60, height: 0.1, length: 8, chamferRadius: 0.0)
+        let lane1Model = SCNBox(width: 61, height: 0.1, length: 8, chamferRadius: 0.0)
         lane1Model.materials.first?.diffuse.contents = stone
         let lane1 = addGeometry(model: lane1Model)
         lane1.position = SCNVector3(x: 0, y: 0, z: 6.5)
         
-        let lane2Model = SCNBox(width: 60, height: 0.1, length: 8, chamferRadius: 0.0)
+        let lane2Model = SCNBox(width: 61, height: 0.1, length: 8, chamferRadius: 0.0)
         lane2Model.materials.first?.diffuse.contents = stone
         let lane2 = addGeometry(model: lane2Model)
         lane2.position = SCNVector3(x: 0, y: 0, z: -6.5)
@@ -70,33 +70,33 @@ class Floor: BaseObject {
         self.flattenGeometry()
         
         // Left spawn
-        self.createVerticalWall(atPosition: SCNVector2(x: -52, y: 0), height: 31)
-        self.createHorizontalWall(atPosition: SCNVector2(x: -41, y: 15.5), width: 22)
-        self.createHorizontalWall(atPosition: SCNVector2(x: -41, y: -15.5), width: 22)
-        self.createVerticalWall(atPosition: SCNVector2(x: -30, y: 13), height: 5)
-        self.createVerticalWall(atPosition: SCNVector2(x: -30, y: 0), height: 5)
-        self.createVerticalWall(atPosition: SCNVector2(x: -30, y: -13), height: 5)
+        self.createVerticalWall(atPosition: SCNVector2(x: -53.5, y: 0), height: 31)
+        self.createHorizontalWall(atPosition: SCNVector2(x: -42, y: 15.5), width: 23)
+        self.createHorizontalWall(atPosition: SCNVector2(x: -42, y: -15.5), width: 23)
+        self.createVerticalWall(atPosition: SCNVector2(x: -30.5, y: 13), height: 5)
+        self.createVerticalWall(atPosition: SCNVector2(x: -30.5, y: 0), height: 5)
+        self.createVerticalWall(atPosition: SCNVector2(x: -30.5, y: -13), height: 5)
         
         // Middle
-        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: 10.5), width: 60)
-        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: 2.5), width: 60)
-        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: -2.5), width: 60)
-        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: -10.5), width: 60)
+        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: 10.5), width: 61)
+        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: 2.5), width: 61)
+        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: -2.5), width: 61)
+        self.createHorizontalWall(atPosition: SCNVector2(x: 0, y: -10.5), width: 61)
         
         // Right spawn
-        self.createVerticalWall(atPosition: SCNVector2(x: 52, y: 0), height: 31)
-        self.createHorizontalWall(atPosition: SCNVector2(x: 41, y: 15.5), width: 22)
-        self.createHorizontalWall(atPosition: SCNVector2(x: 41, y: -15.5), width: 22)
-        self.createVerticalWall(atPosition: SCNVector2(x: 30, y: 13), height: 5)
-        self.createVerticalWall(atPosition: SCNVector2(x: 30, y: 0), height: 5)
-        self.createVerticalWall(atPosition: SCNVector2(x: 30, y: -13), height: 5)
+        self.createVerticalWall(atPosition: SCNVector2(x: 53.5, y: 0), height: 31)
+        self.createHorizontalWall(atPosition: SCNVector2(x: 42, y: 15.5), width: 23)
+        self.createHorizontalWall(atPosition: SCNVector2(x: 42, y: -15.5), width: 23)
+        self.createVerticalWall(atPosition: SCNVector2(x: 30.5, y: 13), height: 5)
+        self.createVerticalWall(atPosition: SCNVector2(x: 30.5, y: 0), height: 5)
+        self.createVerticalWall(atPosition: SCNVector2(x: 30.5, y: -13), height: 5)
     }
     
     func createHorizontalWall(atPosition position:SCNVector2, width: Float) {
         let wallModel = SCNBox(width: CGFloat(width), height: 2, length: 0.1, chamferRadius: 0.0)
         wallModel.materials.first?.diffuse.contents = UIColor(red: 0, green: 0, blue: 1, alpha: 0.3)
         let wall = addGeometry(model: wallModel)
-        wall.position = SCNVector3(x: position.x, y: 0.5, z: position.y)
+        wall.position = SCNVector3(x: position.x, y: 0, z: position.y)
         wall.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: wall, options: nil))
         wall.physicsBody?.friction = 0
     }
@@ -105,7 +105,7 @@ class Floor: BaseObject {
         let wallModel = SCNBox(width: 0.1, height: 2, length: CGFloat(height), chamferRadius: 0.0)
         wallModel.materials.first?.diffuse.contents = UIColor(red: 0, green: 0, blue: 1, alpha: 0.3)
         let wall = addGeometry(model: wallModel)
-        wall.position = SCNVector3(x: position.x, y: 0.5, z: position.y)
+        wall.position = SCNVector3(x: position.x, y: 0, z: position.y)
         wall.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: wall, options: nil))
         wall.physicsBody?.friction = 0
     }

@@ -15,7 +15,7 @@ class Player {
     var minerals: Int
     private var mineralsSpent: Int = 0
     var income: Int {
-        return 10 + (mineralsSpent / 50) * 2
+        return 10 + (mineralsSpent / 50) * 1
     }
     var team: Team
     

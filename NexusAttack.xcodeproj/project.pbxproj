@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA15DCA31F0C71A000720E34 /* test.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCA21F0C71A000720E34 /* test.dae */; };
 		CA5395A41EFDF44D005E7F47 /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5395A31EFDF44D005E7F47 /* HealthBar.swift */; };
 		CA6573F51EF4CFF300E4CED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */; };
 		CA6574001EF4CFF300E4CED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6573FE1EF4CFF300E4CED1 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 		CAB305B71F08D5DE00B7621A /* BaseAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305B61F08D5DE00B7621A /* BaseAI.swift */; };
 		CAB305B91F08D88C00B7621A /* Missile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305B81F08D88C00B7621A /* Missile.swift */; };
 		CAB305BB1F09AC6900B7621A /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305BA1F09AC6900B7621A /* Hud.swift */; };
+		CAB305BE1F0C65A100B7621A /* fire_bat.dae in Resources */ = {isa = PBXBuildFile; fileRef = CAB305BD1F0C659E00B7621A /* fire_bat.dae */; };
+		CAB305C01F0C6E5C00B7621A /* Tizona.dae in Resources */ = {isa = PBXBuildFile; fileRef = CAB305BF1F0C6E5C00B7621A /* Tizona.dae */; };
 		CAC3B4721EF5110D008DD4EA /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3B4711EF5110D008DD4EA /* BaseObject.swift */; };
 		CAC3B4741EF5987F008DD4EA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3B4731EF5987F008DD4EA /* Extensions.swift */; };
 		CAC3B4761EF60DA2008DD4EA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3B4751EF60DA2008DD4EA /* Player.swift */; };
@@ -28,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA15DCA21F0C71A000720E34 /* test.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = test.dae; sourceTree = "<group>"; };
 		CA5395A31EFDF44D005E7F47 /* HealthBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
 		CA6573F11EF4CFF300E4CED1 /* NexusAttack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NexusAttack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +46,8 @@
 		CAB305B61F08D5DE00B7621A /* BaseAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAI.swift; sourceTree = "<group>"; };
 		CAB305B81F08D88C00B7621A /* Missile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
 		CAB305BA1F09AC6900B7621A /* Hud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
+		CAB305BD1F0C659E00B7621A /* fire_bat.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = fire_bat.dae; sourceTree = "<group>"; };
+		CAB305BF1F0C6E5C00B7621A /* Tizona.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Tizona.dae; sourceTree = "<group>"; };
 		CAC3B4711EF5110D008DD4EA /* BaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaseObject.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CAC3B4731EF5987F008DD4EA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CAC3B4751EF60DA2008DD4EA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -81,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				CA65740E1EF4D9DF00E4CED1 /* Game */,
+				CAB305BC1F0C659E00B7621A /* Models */,
 				CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */,
 				CAC3B4731EF5987F008DD4EA /* Extensions.swift */,
 				CA6573FE1EF4CFF300E4CED1 /* Main.storyboard */,
@@ -132,6 +139,16 @@
 				CAB305B61F08D5DE00B7621A /* BaseAI.swift */,
 			);
 			path = AI;
+			sourceTree = "<group>";
+		};
+		CAB305BC1F0C659E00B7621A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA15DCA21F0C71A000720E34 /* test.dae */,
+				CAB305BD1F0C659E00B7621A /* fire_bat.dae */,
+				CAB305BF1F0C6E5C00B7621A /* Tizona.dae */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FE68F89B1EF85A9F003E9716 /* ViewControllers */ = {
@@ -203,6 +220,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA15DCA31F0C71A000720E34 /* test.dae in Resources */,
+				CAB305BE1F0C65A100B7621A /* fire_bat.dae in Resources */,
+				CAB305C01F0C6E5C00B7621A /* Tizona.dae in Resources */,
 				CA6574001EF4CFF300E4CED1 /* Main.storyboard in Resources */,
 				CA6574021EF4CFF300E4CED1 /* Assets.xcassets in Resources */,
 				CA6574051EF4CFF300E4CED1 /* LaunchScreen.storyboard in Resources */,

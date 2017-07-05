@@ -111,7 +111,7 @@ extension GameViewController {
                 if (result.node == self.gameScene.base) {
                     self.heldBuilding.position.x = result.localCoordinates.x.rounded(.toNearestOrAwayFromZero) - 1.0
                     self.heldBuilding.position.y = result.localCoordinates.y + 1
-                    self.heldBuilding.position.z = result.localCoordinates.z.rounded(.toNearestOrAwayFromZero) - 1.5
+                    self.heldBuilding.position.z = result.localCoordinates.z.rounded(.toNearestOrAwayFromZero) - 1.0
                 }
             }
         } else {

@@ -15,8 +15,14 @@ extension SCNVector3 {
     }
     
     func to_int2() -> int2 {
-        return int2(Int32(self.x), Int32(self.z))
+        return int2(Int32(self.x.rounded(.toNearestOrAwayFromZero)), Int32(self.z.rounded(.toNearestOrAwayFromZero)))
     }
+}
+
+// Int2
+
+func + (left: int2, right: int2) -> int2 {
+    return int2(left.x + right.x, left.y + right.y)
 }
 
 extension SCNVector3
@@ -257,21 +263,6 @@ struct SCNVector2 {
     
     init(int2: vector_int2) {
         self.init(x: Float(int2.x), y: -Float(int2.y))
-    }
-    
-    init(int2_down: vector_int2) {
-        self.init(x: Float(int2_down.x) + 0.5, y: -Float(int2_down.y) + 0.5)
-//        if (self.x > 0) {
-//            self.x -= 0.5
-//        } else {
-//            self.x += 0.5
-//        }
-//        
-//        if (self.y > 0) {
-//            self.y -= 0.5
-//        } else {
-//            self.y += 0.5
-//        }
     }
     
     init(vector3: SCNVector3) {
