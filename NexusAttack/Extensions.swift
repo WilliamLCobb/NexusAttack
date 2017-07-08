@@ -237,6 +237,7 @@ func SCNVector3Project(vectorToProject: SCNVector3, projectionVector: SCNVector3
 extension Array {
     func randomItem() -> Element {
         let index = Int(arc4random_uniform(UInt32(self.count)))
+        print("index", index)
         return self[index]
     }
 }

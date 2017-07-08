@@ -13,7 +13,7 @@ class BaseAI {
     var player: Player
     var gameScene: GameScene
     var gameUtility: GameUtilityDelegate
-    var lastPlayTime: TimeInterval = 118
+    var lastPlayTime: TimeInterval = 18
     var buildings: [Building]
     var nextBuilding: Building!
     
@@ -38,6 +38,7 @@ class BaseAI {
                 let x = Int32(arc4random_uniform(20)) + 31
                 let z = Int32(arc4random_uniform(28)) - 14
                 let newBuilding = nextBuilding.copy() as! Building
+                nextBuilding = nil
                 DispatchQueue.main.async {
                     newBuilding.position.x = Float(x)
                     newBuilding.position.z = Float(z)

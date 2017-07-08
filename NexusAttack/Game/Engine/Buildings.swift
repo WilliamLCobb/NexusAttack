@@ -76,9 +76,7 @@ class Building: BaseOwnedObject, AttackableObject {
         let numNodes = ((x * 2) + (y * 2) - 4)
         for _ in 0..<numNodes {
             let thisPosition = int2(myPosition.x + x, myPosition.y + y)
-            print("TP", thisPosition)
             if (self.gameUtility.isValidNodeInGrid(nodePosition: thisPosition)) {
-                print("For", self.presentation.position.x, self.presentation.position.z, "I Found", thisPosition.x, thisPosition.y)
                 return thisPosition
             }
             if x == y || x == -y {

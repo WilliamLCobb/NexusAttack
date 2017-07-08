@@ -40,19 +40,21 @@ class BuildingMenuView: UIView {
     var collectionView: MenuCollectionView
     var tab: UIView!
     var items: [BuildingMenuItem]
+    var showing = false
+    
     init(frame: CGRect, items: [BuildingMenuItem], delegate: BuildingMenuDelegate) {
-        
-        tab = UIView(frame: CGRect(x: frame.size.width - 15, y: frame.size.height/2 - 20, width: 25, height: 80))
-        tab.backgroundColor = .brown
-        tab.layer.cornerRadius = 10.0
-        
         let layout = UICollectionViewFlowLayout()
-        collectionView = MenuCollectionView(frame: CGRect(x: 0, y: 0, width: frame.size.width - 10, height: frame.size.height),
+        collectionView = MenuCollectionView(frame: CGRect(x: 0, y: 0, width: frame.size.width - 25, height: frame.size.height),
                                             collectionViewLayout: layout)
         collectionView.selectionDelegate = delegate
         self.items = items
         super.init(frame: frame)
         
+        tab = UIView(frame: CGRect(x: frame.size.width - 35, y: frame.size.height/2 - 40, width: 35, height: 80))
+        tab.backgroundColor = .brown
+        tab.layer.cornerRadius = 10.0
+        let tabTap = UITapGestureRecognizer(target: self, action: #selector(toggleMenu))
+        tab.addGestureRecognizer(tabTap)
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -66,6 +68,26 @@ class BuildingMenuView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func toggleMenu() {
+        if (showing) {
+            showing = false
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.frame = CGRect(x: -self.frame.size.width + 25,
+                                    y: 0,
+                                    width: self.frame.size.width,
+                                    height: self.frame.size.height)
+            })
+        } else {
+            showing = true
+            UIView.animate(withDuration: 0.2, animations: {
+                self.frame = CGRect(x: 0,
+                                    y: 0,
+                                    width: self.frame.size.width,
+                                    height: self.frame.size.height)
+            })
+        }
     }
 }
 

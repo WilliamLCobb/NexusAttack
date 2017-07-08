@@ -38,6 +38,11 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
         setupMenu()
         lastUpdateTime = CACurrentMediaTime()
         gameAI = BaseAI(gameScene: gameScene, player: gameScene.player2)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.init(uptimeNanoseconds: 1000000)) { 
+            self.scnView.isPlaying = true
+        }
+        
     }
     
     func setupView() {
@@ -45,7 +50,6 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
         scnView.showsStatistics = true
         scnView.autoenablesDefaultLighting = false
         scnView.delegate = self
-        scnView.isPlaying = true
         hud = Hud(size: scnView.bounds.size, player: myPlayer)
         scnView.overlaySKScene = hud
         scnView.overlaySKScene?.isUserInteractionEnabled = false
@@ -69,7 +73,7 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
                              BuildingMenuItem(name: "Ranged Spawner",
                                               color: .yellow,
                                               building: RangedSpawner(player: myPlayer, position: SCNVector3(0, 100, 0), target: gameScene.nexus2))]
-        buildingMenu = BuildingMenuView(frame: CGRect(x: 0, y: 0, width: 130, height: self.view.frame.size.height),
+        buildingMenu = BuildingMenuView(frame: CGRect(x: 0, y: 0, width: 145, height: self.view.frame.size.height),
                                         items: buildingItems,
                                         delegate: self)
         self.view.addSubview(buildingMenu)

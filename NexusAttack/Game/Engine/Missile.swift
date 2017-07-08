@@ -50,9 +50,9 @@ class Missile: BaseOwnedObject {
         }
         
         var currentDistance = self.presentation.position.simpleDistanceTo(vector: target.presentation.position)
-        if let attackRadius = target.attackRadius {
-            currentDistance -= pow(attackRadius, 2)
-        }
+        //if let attackRadius = target.attackRadius {
+        //    currentDistance -= pow(attackRadius, 2)
+        //}
         if (currentDistance < 0.7) {
             target.attackedWithDamage(damage: self.damage)
             die()

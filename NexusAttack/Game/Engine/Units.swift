@@ -90,6 +90,7 @@ class AutoUnit: Unit {
         
         if let enemy = closestEnemy {
             if !enemy.alive {
+                closestEnemy = self.gameUtility.closestEnemyTo(object: self)
                 return false
             }
             var enemyDistance = self.distanceTo(object: enemy)
@@ -211,32 +212,28 @@ class AttackUnit: AutoUnit {
     var noseModel: SCNCone!
     var nose: SCNNode!
     
-    var referenceNode: SCNReferenceNode!
+    var referenceNode: SCNNode!
     
     override func configureObject() {
         super.configureObject()
         
         bodyModel = SCNSphere(radius: radius)
         body = SCNNode(geometry: bodyModel)
-        body = self.addGeometry(model: bodyModel)
         
-        noseModel = SCNCone(topRadius: 0, bottomRadius: 0.15, height: 0.3)
-        nose = self.addGeometry(model: noseModel)
-        nose.eulerAngles = SCNVector3(x:-Float.pi/2 , y: 0, z: 0)
-        nose.position = SCNVector3(0, 0, -(radius + noseModel.height/2))
+        let path = Bundle.main.path(forResource: "Grunt", ofType: "dae")!
+        referenceNode = collada2SCNNode(filepath: path)
+        referenceNode.eulerAngles.y = Float.pi
+        self.modelNode.addChildNode(referenceNode)
         
         self.position.y = 0.2
         
-        noseModel.materials.first?.diffuse.contents = UIColor.red
-        bodyModel.materials.first?.diffuse.contents = self.owner.color
-        
-        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: body, options: nil))
+        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: bodyModel, options: nil))
         self.physicsBody?.angularVelocityFactor = SCNVector3(x: 0, y: 0, z: 0)
         self.physicsBody?.velocityFactor = SCNVector3(x: 1, y: 0, z: 1)
         self.physicsBody?.rollingFriction = 0
         self.physicsBody?.friction = 0
         
-        healthBar = self.addHealthBar(y: Float(radius * 2), health: health, size: .medium, showsProgress: false)
+        healthBar = self.addHealthBar(y: 1.5, health: health, size: .medium, showsProgress: false)
         
         self.health = 100
         self.targetingRange = 8
@@ -244,18 +241,30 @@ class AttackUnit: AutoUnit {
         self.mineralValue = 2
     }
     
+    func collada2SCNNode(filepath:String) -> SCNNode {
+        assert(FileManager.default.fileExists(atPath: filepath))
+        var node = SCNNode()
+        let scene = SCNScene(named: "Grunt")
+        var nodeArray = scene!.rootNode.childNodes
+        
+        for childNode in nodeArray {
+            
+            node.addChildNode(childNode as SCNNode)
+            
+        }
+        node.scale = SCNVector3(0.015, 0.015, 0.015)
+        return node
+        
+    }
+    
     override func update(dt: TimeInterval) {
         super.update(dt: dt)
-        print(referenceNode.isLoaded)
     }
     
     override func runAttackAnimation(completeness: Float) {
-        let out = 0.25 - pow(0.5 - pow(completeness, 2), 2)
-        nose.position.z = -Float(radius + noseModel.height/2) - out
     }
     
     override func beginWalkAnimation() {
-        nose.position.z = -(Float(radius + noseModel.height/2))
     }
     
     override func attackEnemy(enemy: BaseObject) {
@@ -264,60 +273,60 @@ class AttackUnit: AutoUnit {
     }
 }
 
-class DefenseUnit: AutoUnit {
-    
-    var bodyModel: SCNBox!
-    var body: SCNNode!
-    var noseModel: SCNCone!
-    var nose: SCNNode!
-    
-    var referenceNode: SCNReferenceNode!
-    
-    override func configureObject() {
-        super.configureObject()
-        
-        bodyModel = SCNBox(width: 0.6, height: 0.6, length: 0.6, chamferRadius: 0.01)
-        body = SCNNode(geometry: bodyModel)
-        body = self.addGeometry(model: bodyModel)
-        
-        self.position.y = 0.2
-        
-        noseModel.materials.first?.diffuse.contents = UIColor.red
-        bodyModel.materials.first?.diffuse.contents = self.owner.color
-        
-        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: body, options: nil))
-        self.physicsBody?.angularVelocityFactor = SCNVector3(x: 0, y: 0, z: 0)
-        self.physicsBody?.velocityFactor = SCNVector3(x: 1, y: 0, z: 1)
-        self.physicsBody?.rollingFriction = 0
-        self.physicsBody?.friction = 0
-        
-        healthBar = self.addHealthBar(y: 0.6, health: health, size: .medium, showsProgress: false)
-        
-        self.health = 100
-        self.targetingRange = 8
-        self.attackRange = 2
-        self.mineralValue = 2
-    }
-    
-    override func update(dt: TimeInterval) {
-        super.update(dt: dt)
-        print(referenceNode.isLoaded)
-    }
-    
-    override func runAttackAnimation(completeness: Float) {
-        let out = 0.25 - pow(0.5 - pow(completeness, 2), 2)
-        nose.position.z = -Float(radius + noseModel.height/2) - out
-    }
-    
-    override func beginWalkAnimation() {
-        nose.position.z = -(Float(radius + noseModel.height/2))
-    }
-    
-    override func attackEnemy(enemy: BaseObject) {
-        let damage = Float(arc4random_uniform(10) + 10)
-        enemy.attackedWithDamage(damage: damage)
-    }
-}
+//class DefenseUnit: AutoUnit {
+//    
+//    var bodyModel: SCNBox!
+//    var body: SCNNode!
+//    var noseModel: SCNCone!
+//    var nose: SCNNode!
+//    
+//    var referenceNode: SCNReferenceNode!
+//    
+//    override func configureObject() {
+//        super.configureObject()
+//        
+//        bodyModel = SCNBox(width: 0.6, height: 0.6, length: 0.6, chamferRadius: 0.01)
+//        body = SCNNode(geometry: bodyModel)
+//        body = self.addGeometry(model: bodyModel)
+//        
+//        self.position.y = 0.2
+//        
+//        noseModel.materials.first?.diffuse.contents = UIColor.red
+//        bodyModel.materials.first?.diffuse.contents = self.owner.color
+//        
+//        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: body, options: nil))
+//        self.physicsBody?.angularVelocityFactor = SCNVector3(x: 0, y: 0, z: 0)
+//        self.physicsBody?.velocityFactor = SCNVector3(x: 1, y: 0, z: 1)
+//        self.physicsBody?.rollingFriction = 0
+//        self.physicsBody?.friction = 0
+//        
+//        healthBar = self.addHealthBar(y: 0.6, health: health, size: .medium, showsProgress: false)
+//        
+//        self.health = 100
+//        self.targetingRange = 8
+//        self.attackRange = 2
+//        self.mineralValue = 2
+//    }
+//    
+//    override func update(dt: TimeInterval) {
+//        super.update(dt: dt)
+//        print(referenceNode.isLoaded)
+//    }
+//    
+//    override func runAttackAnimation(completeness: Float) {
+//        let out = 0.25 - pow(0.5 - pow(completeness, 2), 2)
+//        nose.position.z = -Float(radius + noseModel.height/2) - out
+//    }
+//    
+//    override func beginWalkAnimation() {
+//        nose.position.z = -(Float(radius + noseModel.height/2))
+//    }
+//    
+//    override func attackEnemy(enemy: BaseObject) {
+//        let damage = Float(arc4random_uniform(10) + 10)
+//        enemy.attackedWithDamage(damage: damage)
+//    }
+//}
 
 class RangedUnit: AutoUnit {
     

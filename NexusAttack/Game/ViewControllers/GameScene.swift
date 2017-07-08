@@ -109,10 +109,10 @@ class GameScene: SCNScene {
         baseModel.materials.first?.diffuse.contents = UIColor.clear
         base = SCNNode(geometry: baseModel)
         base.position.y = -0.1
-        //worldNode.addChildNode(base)
+        worldNode.addChildNode(base)
         
         let floor = Floor()
-        //worldNode.addChildNode(floor)
+        worldNode.addChildNode(floor)
         
         nexus1 = Nexus(player: player1, position: SCNVector3(x: -47, y: 0, z:0))
         nexus2 = Nexus(player: player2, position: SCNVector3(x: 47, y: 0, z:0))
@@ -224,7 +224,8 @@ extension GameScene: GameUtilityDelegate {
         for enemyUnit in enemyTeam.units {
             assert(enemyUnit != object)
             let enemyInTopLane = enemyUnit.presentation.position.z < 0
-            if (abs(object.presentation.position.x) < 30 && objectInTopLane != enemyInTopLane) {
+            if (!enemyUnit.alive ||
+                (abs(object.presentation.position.x) < 30 && objectInTopLane != enemyInTopLane)) {
                 continue
             }
             let distance = object.distanceTo(object: enemyUnit)
