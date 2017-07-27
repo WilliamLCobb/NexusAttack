@@ -23,7 +23,6 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
     var myPlayer: Player!
     var hud: Hud!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +52,12 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
         hud = Hud(size: scnView.bounds.size, player: myPlayer)
         scnView.overlaySKScene = hud
         scnView.overlaySKScene?.isUserInteractionEnabled = false
+        
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panGesture))
+        pan.maximumNumberOfTouches = 1
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
+        scnView.addGestureRecognizer(pan)
+        scnView.addGestureRecognizer(pinch)
     }
     
     func setupScene() {
@@ -69,10 +74,14 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
     func setupMenu() {
         let buildingItems = [BuildingMenuItem(name: "Attack Spawner",
                                               color: .red,
-                                              building: AttackSpawner(player: myPlayer, position: SCNVector3(0, 100, 0), target: gameScene.nexus2)),
+                                              building: HumanBarracks(player: myPlayer,
+                                                                      position: SCNVector3(0, 100, 0),
+                                                                      target: gameScene.nexus2)),
                              BuildingMenuItem(name: "Ranged Spawner",
                                               color: .yellow,
-                                              building: RangedSpawner(player: myPlayer, position: SCNVector3(0, 100, 0), target: gameScene.nexus2))]
+                                              building: HumanBarracks(player: myPlayer,
+                                                                      position: SCNVector3(0, 100, 0),
+                                                                      target: gameScene.nexus2))]
         buildingMenu = BuildingMenuView(frame: CGRect(x: 0, y: 0, width: 145, height: self.view.frame.size.height),
                                         items: buildingItems,
                                         delegate: self)
@@ -103,66 +112,56 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-}
-
-var lastTouch: CGPoint = CGPoint(x: 0, y: 0)
-
-extension GameViewController {
-    func handleSingleTouch(touch: CGPoint) {
-        if (self.placingBuilding) {
-            let hitResults = self.scnView.hitTest(touch, options: nil)
-            for result in hitResults {
-                if (result.node == self.gameScene.base) {
-                    self.heldBuilding.position.x = result.localCoordinates.x.rounded(.toNearestOrAwayFromZero) - 1.0
-                    self.heldBuilding.position.y = result.localCoordinates.y + 1
-                    self.heldBuilding.position.z = result.localCoordinates.z.rounded(.toNearestOrAwayFromZero) - 1.0
+    
+    var initialTouch: CGPoint!
+    func panGesture(sender: UIPanGestureRecognizer) {
+        let touch = sender.location(in: self.view)
+        
+        switch sender.state {
+        case .began:
+            initialTouch = touch
+        case .changed:
+            if (self.placingBuilding) {
+                let hitResults = self.scnView.hitTest(touch, options: nil)
+                for result in hitResults {
+                    if (result.node == self.gameScene.base) {
+                        self.heldBuilding.position.x = result.localCoordinates.x.rounded(.toNearestOrAwayFromZero) - 1.0
+                        self.heldBuilding.position.z = result.localCoordinates.z.rounded(.toNearestOrAwayFromZero) - 1.0
+                    }
                 }
-            }
-        } else {
-            let dx = Float(lastTouch.x - touch.x)
-            self.cameraNode.position.x += (dx / 12)
-            let dz = Float(lastTouch.y - touch.y)
-            self.cameraNode.position.z += (dz / 12)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Single touch
-        if (touches.count == 1) {
-            let location = touches.first!.location(in: self.view)
-            DispatchQueue.main.async {
-                lastTouch = location
-                self.handleSingleTouch(touch: location)
-            }
-        } else if (touches.count == 2) {
-            print("2 Touches")
-        }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Single touch
-        if (touches.count == 1) {
-            let location = touches.first!.location(in: self.view)
-            DispatchQueue.main.async {
-                self.handleSingleTouch(touch: location)
-                lastTouch = location
-            }
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (placingBuilding) {
-            if gameScene.spawn(building: heldBuilding) {
-                self.placingBuilding = false
-                heldBuilding = nil
             } else {
+                let dx = Float(initialTouch.x - touch.x)
+                self.cameraNode.position.x += (dx / 12)
+                let dz = Float(initialTouch.y - touch.y)
+                self.cameraNode.position.z += (dz / 12)
+            }
+        case .failed, .ended:
+            if (placingBuilding) {
+                if !gameScene.spawn(building: heldBuilding) {
+                    heldBuilding.removeFromParentNode()
+                }
                 self.placingBuilding = false
-                heldBuilding.removeFromParentNode()
                 heldBuilding = nil
             }
+        default: break
+        }
+        initialTouch = touch
+    }
+    
+    var initialY: Float = 0
+    func pinchGesture(sender: UIPinchGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            initialY = self.cameraNode.position.y
+        case .changed:
+            cameraNode.eulerAngles.x = -1 + (15 - self.cameraNode.position.y)/20
+            self.cameraNode.position.y = initialY - (Float(sender.scale) - 1) * sin(cameraNode.eulerAngles.x) * 13
+            self.cameraNode.position.y = initialY - (Float(sender.scale) - 1) * cos(cameraNode.eulerAngles.x) * 13
+        default: break
         }
     }
 }
+
 
 var tick: TimeInterval = 0
 

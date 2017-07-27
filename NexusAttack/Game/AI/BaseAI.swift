@@ -21,9 +21,9 @@ class BaseAI {
         self.gameScene = gameScene
         self.player = player
         gameUtility = globalGameUtility
-        buildings = [AttackSpawner(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
-                     RangedSpawner(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
-                     AttackSpawner(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1)]
+        buildings = [OrcBarracks(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
+                     OrcBarracks(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
+                     OrcBarracks(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1)]
         nextBuilding = buildings.first
         
     }
@@ -39,11 +39,11 @@ class BaseAI {
                 let z = Int32(arc4random_uniform(28)) - 14
                 let newBuilding = nextBuilding.copy() as! Building
                 nextBuilding = nil
+                self.lastPlayTime = 0
                 DispatchQueue.main.async {
                     newBuilding.position.x = Float(x)
                     newBuilding.position.z = Float(z)
                     if self.gameUtility.spawn(building: newBuilding) {
-                        self.lastPlayTime = 0
                         print("BaseAI: Placed Building at ", x, z)
                     }
                 }

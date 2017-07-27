@@ -32,7 +32,7 @@ class Missile: BaseOwnedObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func configureObject() {
+    override func configureModel() {
         self.constraints = [SCNLookAtConstraint.init(target: target)]
         let bodyModel = SCNCone(topRadius: 0.05, bottomRadius: 0.1, height: 0.3)
         bodyModel.materials.first?.diffuse.contents = self.owner.color

@@ -114,13 +114,15 @@ class GameScene: SCNScene {
         let floor = Floor()
         worldNode.addChildNode(floor)
         
-        nexus1 = Nexus(player: player1, position: SCNVector3(x: -47, y: 0, z:0))
-        nexus2 = Nexus(player: player2, position: SCNVector3(x: 47, y: 0, z:0))
+        nexus1 = Nexus(player: player1, position: SCNVector3(x: -46, y: 0, z:0))
+        nexus2 = Nexus(player: player2, position: SCNVector3(x: 46, y: 0, z:0))
         
         worldNode.addChildNode(nexus1)
         team1.add(building: nexus1)
+        _=spawn(building: nexus1)
         worldNode.addChildNode(nexus2)
         team2.add(building: nexus2)
+        _=spawn(building: nexus2)
         
         let spotLight = SCNLight()
         spotLight.type = SCNLight.LightType.spot

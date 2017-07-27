@@ -21,7 +21,18 @@ class Unit: BaseOwnedObject, AttackableObject {
         }
     }
     var speed: Float = 3
-    var state: UnitState = .attacking
+    var state: UnitState = .attacking {
+        willSet {
+            if state != newValue {
+                switch newValue {
+                case .attacking:
+                    beginAnimation(animation: .attacking)
+                case .walking:
+                    beginAnimation(animation: .running)
+                }
+            }
+        }
+    }
     var mineralValue: Int = 0 // Money for killing
     
     init(player: Player, position: SCNVector3) {
@@ -46,6 +57,13 @@ class Unit: BaseOwnedObject, AttackableObject {
         // override
     }
     
+    @discardableResult override func setModel(named name: String, scale: Float) -> SCNNode {
+        let childNode = super.setModel(named: name, scale: scale)
+        childNode.eulerAngles.y = Float.pi
+        return childNode
+    }
+
+    
     override func attackedWithDamage(damage: Float) {
         health -= damage
         if (health < 0) {
@@ -69,7 +87,7 @@ class AutoUnit: Unit {
     var targetingRange: Float = 5
     var attackRange: Float = 1
     var attackSpeed: TimeInterval = 1
-    var lastAttack: TimeInterval = 0
+    var lastAttack: TimeInterval = 99
     var closestEnemy: BaseOwnedObject?
     
     
@@ -103,13 +121,14 @@ class AutoUnit: Unit {
                 if enemyDistance < pow(self.attackRange, 2) {
                     if state != .attacking {
                         state = .attacking
-                        //beginAttackAnimation()
+                        beginAnimation(animation: .attacking)
                     }
 
-                    self.runAttackAnimation(completeness: Float((CACurrentMediaTime() - lastAttack) / self.attackSpeed))
+                    self.runAttackAnimation(completeness: Float(lastAttack / self.attackSpeed))
                     // Attack if ready
-                    if (CACurrentMediaTime() - lastAttack > self.attackSpeed) {
+                    if (lastAttack > self.attackSpeed) {
                         self.attackEnemy(enemy: enemy)
+                        lock(forTime: attackSpeed)
                         lastAttack = CACurrentMediaTime()
                     }
                     
@@ -144,7 +163,6 @@ class AutoUnit: Unit {
     
     func moveTowards(position: SCNVector2) {
         if state != .walking {
-            
             state = .walking
             beginWalkAnimation()
         }
@@ -165,11 +183,15 @@ class AutoUnit: Unit {
     
     func prunePath( path: inout [GKGridGraphNode]) {
         let currentPosition = self.presentation.position.to_int2()
-        if let target = path.first {
-            let distance = abs(target.gridPosition.x - currentPosition.x) + abs(target.gridPosition.y - currentPosition.y)
+        if  path.count > 1 {
+            let target = path[0]
+            let next = path[1]
             
-            if distance < 8 {
-                if (path.count > 2) {
+            // Make sure the next node isn't going around a corner
+            if (next.gridPosition.x == currentPosition.x || next.gridPosition.y == currentPosition.y) {
+                let distance = abs(target.gridPosition.x - currentPosition.x) + abs(target.gridPosition.y - currentPosition.y)
+            
+                if distance < 8 {
                     path.remove(at: 0)
                 }
             }
@@ -181,6 +203,11 @@ class AutoUnit: Unit {
         lastEnemySearch += dt
         lastEnemyPathSearch += dt
         lastPathSearch += dt
+        lastAttack += dt
+        
+        if (self.locked) {
+            return
+        }
         
         if (attackEnemy()) {
             return
@@ -204,103 +231,30 @@ class AutoUnit: Unit {
     }
 }
 
-class AttackUnit: AutoUnit {
-    let radius: CGFloat = 0.4
-    
-    var bodyModel: SCNSphere!
-    var body: SCNNode!
-    var noseModel: SCNCone!
-    var nose: SCNNode!
-    
-    var referenceNode: SCNNode!
-    
-    override func configureObject() {
-        super.configureObject()
-        
-        bodyModel = SCNSphere(radius: radius)
-        body = SCNNode(geometry: bodyModel)
-        
-        let path = Bundle.main.path(forResource: "Grunt", ofType: "dae")!
-        referenceNode = collada2SCNNode(filepath: path)
-        referenceNode.eulerAngles.y = Float.pi
-        self.modelNode.addChildNode(referenceNode)
-        
-        self.position.y = 0.2
-        
-        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: bodyModel, options: nil))
-        self.physicsBody?.angularVelocityFactor = SCNVector3(x: 0, y: 0, z: 0)
-        self.physicsBody?.velocityFactor = SCNVector3(x: 1, y: 0, z: 1)
-        self.physicsBody?.rollingFriction = 0
-        self.physicsBody?.friction = 0
-        
-        healthBar = self.addHealthBar(y: 1.5, health: health, size: .medium, showsProgress: false)
-        
-        self.health = 100
-        self.targetingRange = 8
-        self.attackRange = 2
-        self.mineralValue = 2
-    }
-    
-    func collada2SCNNode(filepath:String) -> SCNNode {
-        assert(FileManager.default.fileExists(atPath: filepath))
-        var node = SCNNode()
-        let scene = SCNScene(named: "Grunt")
-        var nodeArray = scene!.rootNode.childNodes
-        
-        for childNode in nodeArray {
-            
-            node.addChildNode(childNode as SCNNode)
-            
-        }
-        node.scale = SCNVector3(0.015, 0.015, 0.015)
-        return node
-        
-    }
-    
-    override func update(dt: TimeInterval) {
-        super.update(dt: dt)
-    }
-    
-    override func runAttackAnimation(completeness: Float) {
-    }
-    
-    override func beginWalkAnimation() {
-    }
-    
-    override func attackEnemy(enemy: BaseObject) {
-        let damage = Float(arc4random_uniform(10) + 10)
-        enemy.attackedWithDamage(damage: damage)
-    }
-}
-
-//class DefenseUnit: AutoUnit {
+//class AttackUnit: AutoUnit {
+//    let radius: CGFloat = 0.4
 //    
-//    var bodyModel: SCNBox!
+//    var bodyModel: SCNSphere!
 //    var body: SCNNode!
 //    var noseModel: SCNCone!
 //    var nose: SCNNode!
 //    
-//    var referenceNode: SCNReferenceNode!
-//    
-//    override func configureObject() {
-//        super.configureObject()
+//    override func configureModel() {
+//        super.configureModel()
 //        
-//        bodyModel = SCNBox(width: 0.6, height: 0.6, length: 0.6, chamferRadius: 0.01)
+//        bodyModel = SCNSphere(radius: radius)
 //        body = SCNNode(geometry: bodyModel)
-//        body = self.addGeometry(model: bodyModel)
+//        
 //        
 //        self.position.y = 0.2
 //        
-//        noseModel.materials.first?.diffuse.contents = UIColor.red
-//        bodyModel.materials.first?.diffuse.contents = self.owner.color
-//        
-//        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: body, options: nil))
+//        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: bodyModel, options: nil))
 //        self.physicsBody?.angularVelocityFactor = SCNVector3(x: 0, y: 0, z: 0)
 //        self.physicsBody?.velocityFactor = SCNVector3(x: 1, y: 0, z: 1)
 //        self.physicsBody?.rollingFriction = 0
 //        self.physicsBody?.friction = 0
 //        
-//        healthBar = self.addHealthBar(y: 0.6, health: health, size: .medium, showsProgress: false)
+//        healthBar = self.addHealthBar(y: 1.5, health: health, size: .medium, showsProgress: false)
 //        
 //        self.health = 100
 //        self.targetingRange = 8
@@ -310,16 +264,12 @@ class AttackUnit: AutoUnit {
 //    
 //    override func update(dt: TimeInterval) {
 //        super.update(dt: dt)
-//        print(referenceNode.isLoaded)
 //    }
 //    
 //    override func runAttackAnimation(completeness: Float) {
-//        let out = 0.25 - pow(0.5 - pow(completeness, 2), 2)
-//        nose.position.z = -Float(radius + noseModel.height/2) - out
 //    }
 //    
 //    override func beginWalkAnimation() {
-//        nose.position.z = -(Float(radius + noseModel.height/2))
 //    }
 //    
 //    override func attackEnemy(enemy: BaseObject) {
@@ -327,47 +277,48 @@ class AttackUnit: AutoUnit {
 //        enemy.attackedWithDamage(damage: damage)
 //    }
 //}
-
-class RangedUnit: AutoUnit {
-    
-    var bodyModel: SCNCone!
-    var body: SCNNode!
-    
-    override func configureObject() {
-        super.configureObject()
-        
-        bodyModel = SCNCone(topRadius: 0.0, bottomRadius: 0.3, height: 0.8)
-        body = self.addGeometry(model: bodyModel)
-        bodyModel.materials.first?.diffuse.contents = self.owner.color
-        
-        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: body, options: nil))
-        self.physicsBody?.angularVelocityFactor = SCNVector3(x: 0, y: 0, z: 0)
-        self.physicsBody?.velocityFactor = SCNVector3(x: 1, y: 0, z: 1)
-        self.physicsBody?.rollingFriction = 0
-        self.physicsBody?.friction = 0
-        
-        self.position.y = 0.4
-        
-        healthBar = self.addHealthBar(y: 0.6, health: health, size: .medium, showsProgress: false)
-        
-        self.health = 70
-        self.attackRange = 6
-        self.targetingRange = 9
-        self.mineralValue = 3
-    }
-    
-    override func runAttackAnimation(completeness: Float) {
-    }
-    
-    override func beginWalkAnimation() {
-    }
-    
-    override func attackEnemy(enemy: BaseObject) {
-        let missile = Missile(player: self.owner,
-                              position: self.presentation.position,
-                              target: enemy,
-                              damage: Float(arc4random_uniform(15) + 10))
-        self.gameUtility.spawn(missile: missile)
-    }
-}
+//
+//
+//class RangedUnit: AutoUnit {
+//    
+//    var bodyModel: SCNCone!
+//    var body: SCNNode!
+//    
+//    override func configureModel() {
+//        super.configureModel()
+//        
+//        bodyModel = SCNCone(topRadius: 0.0, bottomRadius: 0.3, height: 0.8)
+//        body = self.addGeometry(model: bodyModel)
+//        bodyModel.materials.first?.diffuse.contents = self.owner.color
+//        
+//        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: body, options: nil))
+//        self.physicsBody?.angularVelocityFactor = SCNVector3(x: 0, y: 0, z: 0)
+//        self.physicsBody?.velocityFactor = SCNVector3(x: 1, y: 0, z: 1)
+//        self.physicsBody?.rollingFriction = 0
+//        self.physicsBody?.friction = 0
+//        
+//        self.position.y = 0.4
+//        
+//        healthBar = self.addHealthBar(y: 0.6, health: health, size: .medium, showsProgress: false)
+//        
+//        self.health = 70
+//        self.attackRange = 6
+//        self.targetingRange = 9
+//        self.mineralValue = 3
+//    }
+//    
+//    override func runAttackAnimation(completeness: Float) {
+//    }
+//    
+//    override func beginWalkAnimation() {
+//    }
+//    
+//    override func attackEnemy(enemy: BaseObject) {
+//        let missile = Missile(player: self.owner,
+//                              position: self.presentation.position,
+//                              target: enemy,
+//                              damage: Float(arc4random_uniform(15) + 10))
+//        self.gameUtility.spawn(missile: missile)
+//    }
+//}
 

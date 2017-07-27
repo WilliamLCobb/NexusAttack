@@ -11,7 +11,23 @@ import Foundation
 import SceneKit
 import GameKit
 
-// Possibly animated or collision enabled object class trees
+
+protocol AttackableObject {
+    func attackedWithDamage(damage: Float)
+    func die()
+}
+
+enum AnimationType {
+    case idle
+    case running
+    case attacking
+}
+
+protocol AnimatableObject {
+    func beginAnimation(animation: AnimationType)
+}
+
+
 class BaseObject: SCNNode {
     var configured = false
     var gameUtility: GameUtilityDelegate
@@ -19,6 +35,8 @@ class BaseObject: SCNNode {
     var attackRadius: Float?
     var healthBar: HealthBar?
     var alive = true
+    private var lockTime: TimeInterval = 0
+    var locked: Bool { return lockTime > CACurrentMediaTime() }
     
     override var physicsBody: SCNPhysicsBody? {
         didSet {
@@ -32,8 +50,9 @@ class BaseObject: SCNNode {
         self.modelNode.position = SCNVector3(x:0, y:0, z:0)
         super.init()
         self.addChildNode(self.modelNode)
+        self.configureNode()
         DispatchQueue.main.async {
-            self.configureObject()
+            self.configureModel()
             self.configured = true
         }
     }
@@ -44,8 +63,9 @@ class BaseObject: SCNNode {
         self.modelNode.position = SCNVector3(x:0, y:0, z:0)
         super.init()
         self.addChildNode(self.modelNode)
+        self.configureNode()
         DispatchQueue.main.async {
-            self.configureObject()
+            self.configureModel()
             self.configured = true
         }
     }
@@ -54,11 +74,18 @@ class BaseObject: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureObject() {
+    // Run immediately after initialization
+    func configureNode() {
+        // override
+    }
+    
+    // Run once on main thread after initialization
+    func configureModel() {
         // override
     }
     
     func update(dt: TimeInterval) {
+        assert(self.configured)
         // override
     }
     
@@ -67,13 +94,32 @@ class BaseObject: SCNNode {
         fatalError()
     }
     
+    // Attackable Object
     func attackedWithDamage(damage: Float) {
         // override
         fatalError()
     }
     
+    // Animatable Object
+    func beginAnimation(animation: AnimationType) {
+        // override
+        fatalError()
+    }
+    
+    // Creates a time lock useful for locking animations or actions
+    func lock(forTime time: TimeInterval) {
+        self.lockTime = CACurrentMediaTime() + time
+    }
+    
     @discardableResult func addGeometry(model: SCNGeometry) -> SCNNode {
         let childNode = SCNNode(geometry: model)
+        self.modelNode.addChildNode(childNode)
+        return childNode
+    }
+    
+    @discardableResult func setModel(named name: String, scale: Float) -> SCNNode {
+        let childNode = collada2SCNNode(named: name)
+        childNode.scale = SCNVector3(scale, scale, scale)
         self.modelNode.addChildNode(childNode)
         return childNode
     }
@@ -145,6 +191,68 @@ class BaseObject: SCNNode {
 //        return q;
         return SCNVector4(0, axis.y, 0, angle)
     }
+    
+    func collada2SCNNode(named name:String) -> SCNNode {
+        let node = SCNNode()
+        let scene = SCNScene(named: name)!
+        scene.isPaused = false
+        let nodeArray = scene.rootNode.childNodes
+        
+        for childNode in nodeArray {
+            node.addChildNode(childNode as SCNNode)
+            
+        }
+        return node
+    }
+    
+    private func runAnimationFrom(onNode node: SCNNode, start startTime: TimeInterval, to stopTime: TimeInterval, repeats: Bool) {
+        for key in node.animationKeys {
+            let animation = node.animation(forKey: key)!
+            animation.timeOffset = startTime
+            animation.duration = stopTime - startTime
+            if (repeats) {
+                animation.repeatCount = 1000
+            } else {
+                animation.repeatCount = 0
+            }
+            
+            if (animation .isKind(of: CAAnimationGroup.self)) {
+                let group = animation as! CAAnimationGroup
+                for subAnimation in group.animations! {
+                    subAnimation.timeOffset = startTime
+                }
+            }
+
+            node.addAnimation(animation, forKey: key)
+        }
+        
+        for childNode in node.childNodes {
+            runAnimationFrom(onNode: childNode, start: startTime, to: stopTime, repeats: repeats)
+        }
+    }
+    
+    func runAnimationFrom(start startTime: TimeInterval, to stopTime: TimeInterval, repeats: Bool) {
+        runAnimationFrom(onNode: self, start: startTime, to: stopTime, repeats: true)
+    }
+    
+    func animationFromSceneNamed(path: String) -> CAAnimation? {
+        let scene  = SCNScene(named: path)
+        var animation:CAAnimation?
+        scene?.rootNode.enumerateChildNodes({ child, stop in
+            for animKey in child.animationKeys {
+                animation = child.animation(forKey: animKey)
+                child.isPaused = false
+                //print(child)
+                //print(child.animationKeys)
+                if animation != nil {
+                    scene!.rootNode.addAnimation(animation!, forKey: animKey)
+                }
+                //child.resumeAnimation(forKey: animKey)
+                //stop.pointee = false
+            }
+        })
+        return animation
+    }
 }
 
 class BaseOwnedObject: BaseObject {
@@ -164,11 +272,5 @@ class BaseOwnedObject: BaseObject {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-
-protocol AttackableObject {
-    func attackedWithDamage(damage: Float)
-    func die()
 }
 

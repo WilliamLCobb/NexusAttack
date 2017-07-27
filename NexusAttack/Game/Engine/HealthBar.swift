@@ -56,8 +56,8 @@ class HealthBar: BaseObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func configureObject() {
-        super.configureObject()
+    override func configureModel() {
+        super.configureModel()
         
         switch (self.size) {
         case .small:

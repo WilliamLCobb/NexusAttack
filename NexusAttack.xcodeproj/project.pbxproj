@@ -7,51 +7,145 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA15DCA51F10964000720E34 /* Grunt.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCA41F10964000720E34 /* Grunt.dae */; };
-		CA15DCA91F10BD7A00720E34 /* Grunt.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCA81F10BD7A00720E34 /* Grunt.bmp */; };
-		CA15DCB51F11512000720E34 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCAB1F11512000720E34 /* BaseObject.swift */; };
-		CA15DCB61F11512000720E34 /* Buildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCAC1F11512000720E34 /* Buildings.swift */; };
-		CA15DCB71F11512000720E34 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCAD1F11512000720E34 /* Environment.swift */; };
-		CA15DCB81F11512000720E34 /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCAE1F11512000720E34 /* HealthBar.swift */; };
-		CA15DCB91F11512000720E34 /* Missile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCAF1F11512000720E34 /* Missile.swift */; };
-		CA15DCBA1F11512000720E34 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCB41F11512000720E34 /* Units.swift */; };
-		CA15DCBC1F11515900720E34 /* Orc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCBB1F11515900720E34 /* Orc.swift */; };
+		CA12DAF81F28470900CCA3C8 /* map2.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA12DAF71F28470900CCA3C8 /* map2.dae */; };
+		CA12DAFB1F29AA1900CCA3C8 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = CA12DAF91F29AA1900CCA3C8 /* dirt.png */; };
+		CA12DAFC1F29AA1900CCA3C8 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = CA12DAFA1F29AA1900CCA3C8 /* grass.png */; };
+		CA15DCCD1F116F7500720E34 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC21F116F7500720E34 /* BaseObject.swift */; };
+		CA15DCCE1F116F7500720E34 /* Buildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC31F116F7500720E34 /* Buildings.swift */; };
+		CA15DCCF1F116F7500720E34 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC41F116F7500720E34 /* Environment.swift */; };
+		CA15DCD01F116F7500720E34 /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC51F116F7500720E34 /* HealthBar.swift */; };
+		CA15DCD11F116F7500720E34 /* Missile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC61F116F7500720E34 /* Missile.swift */; };
+		CA15DCD31F116F7500720E34 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCCA1F116F7500720E34 /* Units.swift */; };
+		CA15DD0C1F11703200720E34 /* DeathSmug.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCD71F11703200720E34 /* DeathSmug.bmp */; };
+		CA15DD0D1F11703200720E34 /* Doodads0.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCD81F11703200720E34 /* Doodads0.bmp */; };
+		CA15DD0E1F11703200720E34 /* Garrison.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCD91F11703200720E34 /* Garrison.bmp */; };
+		CA15DD0F1F11703200720E34 /* HumanBarracks.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCDA1F11703200720E34 /* HumanBarracks.dae */; };
+		CA15DD131F11703200720E34 /* HumanBase.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCDE1F11703200720E34 /* HumanBase.bmp */; };
+		CA15DD141F11703200720E34 /* gutz.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCE01F11703200720E34 /* gutz.bmp */; };
+		CA15DD181F11703200720E34 /* PeasantMilitia.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCE41F11703200720E34 /* PeasantMilitia.bmp */; };
+		CA15DD1B1F11703200720E34 /* Grunt.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCE91F11703200720E34 /* Grunt.bmp */; };
+		CA15DD1C1F11703200720E34 /* Grunt.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA15DCEA1F11703200720E34 /* Grunt.dae */; };
+		CA15DD361F11703200720E34 /* Base.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DD051F11703200720E34 /* Base.bmp */; };
+		CA15DD371F11703200720E34 /* DeathSmug.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DD061F11703200720E34 /* DeathSmug.bmp */; };
+		CA15DD381F11703200720E34 /* OrcBarracks.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA15DD071F11703200720E34 /* OrcBarracks.dae */; };
+		CA15DD3B1F11703200720E34 /* OrcBarraks.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DD0A1F11703200720E34 /* OrcBarraks.bmp */; };
+		CA15DD3C1F11703200720E34 /* OrcBirth.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA15DD0B1F11703200720E34 /* OrcBirth.bmp */; };
+		CA15DD3E1F11761600720E34 /* Orc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DD3D1F11761600720E34 /* Orc.swift */; };
+		CA15DD401F11762800720E34 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DD3F1F11762800720E34 /* Human.swift */; };
+		CA15DD421F117A2F00720E34 /* Militia.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA15DD411F117A2F00720E34 /* Militia.dae */; };
 		CA6573F51EF4CFF300E4CED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */; };
 		CA6574001EF4CFF300E4CED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6573FE1EF4CFF300E4CED1 /* Main.storyboard */; };
 		CA6574021EF4CFF300E4CED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6574011EF4CFF300E4CED1 /* Assets.xcassets */; };
 		CA6574051EF4CFF300E4CED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6574031EF4CFF300E4CED1 /* LaunchScreen.storyboard */; };
+		CA83D0721F26EE8D0035A9B3 /* Spawn1.png in Resources */ = {isa = PBXBuildFile; fileRef = CA83D06F1F26EE8D0035A9B3 /* Spawn1.png */; };
+		CA83D0731F26EE8D0035A9B3 /* spawn2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CA83D0701F26EE8D0035A9B3 /* spawn2.bmp */; };
 		CA9A09771EF719C20018437D /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9A09761EF719C20018437D /* Team.swift */; };
 		CAB305B11F08AEED00B7621A /* BuildingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305B01F08AEED00B7621A /* BuildingMenu.swift */; };
 		CAB305B71F08D5DE00B7621A /* BaseAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305B61F08D5DE00B7621A /* BaseAI.swift */; };
 		CAB305BB1F09AC6900B7621A /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305BA1F09AC6900B7621A /* Hud.swift */; };
 		CAC3B4741EF5987F008DD4EA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3B4731EF5987F008DD4EA /* Extensions.swift */; };
 		CAC3B4761EF60DA2008DD4EA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3B4751EF60DA2008DD4EA /* Player.swift */; };
+		CAE4C6391F11AB72005CB161 /* DeathSmug.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CAE4C62F1F11AB72005CB161 /* DeathSmug.bmp */; };
+		CAE4C63A1F11AB72005CB161 /* Doodads0-0.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CAE4C6301F11AB72005CB161 /* Doodads0-0.bmp */; };
+		CAE4C63C1F11AB72005CB161 /* HumanBase.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CAE4C6321F11AB72005CB161 /* HumanBase.bmp */; };
+		CAE4C63D1F11AB72005CB161 /* HumanTower.dae in Resources */ = {isa = PBXBuildFile; fileRef = CAE4C6331F11AB72005CB161 /* HumanTower.dae */; };
+		CAE4C6401F11AB72005CB161 /* Tower.bmp in Resources */ = {isa = PBXBuildFile; fileRef = CAE4C6361F11AB72005CB161 /* Tower.bmp */; };
+		CAE4C6491F12EF0E005CB161 /* Grun6.DAE in Resources */ = {isa = PBXBuildFile; fileRef = CAE4C6481F12EF0E005CB161 /* Grun6.DAE */; };
+		CAE4C64B1F130CAE005CB161 /* GruntRunning.DAE in Resources */ = {isa = PBXBuildFile; fileRef = CAE4C64A1F130CAE005CB161 /* GruntRunning.DAE */; };
+		FE297C1E1F294559003D374B /* tileMap.tm in Resources */ = {isa = PBXBuildFile; fileRef = FE297C1D1F294559003D374B /* tileMap.tm */; };
 		FE68F89E1EF85A9F003E9716 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68F89C1EF85A9F003E9716 /* GameScene.swift */; };
 		FE68F89F1EF85A9F003E9716 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68F89D1EF85A9F003E9716 /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CA15DCA41F10964000720E34 /* Grunt.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Grunt.dae; sourceTree = "<group>"; };
-		CA15DCA81F10BD7A00720E34 /* Grunt.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Grunt.bmp; sourceTree = "<group>"; };
-		CA15DCAB1F11512000720E34 /* BaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
-		CA15DCAC1F11512000720E34 /* Buildings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildings.swift; sourceTree = "<group>"; };
-		CA15DCAD1F11512000720E34 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		CA15DCAE1F11512000720E34 /* HealthBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
-		CA15DCAF1F11512000720E34 /* Missile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
-		CA15DCB41F11512000720E34 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
-		CA15DCBB1F11515900720E34 /* Orc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orc.swift; sourceTree = "<group>"; };
+		CA12DAF71F28470900CCA3C8 /* map2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = map2.dae; sourceTree = "<group>"; };
+		CA12DAF91F29AA1900CCA3C8 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
+		CA12DAFA1F29AA1900CCA3C8 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		CA15DCC21F116F7500720E34 /* BaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
+		CA15DCC31F116F7500720E34 /* Buildings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildings.swift; sourceTree = "<group>"; };
+		CA15DCC41F116F7500720E34 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		CA15DCC51F116F7500720E34 /* HealthBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
+		CA15DCC61F116F7500720E34 /* Missile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
+		CA15DCCA1F116F7500720E34 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
+		CA15DCD71F11703200720E34 /* DeathSmug.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DeathSmug.bmp; sourceTree = "<group>"; };
+		CA15DCD81F11703200720E34 /* Doodads0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Doodads0.bmp; sourceTree = "<group>"; };
+		CA15DCD91F11703200720E34 /* Garrison.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Garrison.bmp; sourceTree = "<group>"; };
+		CA15DCDA1F11703200720E34 /* HumanBarracks.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = HumanBarracks.dae; sourceTree = "<group>"; };
+		CA15DCDB1F11703200720E34 /* HumanBarracks.mdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HumanBarracks.mdl; sourceTree = "<group>"; };
+		CA15DCDC1F11703200720E34 /* HumanBarracks.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = HumanBarracks.mdx; sourceTree = "<group>"; };
+		CA15DCDD1F11703200720E34 /* HumanBarracksWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HumanBarracksWhat1.wav; sourceTree = "<group>"; };
+		CA15DCDE1F11703200720E34 /* HumanBase.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = HumanBase.bmp; sourceTree = "<group>"; };
+		CA15DCE01F11703200720E34 /* gutz.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = gutz.bmp; sourceTree = "<group>"; };
+		CA15DCE11F11703200720E34 /* Militia.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Militia.mdx; sourceTree = "<group>"; };
+		CA15DCE21F11703200720E34 /* Militia_Portrait.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Militia_Portrait.mdx; sourceTree = "<group>"; };
+		CA15DCE31F11703200720E34 /* PeasantMilitia.blp */ = {isa = PBXFileReference; lastKnownFileType = file; path = PeasantMilitia.blp; sourceTree = "<group>"; };
+		CA15DCE41F11703200720E34 /* PeasantMilitia.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = PeasantMilitia.bmp; sourceTree = "<group>"; };
+		CA15DCE71F11703200720E34 /* BerserkerCaster.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BerserkerCaster.wav; sourceTree = "<group>"; };
+		CA15DCE81F11703200720E34 /* Grunt.blp */ = {isa = PBXFileReference; lastKnownFileType = file; path = Grunt.blp; sourceTree = "<group>"; };
+		CA15DCE91F11703200720E34 /* Grunt.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Grunt.bmp; sourceTree = "<group>"; };
+		CA15DCEA1F11703200720E34 /* Grunt.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Grunt.dae; sourceTree = "<group>"; };
+		CA15DCEB1F11703200720E34 /* grunt.mdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grunt.mdl; sourceTree = "<group>"; };
+		CA15DCEC1F11703200720E34 /* grunt.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = grunt.mdx; sourceTree = "<group>"; };
+		CA15DCED1F11703200720E34 /* grunt_portrait.mdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grunt_portrait.mdl; sourceTree = "<group>"; };
+		CA15DCEE1F11703200720E34 /* grunt_portrait.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = grunt_portrait.mdx; sourceTree = "<group>"; };
+		CA15DCEF1F11703200720E34 /* GruntDeath.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntDeath.wav; sourceTree = "<group>"; };
+		CA15DCF01F11703200720E34 /* GruntPissed1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntPissed1.wav; sourceTree = "<group>"; };
+		CA15DCF11F11703200720E34 /* GruntPissed2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntPissed2.wav; sourceTree = "<group>"; };
+		CA15DCF21F11703200720E34 /* GruntPissed3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntPissed3.wav; sourceTree = "<group>"; };
+		CA15DCF31F11703200720E34 /* GruntPissed4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntPissed4.wav; sourceTree = "<group>"; };
+		CA15DCF41F11703200720E34 /* GruntPissed5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntPissed5.wav; sourceTree = "<group>"; };
+		CA15DCF51F11703200720E34 /* GruntPissed6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntPissed6.wav; sourceTree = "<group>"; };
+		CA15DCF61F11703200720E34 /* GruntPissed7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntPissed7.wav; sourceTree = "<group>"; };
+		CA15DCF71F11703200720E34 /* GruntReady1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntReady1.wav; sourceTree = "<group>"; };
+		CA15DCF81F11703200720E34 /* GruntWarcry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntWarcry1.wav; sourceTree = "<group>"; };
+		CA15DCF91F11703200720E34 /* GruntWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntWhat1.wav; sourceTree = "<group>"; };
+		CA15DCFA1F11703200720E34 /* GruntWhat2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntWhat2.wav; sourceTree = "<group>"; };
+		CA15DCFB1F11703200720E34 /* GruntWhat3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntWhat3.wav; sourceTree = "<group>"; };
+		CA15DCFC1F11703200720E34 /* GruntWhat4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntWhat4.wav; sourceTree = "<group>"; };
+		CA15DCFD1F11703200720E34 /* GruntYes1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYes1.wav; sourceTree = "<group>"; };
+		CA15DCFE1F11703200720E34 /* GruntYes2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYes2.wav; sourceTree = "<group>"; };
+		CA15DCFF1F11703200720E34 /* GruntYes3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYes3.wav; sourceTree = "<group>"; };
+		CA15DD001F11703200720E34 /* GruntYes4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYes4.wav; sourceTree = "<group>"; };
+		CA15DD011F11703200720E34 /* GruntYesAttack1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYesAttack1.wav; sourceTree = "<group>"; };
+		CA15DD021F11703200720E34 /* GruntYesAttack2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYesAttack2.wav; sourceTree = "<group>"; };
+		CA15DD031F11703200720E34 /* GruntYesAttack3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYesAttack3.wav; sourceTree = "<group>"; };
+		CA15DD051F11703200720E34 /* Base.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Base.bmp; sourceTree = "<group>"; };
+		CA15DD061F11703200720E34 /* DeathSmug.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DeathSmug.bmp; sourceTree = "<group>"; };
+		CA15DD071F11703200720E34 /* OrcBarracks.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = OrcBarracks.dae; sourceTree = "<group>"; };
+		CA15DD081F11703200720E34 /* OrcBarracks.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = OrcBarracks.mdx; sourceTree = "<group>"; };
+		CA15DD091F11703200720E34 /* OrcBarracksWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = OrcBarracksWhat1.wav; sourceTree = "<group>"; };
+		CA15DD0A1F11703200720E34 /* OrcBarraks.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = OrcBarraks.bmp; sourceTree = "<group>"; };
+		CA15DD0B1F11703200720E34 /* OrcBirth.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = OrcBirth.bmp; sourceTree = "<group>"; };
+		CA15DD3D1F11761600720E34 /* Orc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orc.swift; sourceTree = "<group>"; };
+		CA15DD3F1F11762800720E34 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		CA15DD411F117A2F00720E34 /* Militia.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Militia.dae; sourceTree = "<group>"; };
 		CA6573F11EF4CFF300E4CED1 /* NexusAttack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NexusAttack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA6573FF1EF4CFF300E4CED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA6574011EF4CFF300E4CED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA6574041EF4CFF300E4CED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA6574061EF4CFF300E4CED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA83D06F1F26EE8D0035A9B3 /* Spawn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spawn1.png; sourceTree = "<group>"; };
+		CA83D0701F26EE8D0035A9B3 /* spawn2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = spawn2.bmp; sourceTree = "<group>"; };
 		CA9A09761EF719C20018437D /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		CAB305B01F08AEED00B7621A /* BuildingMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingMenu.swift; sourceTree = "<group>"; };
 		CAB305B61F08D5DE00B7621A /* BaseAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAI.swift; sourceTree = "<group>"; };
 		CAB305BA1F09AC6900B7621A /* Hud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		CAC3B4731EF5987F008DD4EA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CAC3B4751EF60DA2008DD4EA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		CAE4C62E1F11AB72005CB161 /* CannonTowerWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CannonTowerWhat1.wav; sourceTree = "<group>"; };
+		CAE4C62F1F11AB72005CB161 /* DeathSmug.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DeathSmug.bmp; sourceTree = "<group>"; };
+		CAE4C6301F11AB72005CB161 /* Doodads0-0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "Doodads0-0.bmp"; sourceTree = "<group>"; };
+		CAE4C6311F11AB72005CB161 /* GuardTowerWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GuardTowerWhat1.wav; sourceTree = "<group>"; };
+		CAE4C6321F11AB72005CB161 /* HumanBase.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = HumanBase.bmp; sourceTree = "<group>"; };
+		CAE4C6331F11AB72005CB161 /* HumanTower.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = HumanTower.dae; sourceTree = "<group>"; };
+		CAE4C6341F11AB72005CB161 /* HumanTower.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = HumanTower.mdx; sourceTree = "<group>"; };
+		CAE4C6351F11AB72005CB161 /* Tower.blp */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tower.blp; sourceTree = "<group>"; };
+		CAE4C6361F11AB72005CB161 /* Tower.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Tower.bmp; sourceTree = "<group>"; };
+		CAE4C6371F11AB72005CB161 /* WatchTowerWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WatchTowerWhat1.wav; sourceTree = "<group>"; };
+		CAE4C6481F12EF0E005CB161 /* Grun6.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Grun6.DAE; sourceTree = "<group>"; };
+		CAE4C64A1F130CAE005CB161 /* GruntRunning.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = GruntRunning.DAE; sourceTree = "<group>"; };
+		FE297C1D1F294559003D374B /* tileMap.tm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tileMap.tm; sourceTree = "<group>"; };
 		FE68F89C1EF85A9F003E9716 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		FE68F89D1EF85A9F003E9716 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,34 +161,137 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CA15DCAA1F11512000720E34 /* Engine */ = {
+		CA15DCBD1F116F7500720E34 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				CA15DCAB1F11512000720E34 /* BaseObject.swift */,
-				CA15DCAC1F11512000720E34 /* Buildings.swift */,
-				CA15DCAD1F11512000720E34 /* Environment.swift */,
-				CA15DCAE1F11512000720E34 /* HealthBar.swift */,
-				CA15DCAF1F11512000720E34 /* Missile.swift */,
-				CA15DCB41F11512000720E34 /* Units.swift */,
-				CA15DCB01F11512000720E34 /* Races */,
+				CA15DCC21F116F7500720E34 /* BaseObject.swift */,
+				CA15DCC31F116F7500720E34 /* Buildings.swift */,
+				CA15DCC41F116F7500720E34 /* Environment.swift */,
+				CA15DCC51F116F7500720E34 /* HealthBar.swift */,
+				CA15DCC61F116F7500720E34 /* Missile.swift */,
+				CA15DCCA1F116F7500720E34 /* Units.swift */,
+				CA15DCC71F116F7500720E34 /* Objects */,
+				CA15DCD41F11703200720E34 /* Assets */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
 		};
-		CA15DCB01F11512000720E34 /* Races */ = {
+		CA15DCC71F116F7500720E34 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				CA15DCB11F11512000720E34 /* Orc */,
+				CA15DD3D1F11761600720E34 /* Orc.swift */,
+				CA15DD3F1F11762800720E34 /* Human.swift */,
 			);
-			path = Races;
+			path = Objects;
 			sourceTree = "<group>";
 		};
-		CA15DCB11F11512000720E34 /* Orc */ = {
+		CA15DCD41F11703200720E34 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				CA15DCBB1F11515900720E34 /* Orc.swift */,
+				CA83D06D1F26EE790035A9B3 /* Map */,
+				CA15DCD51F11703200720E34 /* Human */,
+				CA15DCE51F11703200720E34 /* Orc */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		CA15DCD51F11703200720E34 /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				CAE4C62D1F11AB72005CB161 /* HumanTower */,
+				CA15DCD61F11703200720E34 /* HumanBarracks */,
+				CA15DCDF1F11703200720E34 /* Militia */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		CA15DCD61F11703200720E34 /* HumanBarracks */ = {
+			isa = PBXGroup;
+			children = (
+				CA15DCD71F11703200720E34 /* DeathSmug.bmp */,
+				CA15DCD81F11703200720E34 /* Doodads0.bmp */,
+				CA15DCD91F11703200720E34 /* Garrison.bmp */,
+				CA15DCDA1F11703200720E34 /* HumanBarracks.dae */,
+				CA15DCDB1F11703200720E34 /* HumanBarracks.mdl */,
+				CA15DCDC1F11703200720E34 /* HumanBarracks.mdx */,
+				CA15DCDD1F11703200720E34 /* HumanBarracksWhat1.wav */,
+				CA15DCDE1F11703200720E34 /* HumanBase.bmp */,
+			);
+			path = HumanBarracks;
+			sourceTree = "<group>";
+		};
+		CA15DCDF1F11703200720E34 /* Militia */ = {
+			isa = PBXGroup;
+			children = (
+				CA15DD411F117A2F00720E34 /* Militia.dae */,
+				CA15DCE01F11703200720E34 /* gutz.bmp */,
+				CA15DCE11F11703200720E34 /* Militia.mdx */,
+				CA15DCE21F11703200720E34 /* Militia_Portrait.mdx */,
+				CA15DCE31F11703200720E34 /* PeasantMilitia.blp */,
+				CA15DCE41F11703200720E34 /* PeasantMilitia.bmp */,
+			);
+			path = Militia;
+			sourceTree = "<group>";
+		};
+		CA15DCE51F11703200720E34 /* Orc */ = {
+			isa = PBXGroup;
+			children = (
+				CA15DCE61F11703200720E34 /* Grunt */,
+				CA15DD041F11703200720E34 /* OrcBarracks */,
 			);
 			path = Orc;
+			sourceTree = "<group>";
+		};
+		CA15DCE61F11703200720E34 /* Grunt */ = {
+			isa = PBXGroup;
+			children = (
+				CAE4C6481F12EF0E005CB161 /* Grun6.DAE */,
+				CA15DCE71F11703200720E34 /* BerserkerCaster.wav */,
+				CA15DCE81F11703200720E34 /* Grunt.blp */,
+				CA15DCE91F11703200720E34 /* Grunt.bmp */,
+				CAE4C64A1F130CAE005CB161 /* GruntRunning.DAE */,
+				CA15DCEA1F11703200720E34 /* Grunt.dae */,
+				CA15DCEB1F11703200720E34 /* grunt.mdl */,
+				CA15DCEC1F11703200720E34 /* grunt.mdx */,
+				CA15DCED1F11703200720E34 /* grunt_portrait.mdl */,
+				CA15DCEE1F11703200720E34 /* grunt_portrait.mdx */,
+				CA15DCEF1F11703200720E34 /* GruntDeath.wav */,
+				CA15DCF01F11703200720E34 /* GruntPissed1.wav */,
+				CA15DCF11F11703200720E34 /* GruntPissed2.wav */,
+				CA15DCF21F11703200720E34 /* GruntPissed3.wav */,
+				CA15DCF31F11703200720E34 /* GruntPissed4.wav */,
+				CA15DCF41F11703200720E34 /* GruntPissed5.wav */,
+				CA15DCF51F11703200720E34 /* GruntPissed6.wav */,
+				CA15DCF61F11703200720E34 /* GruntPissed7.wav */,
+				CA15DCF71F11703200720E34 /* GruntReady1.wav */,
+				CA15DCF81F11703200720E34 /* GruntWarcry1.wav */,
+				CA15DCF91F11703200720E34 /* GruntWhat1.wav */,
+				CA15DCFA1F11703200720E34 /* GruntWhat2.wav */,
+				CA15DCFB1F11703200720E34 /* GruntWhat3.wav */,
+				CA15DCFC1F11703200720E34 /* GruntWhat4.wav */,
+				CA15DCFD1F11703200720E34 /* GruntYes1.wav */,
+				CA15DCFE1F11703200720E34 /* GruntYes2.wav */,
+				CA15DCFF1F11703200720E34 /* GruntYes3.wav */,
+				CA15DD001F11703200720E34 /* GruntYes4.wav */,
+				CA15DD011F11703200720E34 /* GruntYesAttack1.wav */,
+				CA15DD021F11703200720E34 /* GruntYesAttack2.wav */,
+				CA15DD031F11703200720E34 /* GruntYesAttack3.wav */,
+			);
+			path = Grunt;
+			sourceTree = "<group>";
+		};
+		CA15DD041F11703200720E34 /* OrcBarracks */ = {
+			isa = PBXGroup;
+			children = (
+				CA15DD051F11703200720E34 /* Base.bmp */,
+				CA15DD061F11703200720E34 /* DeathSmug.bmp */,
+				CA15DD071F11703200720E34 /* OrcBarracks.dae */,
+				CA15DD081F11703200720E34 /* OrcBarracks.mdx */,
+				CA15DD091F11703200720E34 /* OrcBarracksWhat1.wav */,
+				CA15DD0A1F11703200720E34 /* OrcBarraks.bmp */,
+				CA15DD0B1F11703200720E34 /* OrcBirth.bmp */,
+			);
+			path = OrcBarracks;
 			sourceTree = "<group>";
 		};
 		CA6573E81EF4CFF300E4CED1 = {
@@ -131,9 +328,7 @@
 		CA65740E1EF4D9DF00E4CED1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				CA15DCAA1F11512000720E34 /* Engine */,
-				CA15DCA81F10BD7A00720E34 /* Grunt.bmp */,
-				CA15DCA41F10964000720E34 /* Grunt.dae */,
+				CA15DCBD1F116F7500720E34 /* Engine */,
 				CAB305B51F08D5DE00B7621A /* AI */,
 				CAB305AF1F08AE5C00B7621A /* Menu */,
 				FE68F89B1EF85A9F003E9716 /* ViewControllers */,
@@ -150,6 +345,19 @@
 				CAB305BA1F09AC6900B7621A /* Hud.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CA83D06D1F26EE790035A9B3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CA12DAF91F29AA1900CCA3C8 /* dirt.png */,
+				CA12DAFA1F29AA1900CCA3C8 /* grass.png */,
+				FE297C1D1F294559003D374B /* tileMap.tm */,
+				CA12DAF71F28470900CCA3C8 /* map2.dae */,
+				CA83D06F1F26EE8D0035A9B3 /* Spawn1.png */,
+				CA83D0701F26EE8D0035A9B3 /* spawn2.bmp */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		CAB305AF1F08AE5C00B7621A /* Menu */ = {
@@ -173,6 +381,23 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CAE4C62D1F11AB72005CB161 /* HumanTower */ = {
+			isa = PBXGroup;
+			children = (
+				CAE4C62E1F11AB72005CB161 /* CannonTowerWhat1.wav */,
+				CAE4C62F1F11AB72005CB161 /* DeathSmug.bmp */,
+				CAE4C6301F11AB72005CB161 /* Doodads0-0.bmp */,
+				CAE4C6311F11AB72005CB161 /* GuardTowerWhat1.wav */,
+				CAE4C6321F11AB72005CB161 /* HumanBase.bmp */,
+				CAE4C6331F11AB72005CB161 /* HumanTower.dae */,
+				CAE4C6341F11AB72005CB161 /* HumanTower.mdx */,
+				CAE4C6351F11AB72005CB161 /* Tower.blp */,
+				CAE4C6361F11AB72005CB161 /* Tower.bmp */,
+				CAE4C6371F11AB72005CB161 /* WatchTowerWhat1.wav */,
+			);
+			path = HumanTower;
 			sourceTree = "<group>";
 		};
 		FE68F89B1EF85A9F003E9716 /* ViewControllers */ = {
@@ -244,11 +469,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA15DCA91F10BD7A00720E34 /* Grunt.bmp in Resources */,
+				CA15DD0D1F11703200720E34 /* Doodads0.bmp in Resources */,
+				CA15DD421F117A2F00720E34 /* Militia.dae in Resources */,
+				CA15DD0C1F11703200720E34 /* DeathSmug.bmp in Resources */,
+				CA15DD3C1F11703200720E34 /* OrcBirth.bmp in Resources */,
+				CA15DD0E1F11703200720E34 /* Garrison.bmp in Resources */,
+				CA15DD141F11703200720E34 /* gutz.bmp in Resources */,
+				CA15DD181F11703200720E34 /* PeasantMilitia.bmp in Resources */,
+				CAE4C63C1F11AB72005CB161 /* HumanBase.bmp in Resources */,
+				CAE4C63A1F11AB72005CB161 /* Doodads0-0.bmp in Resources */,
 				CA6574001EF4CFF300E4CED1 /* Main.storyboard in Resources */,
-				CA15DCA51F10964000720E34 /* Grunt.dae in Resources */,
+				CAE4C6491F12EF0E005CB161 /* Grun6.DAE in Resources */,
+				CA15DD1B1F11703200720E34 /* Grunt.bmp in Resources */,
+				FE297C1E1F294559003D374B /* tileMap.tm in Resources */,
+				CAE4C64B1F130CAE005CB161 /* GruntRunning.DAE in Resources */,
+				CA12DAFB1F29AA1900CCA3C8 /* dirt.png in Resources */,
+				CA15DD1C1F11703200720E34 /* Grunt.dae in Resources */,
+				CA15DD381F11703200720E34 /* OrcBarracks.dae in Resources */,
+				CAE4C63D1F11AB72005CB161 /* HumanTower.dae in Resources */,
 				CA6574021EF4CFF300E4CED1 /* Assets.xcassets in Resources */,
+				CA83D0731F26EE8D0035A9B3 /* spawn2.bmp in Resources */,
+				CA15DD0F1F11703200720E34 /* HumanBarracks.dae in Resources */,
+				CA83D0721F26EE8D0035A9B3 /* Spawn1.png in Resources */,
+				CA15DD131F11703200720E34 /* HumanBase.bmp in Resources */,
+				CA15DD361F11703200720E34 /* Base.bmp in Resources */,
+				CAE4C6401F11AB72005CB161 /* Tower.bmp in Resources */,
+				CA15DD3B1F11703200720E34 /* OrcBarraks.bmp in Resources */,
+				CA15DD371F11703200720E34 /* DeathSmug.bmp in Resources */,
+				CA12DAFC1F29AA1900CCA3C8 /* grass.png in Resources */,
 				CA6574051EF4CFF300E4CED1 /* LaunchScreen.storyboard in Resources */,
+				CAE4C6391F11AB72005CB161 /* DeathSmug.bmp in Resources */,
+				CA12DAF81F28470900CCA3C8 /* map2.dae in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,20 +511,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA9A09771EF719C20018437D /* Team.swift in Sources */,
-				CA15DCB71F11512000720E34 /* Environment.swift in Sources */,
-				CA15DCB91F11512000720E34 /* Missile.swift in Sources */,
-				CA15DCB51F11512000720E34 /* BaseObject.swift in Sources */,
+				CA15DCCF1F116F7500720E34 /* Environment.swift in Sources */,
+				CA15DCD11F116F7500720E34 /* Missile.swift in Sources */,
+				CA15DCCD1F116F7500720E34 /* BaseObject.swift in Sources */,
+				CA15DD401F11762800720E34 /* Human.swift in Sources */,
 				FE68F89E1EF85A9F003E9716 /* GameScene.swift in Sources */,
-				CA15DCB81F11512000720E34 /* HealthBar.swift in Sources */,
+				CA15DD3E1F11761600720E34 /* Orc.swift in Sources */,
+				CA15DCD01F116F7500720E34 /* HealthBar.swift in Sources */,
 				CAB305BB1F09AC6900B7621A /* Hud.swift in Sources */,
 				CAB305B11F08AEED00B7621A /* BuildingMenu.swift in Sources */,
-				CA15DCBC1F11515900720E34 /* Orc.swift in Sources */,
+				CA15DCD31F116F7500720E34 /* Units.swift in Sources */,
 				CAC3B4741EF5987F008DD4EA /* Extensions.swift in Sources */,
 				FE68F89F1EF85A9F003E9716 /* GameViewController.swift in Sources */,
 				CAC3B4761EF60DA2008DD4EA /* Player.swift in Sources */,
 				CAB305B71F08D5DE00B7621A /* BaseAI.swift in Sources */,
-				CA15DCB61F11512000720E34 /* Buildings.swift in Sources */,
-				CA15DCBA1F11512000720E34 /* Units.swift in Sources */,
+				CA15DCCE1F116F7500720E34 /* Buildings.swift in Sources */,
 				CA6573F51EF4CFF300E4CED1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

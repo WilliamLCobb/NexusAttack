@@ -10,12 +10,8 @@ import SceneKit
 import GameKit
 
 
-//   ____
-//  |    |
-//  |X   |
-//  ------
-
 class Building: BaseOwnedObject, AttackableObject {
+    var level: Int = 1
     var size: int2!
     var cost: Int!
     
@@ -46,6 +42,10 @@ class Building: BaseOwnedObject, AttackableObject {
         self.gameUtility.buildingDidDie(building: self)
     }
     
+//    @discardableResult override func setModel(named name: String, scale: Float) -> SCNNode {
+//        let childNode = super.setModel(named: name, scale: scale)
+//    }
+    
     //  ------
     //  |    |
     //  |X   |
@@ -63,14 +63,14 @@ class Building: BaseOwnedObject, AttackableObject {
         
         // TODO: Set these smartly...
         // Needs to be rethought for 3x3
-        var x = (size.x/2)
-        var y = (size.y/2)
-        if (size.x % 2) == 0 {
-            x += 1
-        }
-        if (size.y % 2) == 0 {
-            y += 1
-        }
+        var x = size.x/2 + 1
+        var y = size.y/2 + 1
+//        if (size.x % 2) == 0 {
+//            x += 1
+//        }
+//        if (size.y % 2) == 0 {
+//            y += 1
+//        }
         var dx = 0
         var dy = 1
         let numNodes = ((x * 2) + (y * 2) - 4)
@@ -112,11 +112,39 @@ class Building: BaseOwnedObject, AttackableObject {
     
 }
 
+class Tower: Building {
+    var closestEnemy: BaseOwnedObject?
+    var attackRate: Double = 5
+    var attackTime: TimeInterval = 0
+    var lastEnemySearchTime: TimeInterval = 0
+    var damage: Int = 0
+    
+    
+    override func update(dt: TimeInterval) {
+        super.update(dt: dt)
+        lastEnemySearchTime += dt
+        if (lastEnemySearchTime > 1) {
+            lastEnemySearchTime = 0
+            closestEnemy = self.gameUtility.closestEnemyTo(object: self)
+        }
+        
+        if let enemy = closestEnemy {
+            attackTime += dt
+            if (attackTime > attackRate) {
+                let missile = Missile(player: self.owner,
+                                      position: self.presentation.position,
+                                      target: enemy,
+                                      damage: Float(Int(arc4random_uniform(15)) + (damage - 7)))
+                self.gameUtility.spawn(missile: missile)
+            }
+        }
+    }
+}
+
 class BuildingSpawner: Building {
     // Seconds passed until next unit spawns
     var spawnRate: Double = 20
     var spawnTime: TimeInterval = 15
-    var test = false
     
     var target: Building
     
@@ -135,8 +163,7 @@ class BuildingSpawner: Building {
     override func update(dt: TimeInterval) {
         super.update(dt: dt)
         spawnTime += dt
-        if (spawnTime > spawnRate) { //&& !test) {
-            test = true
+        if (spawnTime > spawnRate) {
             DispatchQueue.main.async {
                 let newUnit = self.createUnit()!
                 self.spawnUnit(unit: newUnit)
@@ -173,16 +200,19 @@ class BuildingSpawner: Building {
 
 class Nexus: Building {
     
-    override func configureObject() {
+    override func configureNode() {
+        self.size = int2(3, 3)
+        health = 4000
+        cost = 0
+    }
+    
+    override func configureModel() {
         attackRadius = 3
-        let baseModel = SCNPyramid(width: 2, height: 3, length: 2)
+        let baseModel = SCNPyramid(width: 3, height: 4, length: 3)
         baseModel.materials.first?.diffuse.contents = self.owner.team.color
         let base = addGeometry(model: baseModel)
         self.position.y = 0
-        self.size = int2(2, 2)
         
-        health = 4000
-        cost = 0
         healthBar = addHealthBar(y: 3.5, health: health, size: .large, showsProgress: false)
         self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: base, options: nil))
     }
@@ -196,104 +226,68 @@ class Nexus: Building {
     
 }
 
-class DefenseSpawner: BuildingSpawner {
-    var bodyModel: SCNBox!
-    
-    override func configureObject() {
-        self.attackRadius = 3
-        self.size = int2(2, 2)
-        bodyModel = SCNBox(width: CGFloat(2),
-                           height: CGFloat(2),
-                           length: CGFloat(2),
-                           chamferRadius: 0.1)
-        let body = self.addGeometry(model: bodyModel)
-        bodyModel.materials.first?.diffuse.contents = self.owner.color
-        self.position.y = 1
-        
-        health = 2000
-        healthBar = addHealthBar(y: 2.5, health: health, size: .large, showsProgress: true)
-        
-        let collisionBody = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(geometry: collisionBody, options: nil))
-        self.physicsBody?.friction = 0
-        
-        self.cost = 100
-    }
-    
-    override func createUnit() -> Unit {
-        let unit = AttackUnit(player: self.owner,
-                              position: SCNVector3Zero,
-                              target: self.target)
-        return unit
-    }
-    
-    override func copy() -> Any {
-        return AttackSpawner.init(player: self.owner, position: self.position, target: self.target)
-    }
-}
-
-class AttackSpawner: BuildingSpawner {
-    var bodyModel: SCNSphere!
-    
-    override func configureObject() {
-        self.attackRadius = 3
-        self.size = int2(2, 2)
-        bodyModel = SCNSphere(radius: 1)
-        let body = self.addGeometry(model: bodyModel)
-        bodyModel.materials.first?.diffuse.contents = self.owner.color
-        self.position.y = 1
-        
-        health = 2000
-        healthBar = addHealthBar(y: 2.5, health: health, size: .large, showsProgress: true)
-        
-        let collisionBody = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(geometry: collisionBody, options: nil))
-        self.physicsBody?.friction = 0
-        
-        self.cost = 100
-    }
-    
-    override func createUnit() -> Unit {
-        let unit = AttackUnit(player: self.owner,
-                              position: SCNVector3Zero,
-                              target: self.target)
-        return unit
-    }
-    
-    override func copy() -> Any {
-        return AttackSpawner.init(player: self.owner, position: self.position, target: self.target)
-    }
-}
-
-class RangedSpawner: BuildingSpawner {
-    var bodyModel: SCNCone!
-    
-    override func configureObject() {
-        self.attackRadius = 3
-        self.size = int2(2, 2)
-        bodyModel = SCNCone(topRadius: 0, bottomRadius: 1, height: 2)
-        let body = self.addGeometry(model: bodyModel)
-        bodyModel.materials.first?.diffuse.contents = self.owner.color
-        self.position.y = 1
-        
-        health = 1800
-        healthBar = addHealthBar(y: 2.5, health: health, size: .large, showsProgress: true)
-        
-        let collisionBody = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(geometry: collisionBody, options: nil))
-        self.physicsBody?.friction = 0
-        
-        self.cost = 150
-    }
-    
-    override func createUnit() -> Unit {
-        let unit = RangedUnit(player: self.owner,
-                              position: SCNVector3Zero,
-                              target: self.target)
-        return unit
-    }
-    
-    override func copy() -> Any {
-        return RangedSpawner(player: self.owner, position: self.position, target: self.target)
-    }
-}
+//class AttackSpawner: BuildingSpawner {
+//    var bodyModel: SCNSphere!
+//    
+//    override func configureModel() {
+//        self.attackRadius = 3
+//        self.size = int2(2, 2)
+//        bodyModel = SCNSphere(radius: 1)
+//        let body = self.addGeometry(model: bodyModel)
+//        bodyModel.materials.first?.diffuse.contents = self.owner.color
+//        self.position.y = 1
+//        
+//        health = 2000
+//        healthBar = addHealthBar(y: 2.5, health: health, size: .large, showsProgress: true)
+//        
+//        let collisionBody = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+//        self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(geometry: collisionBody, options: nil))
+//        self.physicsBody?.friction = 0
+//        
+//        self.cost = 100
+//    }
+//    
+//    override func createUnit() -> Unit {
+//        let unit = AttackUnit(player: self.owner,
+//                              position: SCNVector3Zero,
+//                              target: self.target)
+//        return unit
+//    }
+//    
+//    override func copy() -> Any {
+//        return AttackSpawner.init(player: self.owner, position: self.position, target: self.target)
+//    }
+//}
+//
+//class RangedSpawner: BuildingSpawner {
+//    var bodyModel: SCNCone!
+//    
+//    override func configureModel() {
+//        self.attackRadius = 3
+//        self.size = int2(2, 2)
+//        bodyModel = SCNCone(topRadius: 0, bottomRadius: 1, height: 2)
+//        let body = self.addGeometry(model: bodyModel)
+//        bodyModel.materials.first?.diffuse.contents = self.owner.color
+//        self.position.y = 1
+//        
+//        health = 1800
+//        healthBar = addHealthBar(y: 2.5, health: health, size: .large, showsProgress: true)
+//        
+//        let collisionBody = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+//        self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(geometry: collisionBody, options: nil))
+//        self.physicsBody?.friction = 0
+//        
+//        self.cost = 150
+//    }
+//    
+//    override func createUnit() -> Unit {
+//        let unit = RangedUnit(player: self.owner,
+//                              position: SCNVector3Zero,
+//                              target: self.target)
+//        return unit
+//    }
+//    
+//    override func copy() -> Any {
+//        return RangedSpawner(player: self.owner, position: self.position, target: self.target)
+//    }
+//}
