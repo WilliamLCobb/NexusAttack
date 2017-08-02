@@ -13,7 +13,7 @@ class BaseAI {
     var player: Player
     var gameScene: GameScene
     var gameUtility: GameUtilityDelegate
-    var lastPlayTime: TimeInterval = 18
+    var lastPlayTime: TimeInterval = 3
     var buildings: [Building]
     var nextBuilding: Building!
     

@@ -10,11 +10,11 @@ import UIKit
 import SceneKit
 import GameplayKit
 
-class GameViewController: UIViewController, BuildingMenuDelegate {
+class GameViewController: UIViewController, MenuDelegate {
     var gameScene: GameScene!
     
     var scnView: SCNView!
-    var buildingMenu: BuildingMenuView!
+    var buildMenu: BuildMenuView!
     var cameraNode: SCNNode!
     var lastUpdateTime:TimeInterval = 0
     var placingBuilding = false
@@ -38,10 +38,9 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
         lastUpdateTime = CACurrentMediaTime()
         gameAI = BaseAI(gameScene: gameScene, player: gameScene.player2)
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.init(uptimeNanoseconds: 1000000)) { 
+        DispatchQueue.main.async {
             self.scnView.isPlaying = true
         }
-        
     }
     
     func setupView() {
@@ -53,6 +52,7 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
         scnView.overlaySKScene = hud
         scnView.overlaySKScene?.isUserInteractionEnabled = false
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panGesture))
         pan.maximumNumberOfTouches = 1
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
@@ -72,20 +72,20 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
     }
     
     func setupMenu() {
-        let buildingItems = [BuildingMenuItem(name: "Attack Spawner",
+        let buildingItems = [BuildMenuItem(name: "Attack Spawner",
                                               color: .red,
                                               building: HumanBarracks(player: myPlayer,
                                                                       position: SCNVector3(0, 100, 0),
                                                                       target: gameScene.nexus2)),
-                             BuildingMenuItem(name: "Ranged Spawner",
+                             BuildMenuItem(name: "Ranged Spawner",
                                               color: .yellow,
                                               building: HumanBarracks(player: myPlayer,
                                                                       position: SCNVector3(0, 100, 0),
                                                                       target: gameScene.nexus2))]
-        buildingMenu = BuildingMenuView(frame: CGRect(x: 0, y: 0, width: 145, height: self.view.frame.size.height),
+        buildMenu = BuildMenuView(frame: CGRect(x: 0, y: 0, width: 145, height: self.view.frame.size.height),
                                         items: buildingItems,
                                         delegate: self)
-        self.view.addSubview(buildingMenu)
+        self.view.addSubview(buildMenu)
     }
     
     func selectedBuilding(building: Building) {
@@ -114,6 +114,20 @@ class GameViewController: UIViewController, BuildingMenuDelegate {
     }
     
     var initialTouch: CGPoint!
+    
+    func tapGesture(sender: UITapGestureRecognizer) {
+        switch sender.state {
+        case .ended:
+            let touch = sender.location(in: self.view)
+            let hitResults = self.scnView.hitTest(touch, options: nil)
+            for result in hitResults {
+                print("Tapped", result)
+            }
+        default:
+            print("Ignoring Tap")
+        }
+    }
+    
     func panGesture(sender: UIPanGestureRecognizer) {
         let touch = sender.location(in: self.view)
         

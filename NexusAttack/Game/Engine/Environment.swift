@@ -52,6 +52,10 @@ class Floor: BaseObject {
         let grassSet = UIImage(named: "grass")!
         return self!.tilesFromSet(grassSet)
         }()
+    lazy var grassShortTiles: [UIImage] = { [weak self] in
+        let grassSet = UIImage(named: "grass_short")!
+        return self!.tilesFromSmallSet(grassSet)
+        }()
     var cachedTiles = [String: SCNGeometry]()
     
     override init() {
@@ -164,13 +168,19 @@ class Floor: BaseObject {
     
     func tileForCorners(_ tl: Int, _ tr: Int, _ bl: Int, _ br: Int) -> SCNGeometry  {
         let key = String(format: "%d%d%d%d", tl, tr, bl, br)
+        var noCache = false
         if let cachedTile = cachedTiles[key] {
-            print("Cached")
-            return cachedTile
+            if (tl == tr && tl == bl && tl == br) && arc4random_uniform(100) > 90 {
+               noCache = true // Allow for some variety
+            } else {
+                print("Cached")
+                return cachedTile
+            }
+            
         }
         
         var tile: UIImage?
-        for tileId in 0..<2 {
+        for tileId in 0..<3 {
             var index = 0
             if br == tileId {
                 index += 1
@@ -189,9 +199,27 @@ class Floor: BaseObject {
                 var tileLayer: UIImage!
                 switch tileId {
                 case 0:
-                    tileLayer = self.dirtTiles[index]
+                    if index < 15 {
+                        tileLayer = self.dirtTiles[index]
+                    } else {
+                        if noCache {
+                           tileLayer = self.dirtTiles[Int(15 + arc4random_uniform(16))]
+                        } else {
+                            tileLayer = self.dirtTiles[0]
+                        }
+                    }
                 case 1:
-                    tileLayer = self.grassTiles[index]
+                    tileLayer = self.grassShortTiles[index]
+                case 2:
+                    if index < 15 {
+                        tileLayer = self.grassTiles[index]
+                    } else {
+                        if noCache {
+                            tileLayer = self.grassTiles[Int(15 + arc4random_uniform(16))]
+                        } else {
+                            tileLayer = self.grassTiles[0]
+                        }
+                    }
                 default:
                     assertionFailure()
                 }
@@ -203,7 +231,9 @@ class Floor: BaseObject {
         let material = SCNMaterial()
         material.diffuse.contents = tile!
         geometry.materials = [material]
-        cachedTiles[key] = geometry
+        if !noCache {
+            cachedTiles[key] = geometry
+        }
         return geometry
     }
     
@@ -220,6 +250,20 @@ class Floor: BaseObject {
         return newImage
     }
     
+    func tilesFromSmallSet(_ aTileSet: UIImage) -> [UIImage] {
+        let tileSet = aTileSet.cgImage!
+        var tiles = [UIImage]()
+        for x in 0..<4 {
+            for y in 0..<4 {
+                let imageRef = tileSet.cropping(to: CGRect(x: x * 64, y: y * 64, width: 64, height: 64))!
+                if x < 4 {
+                    tiles.append(UIImage(cgImage: imageRef))
+                }
+            }
+        }
+        return tiles
+    }
+    
     func tilesFromSet(_ aTileSet: UIImage) -> [UIImage] {
         let tileSet = aTileSet.cgImage!
         var full = [UIImage]()
@@ -234,6 +278,7 @@ class Floor: BaseObject {
                 }
             }
         }
+        tiles.append(contentsOf: full)
         return tiles
     }
     
