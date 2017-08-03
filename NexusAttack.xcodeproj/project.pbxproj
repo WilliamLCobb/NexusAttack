@@ -15,7 +15,13 @@
 		CA15DCD31F116F7500720E34 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCCA1F116F7500720E34 /* Units.swift */; };
 		CA15DD3E1F11761600720E34 /* Orc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DD3D1F11761600720E34 /* Orc.swift */; };
 		CA15DD401F11762800720E34 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DD3F1F11762800720E34 /* Human.swift */; };
-		CA2438AE1F3172580067F263 /* BaseObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2438AD1F3172580067F263 /* BaseObject+Extensions.swift */; };
+		CA2438B01F319EAA0067F263 /* Militia.DAE in Resources */ = {isa = PBXBuildFile; fileRef = CA2438AF1F319EAA0067F263 /* Militia.DAE */; };
+		CA2438B21F32F3100067F263 /* Shockwave.DAE in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B11F32F3100067F263 /* Shockwave.DAE */; };
+		CA2438B41F32F3E50067F263 /* Shockwave.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B31F32F3E50067F263 /* Shockwave.png */; };
+		CA2438B71F3310830067F263 /* Farm.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B61F3310830067F263 /* Farm.dae */; };
+		CA2438BC1F3315F60067F263 /* Fortress.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B91F3315F60067F263 /* Fortress.dae */; };
+		CA2438BD1F3315F60067F263 /* GreatHall.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2438BA1F3315F60067F263 /* GreatHall.png */; };
+		CA2438BE1F3315F60067F263 /* Stronghold.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2438BB1F3315F60067F263 /* Stronghold.png */; };
 		CA6573F51EF4CFF300E4CED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */; };
 		CA6574001EF4CFF300E4CED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6573FE1EF4CFF300E4CED1 /* Main.storyboard */; };
 		CA6574021EF4CFF300E4CED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6574011EF4CFF300E4CED1 /* Assets.xcassets */; };
@@ -47,7 +53,6 @@
 		FEA182141F30EDBE009DBA19 /* Tower.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C61F30EDBE009DBA19 /* Tower.bmp */; };
 		FEA182151F30EDBE009DBA19 /* WatchTowerWhat1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C71F30EDBE009DBA19 /* WatchTowerWhat1.wav */; };
 		FEA182161F30EDBE009DBA19 /* gutz.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C91F30EDBE009DBA19 /* gutz.bmp */; };
-		FEA182171F30EDBE009DBA19 /* Militia.dae in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CA1F30EDBE009DBA19 /* Militia.dae */; };
 		FEA182181F30EDBE009DBA19 /* Militia.mdx in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CB1F30EDBE009DBA19 /* Militia.mdx */; };
 		FEA182191F30EDBE009DBA19 /* Militia_Portrait.mdx in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CC1F30EDBE009DBA19 /* Militia_Portrait.mdx */; };
 		FEA1821A1F30EDBE009DBA19 /* PeasantMilitia.blp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CD1F30EDBE009DBA19 /* PeasantMilitia.blp */; };
@@ -58,8 +63,6 @@
 		FEA1821F1F30EDBE009DBA19 /* Ground002.tif in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D31F30EDBE009DBA19 /* Ground002.tif */; };
 		FEA182201F30EDBE009DBA19 /* Ground002.tif.001.tif in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D41F30EDBE009DBA19 /* Ground002.tif.001.tif */; };
 		FEA182211F30EDBE009DBA19 /* map2.dae in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D51F30EDBE009DBA19 /* map2.dae */; };
-		FEA182221F30EDBE009DBA19 /* Spawn1.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D61F30EDBE009DBA19 /* Spawn1.png */; };
-		FEA182231F30EDBE009DBA19 /* spawn2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D71F30EDBE009DBA19 /* spawn2.bmp */; };
 		FEA182241F30EDBE009DBA19 /* tileMap.tm in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D81F30EDBE009DBA19 /* tileMap.tm */; };
 		FEA182251F30EDBE009DBA19 /* tileMap2.tm in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D91F30EDBE009DBA19 /* tileMap2.tm */; };
 		FEA182261F30EDBE009DBA19 /* BerserkerCaster.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181DC1F30EDBE009DBA19 /* BerserkerCaster.wav */; };
@@ -91,7 +94,13 @@
 		CA15DCCA1F116F7500720E34 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		CA15DD3D1F11761600720E34 /* Orc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orc.swift; sourceTree = "<group>"; };
 		CA15DD3F1F11762800720E34 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
-		CA2438AD1F3172580067F263 /* BaseObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseObject+Extensions.swift"; sourceTree = "<group>"; };
+		CA2438AF1F319EAA0067F263 /* Militia.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Militia.DAE; sourceTree = "<group>"; };
+		CA2438B11F32F3100067F263 /* Shockwave.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Shockwave.DAE; sourceTree = "<group>"; };
+		CA2438B31F32F3E50067F263 /* Shockwave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shockwave.png; sourceTree = "<group>"; };
+		CA2438B61F3310830067F263 /* Farm.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Farm.dae; sourceTree = "<group>"; };
+		CA2438B91F3315F60067F263 /* Fortress.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Fortress.dae; sourceTree = "<group>"; };
+		CA2438BA1F3315F60067F263 /* GreatHall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreatHall.png; sourceTree = "<group>"; };
+		CA2438BB1F3315F60067F263 /* Stronghold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stronghold.png; sourceTree = "<group>"; };
 		CA6573F11EF4CFF300E4CED1 /* NexusAttack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NexusAttack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA6573FF1EF4CFF300E4CED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,7 +134,6 @@
 		FEA181C61F30EDBE009DBA19 /* Tower.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Tower.bmp; sourceTree = "<group>"; };
 		FEA181C71F30EDBE009DBA19 /* WatchTowerWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WatchTowerWhat1.wav; sourceTree = "<group>"; };
 		FEA181C91F30EDBE009DBA19 /* gutz.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = gutz.bmp; sourceTree = "<group>"; };
-		FEA181CA1F30EDBE009DBA19 /* Militia.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Militia.dae; sourceTree = "<group>"; };
 		FEA181CB1F30EDBE009DBA19 /* Militia.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Militia.mdx; sourceTree = "<group>"; };
 		FEA181CC1F30EDBE009DBA19 /* Militia_Portrait.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Militia_Portrait.mdx; sourceTree = "<group>"; };
 		FEA181CD1F30EDBE009DBA19 /* PeasantMilitia.blp */ = {isa = PBXFileReference; lastKnownFileType = file; path = PeasantMilitia.blp; sourceTree = "<group>"; };
@@ -175,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				CA15DCC21F116F7500720E34 /* BaseObject.swift */,
-				CA2438AD1F3172580067F263 /* BaseObject+Extensions.swift */,
 				CA15DCC31F116F7500720E34 /* Buildings.swift */,
 				CA15DCC41F116F7500720E34 /* Environment.swift */,
 				CA15DCC51F116F7500720E34 /* HealthBar.swift */,
@@ -193,6 +200,24 @@
 				CA15DD3F1F11762800720E34 /* Human.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		CA2438B51F3310830067F263 /* Farm */ = {
+			isa = PBXGroup;
+			children = (
+				CA2438B61F3310830067F263 /* Farm.dae */,
+			);
+			path = Farm;
+			sourceTree = "<group>";
+		};
+		CA2438B81F3315F60067F263 /* Fortress */ = {
+			isa = PBXGroup;
+			children = (
+				CA2438B91F3315F60067F263 /* Fortress.dae */,
+				CA2438BA1F3315F60067F263 /* GreatHall.png */,
+				CA2438BB1F3315F60067F263 /* Stronghold.png */,
+			);
+			path = Fortress;
 			sourceTree = "<group>";
 		};
 		CA6573E81EF4CFF300E4CED1 = {
@@ -287,6 +312,8 @@
 		FEA181B31F30EDBE009DBA19 /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				CA2438B81F3315F60067F263 /* Fortress */,
+				CA2438B51F3310830067F263 /* Farm */,
 				FEA181B41F30EDBE009DBA19 /* HumanBarracks */,
 				FEA181BD1F30EDBE009DBA19 /* HumanTower */,
 				FEA181C81F30EDBE009DBA19 /* Militia */,
@@ -330,9 +357,11 @@
 			isa = PBXGroup;
 			children = (
 				FEA181C91F30EDBE009DBA19 /* gutz.bmp */,
-				FEA181CA1F30EDBE009DBA19 /* Militia.dae */,
+				CA2438AF1F319EAA0067F263 /* Militia.DAE */,
 				FEA181CB1F30EDBE009DBA19 /* Militia.mdx */,
 				FEA181CC1F30EDBE009DBA19 /* Militia_Portrait.mdx */,
+				CA2438B11F32F3100067F263 /* Shockwave.DAE */,
+				CA2438B31F32F3E50067F263 /* Shockwave.png */,
 				FEA181CD1F30EDBE009DBA19 /* PeasantMilitia.blp */,
 				FEA181CE1F30EDBE009DBA19 /* PeasantMilitia.bmp */,
 			);
@@ -465,10 +494,13 @@
 				FEA182251F30EDBE009DBA19 /* tileMap2.tm in Resources */,
 				FEA1820F1F30EDBE009DBA19 /* GuardTowerWhat1.wav in Resources */,
 				FEA182271F30EDBE009DBA19 /* Grun6.DAE in Resources */,
+				CA2438BE1F3315F60067F263 /* Stronghold.png in Resources */,
 				FEA182161F30EDBE009DBA19 /* gutz.bmp in Resources */,
 				FEA182191F30EDBE009DBA19 /* Militia_Portrait.mdx in Resources */,
 				FEA182051F30EDBE009DBA19 /* Doodads0.bmp in Resources */,
+				CA2438BC1F3315F60067F263 /* Fortress.dae in Resources */,
 				FEA182151F30EDBE009DBA19 /* WatchTowerWhat1.wav in Resources */,
+				CA2438B41F32F3E50067F263 /* Shockwave.png in Resources */,
 				FEA1821F1F30EDBE009DBA19 /* Ground002.tif in Resources */,
 				FEA182041F30EDBE009DBA19 /* DeathSmug.bmp in Resources */,
 				FEA182141F30EDBE009DBA19 /* Tower.bmp in Resources */,
@@ -483,24 +515,25 @@
 				FEA182111F30EDBE009DBA19 /* HumanTower.dae in Resources */,
 				FEA1821E1F30EDBE009DBA19 /* grass_short.png in Resources */,
 				FEA182181F30EDBE009DBA19 /* Militia.mdx in Resources */,
-				FEA182171F30EDBE009DBA19 /* Militia.dae in Resources */,
 				FEA1820A1F30EDBE009DBA19 /* HumanBarracksWhat1.wav in Resources */,
-				FEA182221F30EDBE009DBA19 /* Spawn1.png in Resources */,
 				FEA1821A1F30EDBE009DBA19 /* PeasantMilitia.blp in Resources */,
+				CA2438B71F3310830067F263 /* Farm.dae in Resources */,
 				FEA182121F30EDBE009DBA19 /* HumanTower.mdx in Resources */,
 				FEA182461F30EDBE009DBA19 /* Base.bmp in Resources */,
 				CA6574021EF4CFF300E4CED1 /* Assets.xcassets in Resources */,
 				FEA182131F30EDBE009DBA19 /* Tower.blp in Resources */,
+				CA2438B21F32F3100067F263 /* Shockwave.DAE in Resources */,
 				FEA1820E1F30EDBE009DBA19 /* Doodads0-0.bmp in Resources */,
 				FEA1824A1F30EDBE009DBA19 /* OrcBarracksWhat1.wav in Resources */,
-				FEA182231F30EDBE009DBA19 /* spawn2.bmp in Resources */,
 				FEA1824B1F30EDBE009DBA19 /* OrcBarraks.bmp in Resources */,
+				CA2438BD1F3315F60067F263 /* GreatHall.png in Resources */,
 				FEA182201F30EDBE009DBA19 /* Ground002.tif.001.tif in Resources */,
 				FEA182071F30EDBE009DBA19 /* HumanBarracks.dae in Resources */,
 				FEA1820B1F30EDBE009DBA19 /* HumanBase.bmp in Resources */,
 				FEA1824C1F30EDBE009DBA19 /* OrcBirth.bmp in Resources */,
 				FEA182391F30EDBE009DBA19 /* GruntRunning.DAE in Resources */,
 				FEA1821D1F30EDBE009DBA19 /* grass.png in Resources */,
+				CA2438B01F319EAA0067F263 /* Militia.DAE in Resources */,
 				FEA182081F30EDBE009DBA19 /* HumanBarracks.mdl in Resources */,
 				CA6574051EF4CFF300E4CED1 /* LaunchScreen.storyboard in Resources */,
 				FEA182431F30EDBE009DBA19 /* GruntYesAttack1.wav in Resources */,
@@ -526,7 +559,6 @@
 				CA15DCCD1F116F7500720E34 /* BaseObject.swift in Sources */,
 				CA15DD401F11762800720E34 /* Human.swift in Sources */,
 				FE68F89E1EF85A9F003E9716 /* GameScene.swift in Sources */,
-				CA2438AE1F3172580067F263 /* BaseObject+Extensions.swift in Sources */,
 				CA15DD3E1F11761600720E34 /* Orc.swift in Sources */,
 				CA15DCD01F116F7500720E34 /* HealthBar.swift in Sources */,
 				CAB305BB1F09AC6900B7621A /* Hud.swift in Sources */,

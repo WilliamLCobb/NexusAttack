@@ -51,7 +51,7 @@ class BuildMenuView: UIView {
         super.init(frame: frame)
         
         tab = UIView(frame: CGRect(x: frame.size.width - 35, y: frame.size.height/2 - 40, width: 35, height: 80))
-        tab.backgroundColor = BSColor.brown//.brown
+        tab.backgroundColor = .brown
         tab.layer.cornerRadius = 10.0
         let tabTap = UITapGestureRecognizer(target: self, action: #selector(toggleMenu))
         tab.addGestureRecognizer(tabTap)

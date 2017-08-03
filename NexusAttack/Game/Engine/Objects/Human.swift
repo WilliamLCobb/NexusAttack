@@ -89,7 +89,7 @@ class HumanMilitia: AutoUnit {
         bodyModel = SCNSphere(radius: radius)
         body = SCNNode(geometry: bodyModel)
         
-        self.setModel(named: "Militia", scale: 0.01)
+        self.setModel(named: "Militia", scale: 1)
         
         self.position.y = 0.2
         
@@ -116,9 +116,9 @@ class HumanMilitia: AutoUnit {
         case .idle:
             break
         case .running:
-            self.runAnimationFrom(start: 0.7, to: 1.33, repeats: true)
+            self.runAnimationFrom(start: 30.3, to: 31.15, repeats: true)
         case .attacking:
-            self.runAnimationFrom(start: 5.2, to: 6.5, repeats: false)
+            self.runAnimationFrom(start: 28.8, to: 29.9, repeats: false)
         }
     }
     

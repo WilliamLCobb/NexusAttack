@@ -144,7 +144,7 @@ class Tower: Building {
 class BuildingSpawner: Building {
     // Seconds passed until next unit spawns
     var spawnRate: Double = 20
-    var spawnTime: TimeInterval = 15
+    var spawnTime: TimeInterval = 19
     
     var target: Building
     
