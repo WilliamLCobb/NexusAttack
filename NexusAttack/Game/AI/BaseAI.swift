@@ -22,8 +22,9 @@ class BaseAI {
         self.player = player
         gameUtility = globalGameUtility
         buildings = [OrcBarracks(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
-                     OrcBarracks(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
-                     OrcBarracks(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1)]
+                     SpiritLodge(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
+                     TaurenTotem(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1),
+                     Beastiary(player: gameScene.player2, position: SCNVector3(x:-100, y: 0, z: 0), target: gameScene.nexus1)]
         nextBuilding = buildings.first
         
     }
@@ -33,8 +34,8 @@ class BaseAI {
             nextBuilding = buildings.randomItem()
         }
         lastPlayTime += dt
-        if (lastPlayTime > 5) {
-            if player.minerals > nextBuilding.cost {
+        if (lastPlayTime > 1) {
+            if player.gold > nextBuilding.cost {
                 let x = Int32(arc4random_uniform(20)) + 31
                 let z = Int32(arc4random_uniform(28)) - 14
                 let newBuilding = nextBuilding.copy() as! Building

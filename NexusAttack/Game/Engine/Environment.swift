@@ -237,19 +237,6 @@ class Floor: BaseObject {
         return geometry
     }
     
-    func layerImage(_ topImage: UIImage, onTopOf bottomImage: UIImage?) -> UIImage {
-        guard let bottomImage = bottomImage else {
-            return topImage
-        }
-        let imageRect = CGRect(x: 0, y: 0, width: 64, height: 64)
-        UIGraphicsBeginImageContext(imageRect.size)
-        bottomImage.draw(in: imageRect)
-        topImage.draw(in: imageRect)
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
     func tilesFromSmallSet(_ aTileSet: UIImage) -> [UIImage] {
         let tileSet = aTileSet.cgImage!
         var tiles = [UIImage]()

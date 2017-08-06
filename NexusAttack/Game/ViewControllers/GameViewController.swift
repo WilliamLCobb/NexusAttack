@@ -10,8 +10,11 @@ import UIKit
 import SceneKit
 import GameplayKit
 
-class GameViewController: UIViewController, MenuDelegate {
+class GameViewController: UIViewController, GameSceneDelegate, MenuDelegate {
     var gameScene: GameScene!
+    
+    @IBOutlet weak var goldLabel: UILabel!
+    @IBOutlet weak var poplationLabel: UILabel!
     
     var scnView: SCNView!
     var buildMenu: BuildMenuView!
@@ -22,6 +25,7 @@ class GameViewController: UIViewController, MenuDelegate {
     var gameAI: BaseAI!
     var myPlayer: Player!
     var hud: Hud!
+    var cameraVelocity: CGPoint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,7 @@ class GameViewController: UIViewController, MenuDelegate {
         gameAI = BaseAI(gameScene: gameScene, player: gameScene.player2)
         
         DispatchQueue.main.async {
+            print("Starting")
             self.scnView.isPlaying = true
         }
     }
@@ -62,6 +67,8 @@ class GameViewController: UIViewController, MenuDelegate {
     
     func setupScene() {
         scnView.scene = gameScene
+        scnView.delegate = self
+        gameScene.gameDelegate = self
     }
     
     func createCamera() {
@@ -72,29 +79,43 @@ class GameViewController: UIViewController, MenuDelegate {
     }
     
     func setupMenu() {
-        let buildingItems = [BuildMenuItem(name: "Attack Spawner",
-                                              color: .red,
-                                              building: HumanBarracks(player: myPlayer,
+        let buildingItems = [BuildMenuItem(name: "Militia",
+                                           icon: #imageLiteral(resourceName: "human_farm"),
+                                           building: Farm(player: myPlayer,
                                                                       position: SCNVector3(0, 100, 0),
                                                                       target: gameScene.nexus2)),
-                             BuildMenuItem(name: "Ranged Spawner",
-                                              color: .yellow,
-                                              building: HumanBarracks(player: myPlayer,
-                                                                      position: SCNVector3(0, 100, 0),
-                                                                      target: gameScene.nexus2))]
-        buildMenu = BuildMenuView(frame: CGRect(x: 0, y: 0, width: 145, height: self.view.frame.size.height),
+                             BuildMenuItem(name: "Rifleman",
+                                           icon: #imageLiteral(resourceName: "human_workshop"),
+                                           building: Workshop(player: myPlayer,
+                                                              position: SCNVector3(0, 100, 0),
+                                                              target: gameScene.nexus2)),
+                             BuildMenuItem(name: "Footman",
+                                           icon: #imageLiteral(resourceName: "human_barracks"),
+                                           building: HumanBarracks(player: myPlayer,
+                                                              position: SCNVector3(0, 100, 0),
+                                                              target: gameScene.nexus2)),
+                             BuildMenuItem(name: "Sorceress",
+                                           icon: #imageLiteral(resourceName: "human_arcane_sanctum"),
+                                           building: ArcaneSanctum(player: myPlayer,
+                                                              position: SCNVector3(0, 100, 0),
+                                                              target: gameScene.nexus2))]
+        buildMenu = BuildMenuView(frame: CGRect(x: 8, y: view.frame.size.height - 145, width: 140, height: 140),
                                         items: buildingItems,
                                         delegate: self)
         self.view.addSubview(buildMenu)
     }
     
     func selectedBuilding(building: Building) {
-        if myPlayer.minerals >= building.cost && !placingBuilding {
-            self.placingBuilding = true
-            self.heldBuilding = building.copy() as! Building
-            print(self.heldBuilding)
-            self.gameScene.worldNode.addChildNode(self.heldBuilding)
+        heldBuilding = building.copy() as! Building
+        if myPlayer.gold >= building.cost && !placingBuilding {
+            heldBuilding.setEmissionColor(UIColor.gray)
+        } else {
+            heldBuilding?.setEmissionColor(UIColor.red)
         }
+        self.placingBuilding = true
+        
+        print(self.heldBuilding)
+        self.gameScene.worldNode.addChildNode(self.heldBuilding)
     }
 
     override var shouldAutorotate: Bool {
@@ -130,17 +151,21 @@ class GameViewController: UIViewController, MenuDelegate {
     
     func panGesture(sender: UIPanGestureRecognizer) {
         let touch = sender.location(in: self.view)
-        
         switch sender.state {
         case .began:
             initialTouch = touch
         case .changed:
             if (self.placingBuilding) {
-                let hitResults = self.scnView.hitTest(touch, options: nil)
+                let hitResults = scnView.hitTest(touch, options: nil)
                 for result in hitResults {
                     if (result.node == self.gameScene.base) {
-                        self.heldBuilding.position.x = result.localCoordinates.x.rounded(.toNearestOrAwayFromZero) - 1.0
-                        self.heldBuilding.position.z = result.localCoordinates.z.rounded(.toNearestOrAwayFromZero) - 1.0
+                        heldBuilding.position.x = result.localCoordinates.x.rounded(.toNearestOrAwayFromZero) - 1.0
+                        heldBuilding.position.z = result.localCoordinates.z.rounded(.toNearestOrAwayFromZero) - 1.0
+                        if gameScene.canSpawn(building: heldBuilding) && myPlayer.gold >= heldBuilding.cost {
+                            heldBuilding.setEmissionColor(.black)
+                        } else {
+                            heldBuilding.setEmissionColor(.red)
+                        }
                     }
                 }
             } else {
@@ -151,11 +176,13 @@ class GameViewController: UIViewController, MenuDelegate {
             }
         case .failed, .ended:
             if (placingBuilding) {
-                if !gameScene.spawn(building: heldBuilding) {
+                if myPlayer.gold < heldBuilding.cost || !gameScene.spawn(building: heldBuilding) {
                     heldBuilding.removeFromParentNode()
                 }
                 self.placingBuilding = false
                 heldBuilding = nil
+            } else {
+                cameraVelocity = sender.velocity(in: self.view)
             }
         default: break
         }
@@ -168,14 +195,26 @@ class GameViewController: UIViewController, MenuDelegate {
         case .began:
             initialY = self.cameraNode.position.y
         case .changed:
+            print(cameraNode.position.y)
+            let t = 0.5 + (cameraNode.position.y / 10)
+            self.cameraNode.position.y = initialY - (Float(sender.scale) - 1) * sin(cameraNode.eulerAngles.x) * 13 * t
+            self.cameraNode.position.y = initialY - (Float(sender.scale) - 1) * cos(cameraNode.eulerAngles.x) * 13 * t
             cameraNode.eulerAngles.x = -1 + (15 - self.cameraNode.position.y)/20
-            self.cameraNode.position.y = initialY - (Float(sender.scale) - 1) * sin(cameraNode.eulerAngles.x) * 13
-            self.cameraNode.position.y = initialY - (Float(sender.scale) - 1) * cos(cameraNode.eulerAngles.x) * 13
+            if cameraNode.position.y < 12 {
+                cameraNode.position.y = 12.05
+            }
         default: break
         }
     }
+    
+    func updatedPlayerGold(gold: Int) {
+        goldLabel.text = String(format: "%d", gold)
+    }
+    
+    func gameEndedWithResult(result: GameResult) {
+        
+    }
 }
-
 
 var tick: TimeInterval = 0
 
@@ -194,6 +233,20 @@ extension GameViewController: SCNSceneRendererDelegate {
                 self.gameAI.update(dt: 0.1)
                 self.hud.update(dt: 0.1)
                 tick -= 0.1
+            }
+        }
+        
+        if let velocity = cameraVelocity {
+            if abs(velocity.x) > 5 || abs(velocity.y) > 5 {
+                let dx = Double(velocity.x)
+                self.cameraNode.position.x -= Float(dx / (50 / dt))
+                let dz = Double(velocity.y)
+                self.cameraNode.position.z -= Float(dz / (50 / dt))
+                print(dx, dz)
+                cameraVelocity = CGPoint(x: velocity.x * CGFloat(1 - (dt/0.4)),
+                                         y: velocity.y * CGFloat(1 - (dt/0.4)))
+            } else {
+                cameraVelocity = nil
             }
         }
     }

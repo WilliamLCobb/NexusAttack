@@ -12,14 +12,14 @@ import SpriteKit
 
 class Hud: SKScene {
     var player: Player
-    var mineralsLabel = SKLabelNode(fontNamed: "Avenir Next Condensed-Bold")
+    var goldLabel = SKLabelNode(fontNamed: "Avenir Next Condensed-Bold")
     init(size: CGSize, player: Player) {
         self.player = player
         super.init(size: size)
-        mineralsLabel.fontSize = 13
-        mineralsLabel.fontColor = SKColor.black
-        mineralsLabel.position = CGPoint(x: size.width - 50, y: size.height - 20)
-        addChild(mineralsLabel)
+        goldLabel.fontSize = 13
+        goldLabel.fontColor = SKColor.black
+        goldLabel.position = CGPoint(x: size.width - 50, y: size.height - 20)
+        addChild(goldLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,6 +27,6 @@ class Hud: SKScene {
     }
     
     func update(dt: TimeInterval) {
-        mineralsLabel.text = String(format: "%d minerals", player.minerals)
+        goldLabel.text = String(format: "%d gold", player.gold)
     }
 }

@@ -14,11 +14,11 @@ class Missile: BaseOwnedObject {
     var speed: Float = 8
     var body: SCNNode!
     weak var target: BaseObject?
-    var damage: Float
+    var damage: Int
     private var flightDistance: Float
 
     
-    init(player: Player, position: SCNVector3, target: BaseObject, damage: Float) {
+    init(player: Player, position: SCNVector3, target: BaseObject, damage: Int) {
         self.target = target
         flightDistance = position.simpleDistanceTo(vector: target.presentation.position)
         self.damage = damage
@@ -41,6 +41,7 @@ class Missile: BaseOwnedObject {
         self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         self.physicsBody?.velocityFactor.y = 0
         self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.type = .kinematic
     }
     
     override func update(dt: TimeInterval) {
@@ -53,7 +54,7 @@ class Missile: BaseOwnedObject {
         //if let attackRadius = target.attackRadius {
         //    currentDistance -= pow(attackRadius, 2)
         //}
-        if (currentDistance < 0.7) {
+        if (currentDistance < 0.3) {
             target.attackedWithDamage(damage: self.damage)
             die()
         } else {

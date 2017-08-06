@@ -12,10 +12,10 @@ class Player {
     var id: Int
     var name: String
     var color: UIColor
-    var minerals: Int
-    private var mineralsSpent: Int = 0
+    var gold: Int
+    private var goldSpent: Int = 0
     var income: Int {
-        return 10 + (mineralsSpent / 50) * 1
+        return 10 + (goldSpent / 50) * 1
     }
     var team: Team
     
@@ -24,20 +24,20 @@ class Player {
         self.name = name
         self.color = color
         self.team = team
-        self.minerals = 250
+        self.gold = 2000
     }
     
-    func addMinerals(_ minerals: Int) {
-        self.minerals += minerals
+    func addMinerals(_ gold: Int) {
+        self.gold += gold
     }
     
-    func spendMinerals(_ minerals: Int) {
-        self.minerals -= minerals
-        self.mineralsSpent += minerals
-        assert(self.minerals >= 0)
+    func spendMinerals(_ gold: Int) {
+        self.gold -= gold
+        self.goldSpent += gold
+        assert(self.gold >= 0)
     }
     
     func generateIncome() {
-        self.minerals += income
+        self.gold += income
     }
 }

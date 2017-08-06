@@ -15,7 +15,7 @@ enum UnitState {
 }
 
 class Unit: BaseOwnedObject, AttackableObject {
-    var health: Float = 100 {
+    var health: Int = 100 {
         didSet {
             healthBar?.health = health
         }
@@ -64,7 +64,7 @@ class Unit: BaseOwnedObject, AttackableObject {
     }
 
     
-    override func attackedWithDamage(damage: Float) {
+    override func attackedWithDamage(damage: Int) {
         health -= damage
         if (health < 0) {
             die()
@@ -72,8 +72,8 @@ class Unit: BaseOwnedObject, AttackableObject {
     }
     
     override func die() {
+        self.gameUtility.unitWillDie(unit: self)
         super.die()
-        self.gameUtility.unitDidDie(unit: self)
     }
 }
 

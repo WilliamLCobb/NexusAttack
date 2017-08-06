@@ -270,3 +270,17 @@ struct SCNVector2 {
         self.init(x: vector3.x, y: -vector3.z) // Note the minus z
     }
 }
+
+// SCNNode
+
+extension SCNNode {
+    func forEachChild(rootNode: SCNNode? = nil, runAction action: (SCNNode) -> ()) {
+        let root = rootNode ?? self
+        for child in root.childNodes {
+            action(child)
+            if (child.childNodes.count > 0) {
+                forEachChild(rootNode: child, runAction: action)
+            }
+        }
+    }
+}

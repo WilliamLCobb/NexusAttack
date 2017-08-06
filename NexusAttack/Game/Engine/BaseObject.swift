@@ -13,7 +13,7 @@ import GameKit
 
 
 protocol AttackableObject {
-    func attackedWithDamage(damage: Float)
+    func attackedWithDamage(damage: Int)
     func die()
 }
 
@@ -37,6 +37,7 @@ class BaseObject: SCNNode {
     var alive = true
     private var lockTime: TimeInterval = 0
     var locked: Bool { return lockTime > CACurrentMediaTime() }
+    var materials: [SCNMaterial]?
     
     override var physicsBody: SCNPhysicsBody? {
         didSet {
@@ -95,7 +96,7 @@ class BaseObject: SCNNode {
     }
     
     // Attackable Object
-    func attackedWithDamage(damage: Float) {
+    func attackedWithDamage(damage: Int) {
         // override
         fatalError()
     }
@@ -111,6 +112,23 @@ class BaseObject: SCNNode {
         self.lockTime = CACurrentMediaTime() + time
     }
     
+    func setEmissionColor(_ color: UIColor) {
+        guard let materials = self.materials else { return }
+        for material in materials {
+            material.emission.contents = color
+        }
+    }
+    
+    func setTeamColor(_ color: UIColor) {
+        guard let materials = self.materials else { return }
+        for material in materials {
+            if let image = material.diffuse.contents as? UIImage {
+                let teamImage = UIImage.from(color: color, withSize: image.size)
+                material.diffuse.contents = layerImage(image, onTopOf: teamImage)
+            }
+        }
+    }
+    
     @discardableResult func addGeometry(model: SCNGeometry) -> SCNNode {
         let childNode = SCNNode(geometry: model)
         self.modelNode.addChildNode(childNode)
@@ -118,9 +136,10 @@ class BaseObject: SCNNode {
     }
     
     @discardableResult func setModel(named name: String, scale: Float) -> SCNNode {
-        let childNode = collada2SCNNode(named: name)
+        let childNode = loadModel(named: name)
         childNode.scale = SCNVector3(scale, scale, scale)
         self.modelNode.addChildNode(childNode)
+        self.materials = getModelMaterials()
         return childNode
     }
     
@@ -139,12 +158,13 @@ class BaseObject: SCNNode {
     
     func die() {
         alive = false
+        self.modelNode = SCNNode()
         if self.parent != nil {
             self.removeFromParentNode()
         }
     }
     
-    @discardableResult func addHealthBar(y: Float, health: Float, size: HealthBarSize, showsProgress: Bool) -> HealthBar {
+    @discardableResult func addHealthBar(y: Float, health: Int, size: HealthBarSize, showsProgress: Bool) -> HealthBar {
         self.healthBar = HealthBar(maxHealth: health, position: SCNVector3(x: 0, y: y, z: 0), size: size, showsProgress: showsProgress)
         self.addChildNode(healthBar!)
         return healthBar!
@@ -192,19 +212,6 @@ class BaseObject: SCNNode {
         return SCNVector4(0, axis.y, 0, angle)
     }
     
-    func collada2SCNNode(named name:String) -> SCNNode {
-        let node = SCNNode()
-        let scene = SCNScene(named: name)!
-        scene.isPaused = false
-        let nodeArray = scene.rootNode.childNodes
-        
-        for childNode in nodeArray {
-            node.addChildNode(childNode as SCNNode)
-            
-        }
-        return node
-    }
-    
     private func runAnimationFrom(onNode node: SCNNode, start startTime: TimeInterval, to stopTime: TimeInterval, repeats: Bool) {
         for key in node.animationKeys {
             let animation = node.animation(forKey: key)!
@@ -229,6 +236,25 @@ class BaseObject: SCNNode {
         for childNode in node.childNodes {
             runAnimationFrom(onNode: childNode, start: startTime, to: stopTime, repeats: repeats)
         }
+    }
+    
+    //TODO: Extend with var get
+    private func getModelMaterials() -> [SCNMaterial]? {
+        guard let children = modelNode.childNodes.first?.childNodes else {
+            print("Node does not have a material")
+            assertionFailure()
+            return nil
+        }
+        
+        var materials = Set<SCNMaterial>()
+        for child in children {
+            if let childGeometry = child.geometry {
+                for material in childGeometry.materials {
+                    materials.insert(material)
+                }
+            }
+        }
+        return Array<SCNMaterial>(materials)
     }
     
     func runAnimationFrom(start startTime: TimeInterval, to stopTime: TimeInterval, repeats: Bool) {
@@ -267,6 +293,12 @@ class BaseOwnedObject: BaseObject {
     init(modelNode: SCNNode, player: Player) {
         self.owner = player
         super.init(modelNode: modelNode)
+    }
+    
+    override func setModel(named name: String, scale: Float) -> SCNNode {
+        let node = super.setModel(named: name, scale: scale)
+        setTeamColor(owner.team.color)
+        return node
     }
     
     required init?(coder aDecoder: NSCoder) {

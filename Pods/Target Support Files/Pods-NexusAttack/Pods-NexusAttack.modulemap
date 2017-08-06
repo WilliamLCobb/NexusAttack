@@ -1,0 +1,6 @@
+framework module Pods_NexusAttack {
+  umbrella header "Pods-NexusAttack-umbrella.h"
+
+  export *
+  module * { export * }
+}

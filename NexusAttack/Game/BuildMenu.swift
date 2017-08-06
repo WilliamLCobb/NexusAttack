@@ -14,12 +14,12 @@ protocol MenuDelegate {
 
 struct BuildMenuItem {
     var name: String
-    var color: UIColor // Later icon
+    var icon: UIImage
     var building: Building
     
-    init(name: String, color: UIColor, building: Building) {
+    init(name: String, icon: UIImage, building: Building) {
         self.name = name
-        self.color = color
+        self.icon = icon
         self.building = building
     }
 }
@@ -38,31 +38,25 @@ class MenuCollectionView: UICollectionView {
 
 class BuildMenuView: UIView {
     var collectionView: MenuCollectionView
-    var tab: UIView!
     var items: [BuildMenuItem]
     var showing = false
     
     init(frame: CGRect, items: [BuildMenuItem], delegate: MenuDelegate) {
         let layout = UICollectionViewFlowLayout()
-        collectionView = MenuCollectionView(frame: CGRect(x: 0, y: 0, width: frame.size.width - 25, height: frame.size.height),
+        collectionView = MenuCollectionView(frame: CGRect(origin: CGPoint.zero, size: frame.size),
                                             collectionViewLayout: layout)
         collectionView.selectionDelegate = delegate
         self.items = items
         super.init(frame: frame)
         
-        tab = UIView(frame: CGRect(x: frame.size.width - 35, y: frame.size.height/2 - 40, width: 35, height: 80))
-        tab.backgroundColor = .brown
-        tab.layer.cornerRadius = 10.0
-        let tabTap = UITapGestureRecognizer(target: self, action: #selector(toggleMenu))
-        tab.addGestureRecognizer(tabTap)
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(BuildMenuCell.self, forCellWithReuseIdentifier: "Cell")
-        collectionView.backgroundColor = .brown
-        layout.itemSize = CGSize(width: 50, height: 65)
-        layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5)
-        self.addSubview(tab)
+        collectionView.backgroundColor = .black
+        layout.itemSize = CGSize(width: 42, height: 42)
+        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.minimumLineSpacing = 3
+        layout.minimumInteritemSpacing = 3
         self.addSubview(collectionView)
     }
     
@@ -114,12 +108,13 @@ extension BuildMenuView: UICollectionViewDataSource {
 }
 
 class BuildMenuCell: UICollectionViewCell {
-    var imageView = UIImageView(frame: CGRect(x: 5, y: 0, width: 40, height: 40))
-    var title = UILabel(frame: CGRect(x: 0, y: 45, width: 50, height: 20))
+    var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+    var title = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
     var item: BuildMenuItem!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        imageView.frame = self.bounds
         self.contentView.addSubview(imageView)
         self.contentView.addSubview(title)
         
@@ -127,6 +122,7 @@ class BuildMenuCell: UICollectionViewCell {
         title.textAlignment = .center
         title.textColor = .white
         title.numberOfLines = 0
+        title.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -135,7 +131,7 @@ class BuildMenuCell: UICollectionViewCell {
     
     func configure(item: BuildMenuItem) {
         self.item = item
-        imageView.backgroundColor = item.color
+        imageView.image = item.icon
         title.text = item.name
     }
 }

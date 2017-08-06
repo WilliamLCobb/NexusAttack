@@ -15,7 +15,7 @@ class Building: BaseOwnedObject, AttackableObject {
     var size: int2!
     var cost: Int!
     
-    var health: Float = 100 {
+    var health: Int = 100 {
         didSet {
             healthBar?.health = health
         }
@@ -30,7 +30,7 @@ class Building: BaseOwnedObject, AttackableObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func attackedWithDamage(damage: Float) {
+    override func attackedWithDamage(damage: Int) {
         health -= damage
         if (health < 0) {
             die()
@@ -134,8 +134,9 @@ class Tower: Building {
                 let missile = Missile(player: self.owner,
                                       position: self.presentation.position,
                                       target: enemy,
-                                      damage: Float(Int(arc4random_uniform(15)) + (damage - 7)))
+                                      damage: Int(arc4random_uniform(15)) + (damage - 7))
                 self.gameUtility.spawn(missile: missile)
+                attackTime = 0
             }
         }
     }
@@ -204,10 +205,10 @@ class Nexus: Building {
         self.size = int2(3, 3)
         health = 4000
         cost = 0
+        attackRadius = 3
     }
     
     override func configureModel() {
-        attackRadius = 3
         let baseModel = SCNPyramid(width: 3, height: 4, length: 3)
         baseModel.materials.first?.diffuse.contents = self.owner.team.color
         let base = addGeometry(model: baseModel)
@@ -218,10 +219,7 @@ class Nexus: Building {
     }
     
     override func die() {
-        print("Game Over!")
-        while true {
-            
-        }
+        self.gameUtility.nexusDestroyed(nexus: self)
     }
     
 }

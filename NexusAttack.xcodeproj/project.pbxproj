@@ -1,746 +1,3903 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		CA15DCCD1F116F7500720E34 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC21F116F7500720E34 /* BaseObject.swift */; };
-		CA15DCCE1F116F7500720E34 /* Buildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC31F116F7500720E34 /* Buildings.swift */; };
-		CA15DCCF1F116F7500720E34 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC41F116F7500720E34 /* Environment.swift */; };
-		CA15DCD01F116F7500720E34 /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC51F116F7500720E34 /* HealthBar.swift */; };
-		CA15DCD11F116F7500720E34 /* Missile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCC61F116F7500720E34 /* Missile.swift */; };
-		CA15DCD31F116F7500720E34 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DCCA1F116F7500720E34 /* Units.swift */; };
-		CA15DD3E1F11761600720E34 /* Orc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DD3D1F11761600720E34 /* Orc.swift */; };
-		CA15DD401F11762800720E34 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15DD3F1F11762800720E34 /* Human.swift */; };
-		CA2438B01F319EAA0067F263 /* Militia.DAE in Resources */ = {isa = PBXBuildFile; fileRef = CA2438AF1F319EAA0067F263 /* Militia.DAE */; };
-		CA2438B21F32F3100067F263 /* Shockwave.DAE in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B11F32F3100067F263 /* Shockwave.DAE */; };
-		CA2438B41F32F3E50067F263 /* Shockwave.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B31F32F3E50067F263 /* Shockwave.png */; };
-		CA2438B71F3310830067F263 /* Farm.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B61F3310830067F263 /* Farm.dae */; };
-		CA2438BC1F3315F60067F263 /* Fortress.dae in Resources */ = {isa = PBXBuildFile; fileRef = CA2438B91F3315F60067F263 /* Fortress.dae */; };
-		CA2438BD1F3315F60067F263 /* GreatHall.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2438BA1F3315F60067F263 /* GreatHall.png */; };
-		CA2438BE1F3315F60067F263 /* Stronghold.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2438BB1F3315F60067F263 /* Stronghold.png */; };
-		CA6573F51EF4CFF300E4CED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */; };
-		CA6574001EF4CFF300E4CED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6573FE1EF4CFF300E4CED1 /* Main.storyboard */; };
-		CA6574021EF4CFF300E4CED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6574011EF4CFF300E4CED1 /* Assets.xcassets */; };
-		CA6574051EF4CFF300E4CED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6574031EF4CFF300E4CED1 /* LaunchScreen.storyboard */; };
-		CA9A09771EF719C20018437D /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9A09761EF719C20018437D /* Team.swift */; };
-		CAB305B11F08AEED00B7621A /* BuildMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305B01F08AEED00B7621A /* BuildMenu.swift */; };
-		CAB305B71F08D5DE00B7621A /* BaseAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305B61F08D5DE00B7621A /* BaseAI.swift */; };
-		CAB305BB1F09AC6900B7621A /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB305BA1F09AC6900B7621A /* Hud.swift */; };
-		CAC3B4741EF5987F008DD4EA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3B4731EF5987F008DD4EA /* Extensions.swift */; };
-		CAC3B4761EF60DA2008DD4EA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3B4751EF60DA2008DD4EA /* Player.swift */; };
-		FE68F89E1EF85A9F003E9716 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68F89C1EF85A9F003E9716 /* GameScene.swift */; };
-		FE68F89F1EF85A9F003E9716 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68F89D1EF85A9F003E9716 /* GameViewController.swift */; };
-		FEA182041F30EDBE009DBA19 /* DeathSmug.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181B51F30EDBE009DBA19 /* DeathSmug.bmp */; };
-		FEA182051F30EDBE009DBA19 /* Doodads0.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181B61F30EDBE009DBA19 /* Doodads0.bmp */; };
-		FEA182061F30EDBE009DBA19 /* Garrison.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181B71F30EDBE009DBA19 /* Garrison.bmp */; };
-		FEA182071F30EDBE009DBA19 /* HumanBarracks.dae in Resources */ = {isa = PBXBuildFile; fileRef = FEA181B81F30EDBE009DBA19 /* HumanBarracks.dae */; };
-		FEA182081F30EDBE009DBA19 /* HumanBarracks.mdl in Resources */ = {isa = PBXBuildFile; fileRef = FEA181B91F30EDBE009DBA19 /* HumanBarracks.mdl */; };
-		FEA182091F30EDBE009DBA19 /* HumanBarracks.mdx in Resources */ = {isa = PBXBuildFile; fileRef = FEA181BA1F30EDBE009DBA19 /* HumanBarracks.mdx */; };
-		FEA1820A1F30EDBE009DBA19 /* HumanBarracksWhat1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181BB1F30EDBE009DBA19 /* HumanBarracksWhat1.wav */; };
-		FEA1820B1F30EDBE009DBA19 /* HumanBase.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181BC1F30EDBE009DBA19 /* HumanBase.bmp */; };
-		FEA1820C1F30EDBE009DBA19 /* CannonTowerWhat1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181BE1F30EDBE009DBA19 /* CannonTowerWhat1.wav */; };
-		FEA1820D1F30EDBE009DBA19 /* DeathSmug.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181BF1F30EDBE009DBA19 /* DeathSmug.bmp */; };
-		FEA1820E1F30EDBE009DBA19 /* Doodads0-0.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C01F30EDBE009DBA19 /* Doodads0-0.bmp */; };
-		FEA1820F1F30EDBE009DBA19 /* GuardTowerWhat1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C11F30EDBE009DBA19 /* GuardTowerWhat1.wav */; };
-		FEA182101F30EDBE009DBA19 /* HumanBase.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C21F30EDBE009DBA19 /* HumanBase.bmp */; };
-		FEA182111F30EDBE009DBA19 /* HumanTower.dae in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C31F30EDBE009DBA19 /* HumanTower.dae */; };
-		FEA182121F30EDBE009DBA19 /* HumanTower.mdx in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C41F30EDBE009DBA19 /* HumanTower.mdx */; };
-		FEA182131F30EDBE009DBA19 /* Tower.blp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C51F30EDBE009DBA19 /* Tower.blp */; };
-		FEA182141F30EDBE009DBA19 /* Tower.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C61F30EDBE009DBA19 /* Tower.bmp */; };
-		FEA182151F30EDBE009DBA19 /* WatchTowerWhat1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C71F30EDBE009DBA19 /* WatchTowerWhat1.wav */; };
-		FEA182161F30EDBE009DBA19 /* gutz.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181C91F30EDBE009DBA19 /* gutz.bmp */; };
-		FEA182181F30EDBE009DBA19 /* Militia.mdx in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CB1F30EDBE009DBA19 /* Militia.mdx */; };
-		FEA182191F30EDBE009DBA19 /* Militia_Portrait.mdx in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CC1F30EDBE009DBA19 /* Militia_Portrait.mdx */; };
-		FEA1821A1F30EDBE009DBA19 /* PeasantMilitia.blp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CD1F30EDBE009DBA19 /* PeasantMilitia.blp */; };
-		FEA1821B1F30EDBE009DBA19 /* PeasantMilitia.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181CE1F30EDBE009DBA19 /* PeasantMilitia.bmp */; };
-		FEA1821C1F30EDBE009DBA19 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D01F30EDBE009DBA19 /* dirt.png */; };
-		FEA1821D1F30EDBE009DBA19 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D11F30EDBE009DBA19 /* grass.png */; };
-		FEA1821E1F30EDBE009DBA19 /* grass_short.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D21F30EDBE009DBA19 /* grass_short.png */; };
-		FEA1821F1F30EDBE009DBA19 /* Ground002.tif in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D31F30EDBE009DBA19 /* Ground002.tif */; };
-		FEA182201F30EDBE009DBA19 /* Ground002.tif.001.tif in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D41F30EDBE009DBA19 /* Ground002.tif.001.tif */; };
-		FEA182211F30EDBE009DBA19 /* map2.dae in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D51F30EDBE009DBA19 /* map2.dae */; };
-		FEA182241F30EDBE009DBA19 /* tileMap.tm in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D81F30EDBE009DBA19 /* tileMap.tm */; };
-		FEA182251F30EDBE009DBA19 /* tileMap2.tm in Resources */ = {isa = PBXBuildFile; fileRef = FEA181D91F30EDBE009DBA19 /* tileMap2.tm */; };
-		FEA182261F30EDBE009DBA19 /* BerserkerCaster.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181DC1F30EDBE009DBA19 /* BerserkerCaster.wav */; };
-		FEA182271F30EDBE009DBA19 /* Grun6.DAE in Resources */ = {isa = PBXBuildFile; fileRef = FEA181DD1F30EDBE009DBA19 /* Grun6.DAE */; };
-		FEA182291F30EDBE009DBA19 /* Grunt.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181DF1F30EDBE009DBA19 /* Grunt.bmp */; };
-		FEA182301F30EDBE009DBA19 /* GruntDeath.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181E61F30EDBE009DBA19 /* GruntDeath.wav */; };
-		FEA182381F30EDBE009DBA19 /* GruntReady1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181EE1F30EDBE009DBA19 /* GruntReady1.wav */; };
-		FEA182391F30EDBE009DBA19 /* GruntRunning.DAE in Resources */ = {isa = PBXBuildFile; fileRef = FEA181EF1F30EDBE009DBA19 /* GruntRunning.DAE */; };
-		FEA1823A1F30EDBE009DBA19 /* GruntWarcry1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181F01F30EDBE009DBA19 /* GruntWarcry1.wav */; };
-		FEA182431F30EDBE009DBA19 /* GruntYesAttack1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181F91F30EDBE009DBA19 /* GruntYesAttack1.wav */; };
-		FEA182441F30EDBE009DBA19 /* GruntYesAttack2.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181FA1F30EDBE009DBA19 /* GruntYesAttack2.wav */; };
-		FEA182451F30EDBE009DBA19 /* GruntYesAttack3.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA181FB1F30EDBE009DBA19 /* GruntYesAttack3.wav */; };
-		FEA182461F30EDBE009DBA19 /* Base.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181FD1F30EDBE009DBA19 /* Base.bmp */; };
-		FEA182471F30EDBE009DBA19 /* DeathSmug.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA181FE1F30EDBE009DBA19 /* DeathSmug.bmp */; };
-		FEA182481F30EDBE009DBA19 /* OrcBarracks.dae in Resources */ = {isa = PBXBuildFile; fileRef = FEA181FF1F30EDBE009DBA19 /* OrcBarracks.dae */; };
-		FEA182491F30EDBE009DBA19 /* OrcBarracks.mdx in Resources */ = {isa = PBXBuildFile; fileRef = FEA182001F30EDBE009DBA19 /* OrcBarracks.mdx */; };
-		FEA1824A1F30EDBE009DBA19 /* OrcBarracksWhat1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FEA182011F30EDBE009DBA19 /* OrcBarracksWhat1.wav */; };
-		FEA1824B1F30EDBE009DBA19 /* OrcBarraks.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA182021F30EDBE009DBA19 /* OrcBarraks.bmp */; };
-		FEA1824C1F30EDBE009DBA19 /* OrcBirth.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FEA182031F30EDBE009DBA19 /* OrcBirth.bmp */; };
-		FEA1824E1F30FFE2009DBA19 /* ObjectMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1824D1F30FFE2009DBA19 /* ObjectMenu.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		CA15DCC21F116F7500720E34 /* BaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
-		CA15DCC31F116F7500720E34 /* Buildings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildings.swift; sourceTree = "<group>"; };
-		CA15DCC41F116F7500720E34 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		CA15DCC51F116F7500720E34 /* HealthBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
-		CA15DCC61F116F7500720E34 /* Missile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
-		CA15DCCA1F116F7500720E34 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
-		CA15DD3D1F11761600720E34 /* Orc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orc.swift; sourceTree = "<group>"; };
-		CA15DD3F1F11762800720E34 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
-		CA2438AF1F319EAA0067F263 /* Militia.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Militia.DAE; sourceTree = "<group>"; };
-		CA2438B11F32F3100067F263 /* Shockwave.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Shockwave.DAE; sourceTree = "<group>"; };
-		CA2438B31F32F3E50067F263 /* Shockwave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shockwave.png; sourceTree = "<group>"; };
-		CA2438B61F3310830067F263 /* Farm.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Farm.dae; sourceTree = "<group>"; };
-		CA2438B91F3315F60067F263 /* Fortress.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Fortress.dae; sourceTree = "<group>"; };
-		CA2438BA1F3315F60067F263 /* GreatHall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreatHall.png; sourceTree = "<group>"; };
-		CA2438BB1F3315F60067F263 /* Stronghold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stronghold.png; sourceTree = "<group>"; };
-		CA6573F11EF4CFF300E4CED1 /* NexusAttack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NexusAttack.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA6573FF1EF4CFF300E4CED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CA6574011EF4CFF300E4CED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CA6574041EF4CFF300E4CED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CA6574061EF4CFF300E4CED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA9A09761EF719C20018437D /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		CAB305B01F08AEED00B7621A /* BuildMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildMenu.swift; sourceTree = "<group>"; };
-		CAB305B61F08D5DE00B7621A /* BaseAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAI.swift; sourceTree = "<group>"; };
-		CAB305BA1F09AC6900B7621A /* Hud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
-		CAC3B4731EF5987F008DD4EA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		CAC3B4751EF60DA2008DD4EA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		FE68F89C1EF85A9F003E9716 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		FE68F89D1EF85A9F003E9716 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		FEA181B51F30EDBE009DBA19 /* DeathSmug.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DeathSmug.bmp; sourceTree = "<group>"; };
-		FEA181B61F30EDBE009DBA19 /* Doodads0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Doodads0.bmp; sourceTree = "<group>"; };
-		FEA181B71F30EDBE009DBA19 /* Garrison.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Garrison.bmp; sourceTree = "<group>"; };
-		FEA181B81F30EDBE009DBA19 /* HumanBarracks.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = HumanBarracks.dae; sourceTree = "<group>"; };
-		FEA181B91F30EDBE009DBA19 /* HumanBarracks.mdl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HumanBarracks.mdl; sourceTree = "<group>"; };
-		FEA181BA1F30EDBE009DBA19 /* HumanBarracks.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = HumanBarracks.mdx; sourceTree = "<group>"; };
-		FEA181BB1F30EDBE009DBA19 /* HumanBarracksWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HumanBarracksWhat1.wav; sourceTree = "<group>"; };
-		FEA181BC1F30EDBE009DBA19 /* HumanBase.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = HumanBase.bmp; sourceTree = "<group>"; };
-		FEA181BE1F30EDBE009DBA19 /* CannonTowerWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CannonTowerWhat1.wav; sourceTree = "<group>"; };
-		FEA181BF1F30EDBE009DBA19 /* DeathSmug.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DeathSmug.bmp; sourceTree = "<group>"; };
-		FEA181C01F30EDBE009DBA19 /* Doodads0-0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "Doodads0-0.bmp"; sourceTree = "<group>"; };
-		FEA181C11F30EDBE009DBA19 /* GuardTowerWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GuardTowerWhat1.wav; sourceTree = "<group>"; };
-		FEA181C21F30EDBE009DBA19 /* HumanBase.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = HumanBase.bmp; sourceTree = "<group>"; };
-		FEA181C31F30EDBE009DBA19 /* HumanTower.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = HumanTower.dae; sourceTree = "<group>"; };
-		FEA181C41F30EDBE009DBA19 /* HumanTower.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = HumanTower.mdx; sourceTree = "<group>"; };
-		FEA181C51F30EDBE009DBA19 /* Tower.blp */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tower.blp; sourceTree = "<group>"; };
-		FEA181C61F30EDBE009DBA19 /* Tower.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Tower.bmp; sourceTree = "<group>"; };
-		FEA181C71F30EDBE009DBA19 /* WatchTowerWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WatchTowerWhat1.wav; sourceTree = "<group>"; };
-		FEA181C91F30EDBE009DBA19 /* gutz.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = gutz.bmp; sourceTree = "<group>"; };
-		FEA181CB1F30EDBE009DBA19 /* Militia.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Militia.mdx; sourceTree = "<group>"; };
-		FEA181CC1F30EDBE009DBA19 /* Militia_Portrait.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Militia_Portrait.mdx; sourceTree = "<group>"; };
-		FEA181CD1F30EDBE009DBA19 /* PeasantMilitia.blp */ = {isa = PBXFileReference; lastKnownFileType = file; path = PeasantMilitia.blp; sourceTree = "<group>"; };
-		FEA181CE1F30EDBE009DBA19 /* PeasantMilitia.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = PeasantMilitia.bmp; sourceTree = "<group>"; };
-		FEA181D01F30EDBE009DBA19 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
-		FEA181D11F30EDBE009DBA19 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
-		FEA181D21F30EDBE009DBA19 /* grass_short.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_short.png; sourceTree = "<group>"; };
-		FEA181D31F30EDBE009DBA19 /* Ground002.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ground002.tif; sourceTree = "<group>"; };
-		FEA181D41F30EDBE009DBA19 /* Ground002.tif.001.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ground002.tif.001.tif; sourceTree = "<group>"; };
-		FEA181D51F30EDBE009DBA19 /* map2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = map2.dae; sourceTree = "<group>"; };
-		FEA181D61F30EDBE009DBA19 /* Spawn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spawn1.png; sourceTree = "<group>"; };
-		FEA181D71F30EDBE009DBA19 /* spawn2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = spawn2.bmp; sourceTree = "<group>"; };
-		FEA181D81F30EDBE009DBA19 /* tileMap.tm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tileMap.tm; sourceTree = "<group>"; };
-		FEA181D91F30EDBE009DBA19 /* tileMap2.tm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tileMap2.tm; sourceTree = "<group>"; };
-		FEA181DC1F30EDBE009DBA19 /* BerserkerCaster.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BerserkerCaster.wav; sourceTree = "<group>"; };
-		FEA181DD1F30EDBE009DBA19 /* Grun6.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Grun6.DAE; sourceTree = "<group>"; };
-		FEA181DF1F30EDBE009DBA19 /* Grunt.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Grunt.bmp; sourceTree = "<group>"; };
-		FEA181E61F30EDBE009DBA19 /* GruntDeath.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntDeath.wav; sourceTree = "<group>"; };
-		FEA181EE1F30EDBE009DBA19 /* GruntReady1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntReady1.wav; sourceTree = "<group>"; };
-		FEA181EF1F30EDBE009DBA19 /* GruntRunning.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = GruntRunning.DAE; sourceTree = "<group>"; };
-		FEA181F01F30EDBE009DBA19 /* GruntWarcry1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntWarcry1.wav; sourceTree = "<group>"; };
-		FEA181F91F30EDBE009DBA19 /* GruntYesAttack1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYesAttack1.wav; sourceTree = "<group>"; };
-		FEA181FA1F30EDBE009DBA19 /* GruntYesAttack2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYesAttack2.wav; sourceTree = "<group>"; };
-		FEA181FB1F30EDBE009DBA19 /* GruntYesAttack3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GruntYesAttack3.wav; sourceTree = "<group>"; };
-		FEA181FD1F30EDBE009DBA19 /* Base.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Base.bmp; sourceTree = "<group>"; };
-		FEA181FE1F30EDBE009DBA19 /* DeathSmug.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DeathSmug.bmp; sourceTree = "<group>"; };
-		FEA181FF1F30EDBE009DBA19 /* OrcBarracks.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = OrcBarracks.dae; sourceTree = "<group>"; };
-		FEA182001F30EDBE009DBA19 /* OrcBarracks.mdx */ = {isa = PBXFileReference; lastKnownFileType = file; path = OrcBarracks.mdx; sourceTree = "<group>"; };
-		FEA182011F30EDBE009DBA19 /* OrcBarracksWhat1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = OrcBarracksWhat1.wav; sourceTree = "<group>"; };
-		FEA182021F30EDBE009DBA19 /* OrcBarraks.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = OrcBarraks.bmp; sourceTree = "<group>"; };
-		FEA182031F30EDBE009DBA19 /* OrcBirth.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = OrcBirth.bmp; sourceTree = "<group>"; };
-		FEA1824D1F30FFE2009DBA19 /* ObjectMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMenu.swift; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		CA6573EE1EF4CFF300E4CED1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		CA15DCBD1F116F7500720E34 /* Engine */ = {
-			isa = PBXGroup;
-			children = (
-				CA15DCC21F116F7500720E34 /* BaseObject.swift */,
-				CA15DCC31F116F7500720E34 /* Buildings.swift */,
-				CA15DCC41F116F7500720E34 /* Environment.swift */,
-				CA15DCC51F116F7500720E34 /* HealthBar.swift */,
-				CA15DCC61F116F7500720E34 /* Missile.swift */,
-				CA15DCCA1F116F7500720E34 /* Units.swift */,
-				CA15DCC71F116F7500720E34 /* Objects */,
-			);
-			path = Engine;
-			sourceTree = "<group>";
-		};
-		CA15DCC71F116F7500720E34 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				CA15DD3D1F11761600720E34 /* Orc.swift */,
-				CA15DD3F1F11762800720E34 /* Human.swift */,
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
-		CA2438B51F3310830067F263 /* Farm */ = {
-			isa = PBXGroup;
-			children = (
-				CA2438B61F3310830067F263 /* Farm.dae */,
-			);
-			path = Farm;
-			sourceTree = "<group>";
-		};
-		CA2438B81F3315F60067F263 /* Fortress */ = {
-			isa = PBXGroup;
-			children = (
-				CA2438B91F3315F60067F263 /* Fortress.dae */,
-				CA2438BA1F3315F60067F263 /* GreatHall.png */,
-				CA2438BB1F3315F60067F263 /* Stronghold.png */,
-			);
-			path = Fortress;
-			sourceTree = "<group>";
-		};
-		CA6573E81EF4CFF300E4CED1 = {
-			isa = PBXGroup;
-			children = (
-				CA6573F31EF4CFF300E4CED1 /* NexusAttack */,
-				CA6573F21EF4CFF300E4CED1 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		CA6573F21EF4CFF300E4CED1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CA6573F11EF4CFF300E4CED1 /* NexusAttack.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		CA6573F31EF4CFF300E4CED1 /* NexusAttack */ = {
-			isa = PBXGroup;
-			children = (
-				CA65740E1EF4D9DF00E4CED1 /* Game */,
-				CA6573F41EF4CFF300E4CED1 /* AppDelegate.swift */,
-				CAC3B4731EF5987F008DD4EA /* Extensions.swift */,
-				CA6573FE1EF4CFF300E4CED1 /* Main.storyboard */,
-				CA6574011EF4CFF300E4CED1 /* Assets.xcassets */,
-				CA6574031EF4CFF300E4CED1 /* LaunchScreen.storyboard */,
-				CA6574061EF4CFF300E4CED1 /* Info.plist */,
-			);
-			path = NexusAttack;
-			sourceTree = "<group>";
-		};
-		CA65740E1EF4D9DF00E4CED1 /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				CA15DCBD1F116F7500720E34 /* Engine */,
-				CAB305B51F08D5DE00B7621A /* AI */,
-				CAB305AF1F08AE5C00B7621A /* Menu */,
-				FE68F89B1EF85A9F003E9716 /* ViewControllers */,
-				FEA181B21F30EDBE009DBA19 /* Assets */,
-				CA6574191EF4DA3B00E4CED1 /* Models */,
-			);
-			path = Game;
-			sourceTree = "<group>";
-		};
-		CA6574191EF4DA3B00E4CED1 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CAC3B4751EF60DA2008DD4EA /* Player.swift */,
-				CA9A09761EF719C20018437D /* Team.swift */,
-				CAB305BA1F09AC6900B7621A /* Hud.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		CAB305AF1F08AE5C00B7621A /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				CAB305B01F08AEED00B7621A /* BuildMenu.swift */,
-				FEA1824D1F30FFE2009DBA19 /* ObjectMenu.swift */,
-			);
-			name = Menu;
-			sourceTree = "<group>";
-		};
-		CAB305B51F08D5DE00B7621A /* AI */ = {
-			isa = PBXGroup;
-			children = (
-				CAB305B61F08D5DE00B7621A /* BaseAI.swift */,
-			);
-			path = AI;
-			sourceTree = "<group>";
-		};
-		FE68F89B1EF85A9F003E9716 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				FE68F89D1EF85A9F003E9716 /* GameViewController.swift */,
-				FE68F89C1EF85A9F003E9716 /* GameScene.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		FEA181B21F30EDBE009DBA19 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181B31F30EDBE009DBA19 /* Human */,
-				FEA181CF1F30EDBE009DBA19 /* Map */,
-				FEA181DA1F30EDBE009DBA19 /* Orc */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		FEA181B31F30EDBE009DBA19 /* Human */ = {
-			isa = PBXGroup;
-			children = (
-				CA2438B81F3315F60067F263 /* Fortress */,
-				CA2438B51F3310830067F263 /* Farm */,
-				FEA181B41F30EDBE009DBA19 /* HumanBarracks */,
-				FEA181BD1F30EDBE009DBA19 /* HumanTower */,
-				FEA181C81F30EDBE009DBA19 /* Militia */,
-			);
-			path = Human;
-			sourceTree = "<group>";
-		};
-		FEA181B41F30EDBE009DBA19 /* HumanBarracks */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181B51F30EDBE009DBA19 /* DeathSmug.bmp */,
-				FEA181B61F30EDBE009DBA19 /* Doodads0.bmp */,
-				FEA181B71F30EDBE009DBA19 /* Garrison.bmp */,
-				FEA181B81F30EDBE009DBA19 /* HumanBarracks.dae */,
-				FEA181B91F30EDBE009DBA19 /* HumanBarracks.mdl */,
-				FEA181BA1F30EDBE009DBA19 /* HumanBarracks.mdx */,
-				FEA181BB1F30EDBE009DBA19 /* HumanBarracksWhat1.wav */,
-				FEA181BC1F30EDBE009DBA19 /* HumanBase.bmp */,
-			);
-			path = HumanBarracks;
-			sourceTree = "<group>";
-		};
-		FEA181BD1F30EDBE009DBA19 /* HumanTower */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181BE1F30EDBE009DBA19 /* CannonTowerWhat1.wav */,
-				FEA181BF1F30EDBE009DBA19 /* DeathSmug.bmp */,
-				FEA181C01F30EDBE009DBA19 /* Doodads0-0.bmp */,
-				FEA181C11F30EDBE009DBA19 /* GuardTowerWhat1.wav */,
-				FEA181C21F30EDBE009DBA19 /* HumanBase.bmp */,
-				FEA181C31F30EDBE009DBA19 /* HumanTower.dae */,
-				FEA181C41F30EDBE009DBA19 /* HumanTower.mdx */,
-				FEA181C51F30EDBE009DBA19 /* Tower.blp */,
-				FEA181C61F30EDBE009DBA19 /* Tower.bmp */,
-				FEA181C71F30EDBE009DBA19 /* WatchTowerWhat1.wav */,
-			);
-			path = HumanTower;
-			sourceTree = "<group>";
-		};
-		FEA181C81F30EDBE009DBA19 /* Militia */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181C91F30EDBE009DBA19 /* gutz.bmp */,
-				CA2438AF1F319EAA0067F263 /* Militia.DAE */,
-				FEA181CB1F30EDBE009DBA19 /* Militia.mdx */,
-				FEA181CC1F30EDBE009DBA19 /* Militia_Portrait.mdx */,
-				CA2438B11F32F3100067F263 /* Shockwave.DAE */,
-				CA2438B31F32F3E50067F263 /* Shockwave.png */,
-				FEA181CD1F30EDBE009DBA19 /* PeasantMilitia.blp */,
-				FEA181CE1F30EDBE009DBA19 /* PeasantMilitia.bmp */,
-			);
-			path = Militia;
-			sourceTree = "<group>";
-		};
-		FEA181CF1F30EDBE009DBA19 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181D01F30EDBE009DBA19 /* dirt.png */,
-				FEA181D11F30EDBE009DBA19 /* grass.png */,
-				FEA181D21F30EDBE009DBA19 /* grass_short.png */,
-				FEA181D31F30EDBE009DBA19 /* Ground002.tif */,
-				FEA181D41F30EDBE009DBA19 /* Ground002.tif.001.tif */,
-				FEA181D51F30EDBE009DBA19 /* map2.dae */,
-				FEA181D61F30EDBE009DBA19 /* Spawn1.png */,
-				FEA181D71F30EDBE009DBA19 /* spawn2.bmp */,
-				FEA181D81F30EDBE009DBA19 /* tileMap.tm */,
-				FEA181D91F30EDBE009DBA19 /* tileMap2.tm */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		FEA181DA1F30EDBE009DBA19 /* Orc */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181DB1F30EDBE009DBA19 /* Grunt */,
-				FEA181FC1F30EDBE009DBA19 /* OrcBarracks */,
-			);
-			path = Orc;
-			sourceTree = "<group>";
-		};
-		FEA181DB1F30EDBE009DBA19 /* Grunt */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181DC1F30EDBE009DBA19 /* BerserkerCaster.wav */,
-				FEA181DD1F30EDBE009DBA19 /* Grun6.DAE */,
-				FEA181DF1F30EDBE009DBA19 /* Grunt.bmp */,
-				FEA181E61F30EDBE009DBA19 /* GruntDeath.wav */,
-				FEA181EE1F30EDBE009DBA19 /* GruntReady1.wav */,
-				FEA181EF1F30EDBE009DBA19 /* GruntRunning.DAE */,
-				FEA181F01F30EDBE009DBA19 /* GruntWarcry1.wav */,
-				FEA181F91F30EDBE009DBA19 /* GruntYesAttack1.wav */,
-				FEA181FA1F30EDBE009DBA19 /* GruntYesAttack2.wav */,
-				FEA181FB1F30EDBE009DBA19 /* GruntYesAttack3.wav */,
-			);
-			path = Grunt;
-			sourceTree = "<group>";
-		};
-		FEA181FC1F30EDBE009DBA19 /* OrcBarracks */ = {
-			isa = PBXGroup;
-			children = (
-				FEA181FD1F30EDBE009DBA19 /* Base.bmp */,
-				FEA181FE1F30EDBE009DBA19 /* DeathSmug.bmp */,
-				FEA181FF1F30EDBE009DBA19 /* OrcBarracks.dae */,
-				FEA182001F30EDBE009DBA19 /* OrcBarracks.mdx */,
-				FEA182011F30EDBE009DBA19 /* OrcBarracksWhat1.wav */,
-				FEA182021F30EDBE009DBA19 /* OrcBarraks.bmp */,
-				FEA182031F30EDBE009DBA19 /* OrcBirth.bmp */,
-			);
-			path = OrcBarracks;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		CA6573F01EF4CFF300E4CED1 /* NexusAttack */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CA6574091EF4CFF300E4CED1 /* Build configuration list for PBXNativeTarget "NexusAttack" */;
-			buildPhases = (
-				CA6573ED1EF4CFF300E4CED1 /* Sources */,
-				CA6573EE1EF4CFF300E4CED1 /* Frameworks */,
-				CA6573EF1EF4CFF300E4CED1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NexusAttack;
-			productName = NexusAttack;
-			productReference = CA6573F11EF4CFF300E4CED1 /* NexusAttack.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		CA6573E91EF4CFF300E4CED1 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = CobbWeb;
-				TargetAttributes = {
-					CA6573F01EF4CFF300E4CED1 = {
-						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = MRGX8T9A4Y;
-						ProvisioningStyle = Automatic;
-					};
-				};
-			};
-			buildConfigurationList = CA6573EC1EF4CFF300E4CED1 /* Build configuration list for PBXProject "NexusAttack" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = CA6573E81EF4CFF300E4CED1;
-			productRefGroup = CA6573F21EF4CFF300E4CED1 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				CA6573F01EF4CFF300E4CED1 /* NexusAttack */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		CA6573EF1EF4CFF300E4CED1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FEA182471F30EDBE009DBA19 /* DeathSmug.bmp in Resources */,
-				FEA182301F30EDBE009DBA19 /* GruntDeath.wav in Resources */,
-				FEA182451F30EDBE009DBA19 /* GruntYesAttack3.wav in Resources */,
-				FEA182381F30EDBE009DBA19 /* GruntReady1.wav in Resources */,
-				FEA182211F30EDBE009DBA19 /* map2.dae in Resources */,
-				FEA182241F30EDBE009DBA19 /* tileMap.tm in Resources */,
-				FEA182251F30EDBE009DBA19 /* tileMap2.tm in Resources */,
-				FEA1820F1F30EDBE009DBA19 /* GuardTowerWhat1.wav in Resources */,
-				FEA182271F30EDBE009DBA19 /* Grun6.DAE in Resources */,
-				CA2438BE1F3315F60067F263 /* Stronghold.png in Resources */,
-				FEA182161F30EDBE009DBA19 /* gutz.bmp in Resources */,
-				FEA182191F30EDBE009DBA19 /* Militia_Portrait.mdx in Resources */,
-				FEA182051F30EDBE009DBA19 /* Doodads0.bmp in Resources */,
-				CA2438BC1F3315F60067F263 /* Fortress.dae in Resources */,
-				FEA182151F30EDBE009DBA19 /* WatchTowerWhat1.wav in Resources */,
-				CA2438B41F32F3E50067F263 /* Shockwave.png in Resources */,
-				FEA1821F1F30EDBE009DBA19 /* Ground002.tif in Resources */,
-				FEA182041F30EDBE009DBA19 /* DeathSmug.bmp in Resources */,
-				FEA182141F30EDBE009DBA19 /* Tower.bmp in Resources */,
-				FEA1823A1F30EDBE009DBA19 /* GruntWarcry1.wav in Resources */,
-				FEA182441F30EDBE009DBA19 /* GruntYesAttack2.wav in Resources */,
-				FEA182291F30EDBE009DBA19 /* Grunt.bmp in Resources */,
-				FEA1820D1F30EDBE009DBA19 /* DeathSmug.bmp in Resources */,
-				FEA182061F30EDBE009DBA19 /* Garrison.bmp in Resources */,
-				FEA1821B1F30EDBE009DBA19 /* PeasantMilitia.bmp in Resources */,
-				CA6574001EF4CFF300E4CED1 /* Main.storyboard in Resources */,
-				FEA182091F30EDBE009DBA19 /* HumanBarracks.mdx in Resources */,
-				FEA182111F30EDBE009DBA19 /* HumanTower.dae in Resources */,
-				FEA1821E1F30EDBE009DBA19 /* grass_short.png in Resources */,
-				FEA182181F30EDBE009DBA19 /* Militia.mdx in Resources */,
-				FEA1820A1F30EDBE009DBA19 /* HumanBarracksWhat1.wav in Resources */,
-				FEA1821A1F30EDBE009DBA19 /* PeasantMilitia.blp in Resources */,
-				CA2438B71F3310830067F263 /* Farm.dae in Resources */,
-				FEA182121F30EDBE009DBA19 /* HumanTower.mdx in Resources */,
-				FEA182461F30EDBE009DBA19 /* Base.bmp in Resources */,
-				CA6574021EF4CFF300E4CED1 /* Assets.xcassets in Resources */,
-				FEA182131F30EDBE009DBA19 /* Tower.blp in Resources */,
-				CA2438B21F32F3100067F263 /* Shockwave.DAE in Resources */,
-				FEA1820E1F30EDBE009DBA19 /* Doodads0-0.bmp in Resources */,
-				FEA1824A1F30EDBE009DBA19 /* OrcBarracksWhat1.wav in Resources */,
-				FEA1824B1F30EDBE009DBA19 /* OrcBarraks.bmp in Resources */,
-				CA2438BD1F3315F60067F263 /* GreatHall.png in Resources */,
-				FEA182201F30EDBE009DBA19 /* Ground002.tif.001.tif in Resources */,
-				FEA182071F30EDBE009DBA19 /* HumanBarracks.dae in Resources */,
-				FEA1820B1F30EDBE009DBA19 /* HumanBase.bmp in Resources */,
-				FEA1824C1F30EDBE009DBA19 /* OrcBirth.bmp in Resources */,
-				FEA182391F30EDBE009DBA19 /* GruntRunning.DAE in Resources */,
-				FEA1821D1F30EDBE009DBA19 /* grass.png in Resources */,
-				CA2438B01F319EAA0067F263 /* Militia.DAE in Resources */,
-				FEA182081F30EDBE009DBA19 /* HumanBarracks.mdl in Resources */,
-				CA6574051EF4CFF300E4CED1 /* LaunchScreen.storyboard in Resources */,
-				FEA182431F30EDBE009DBA19 /* GruntYesAttack1.wav in Resources */,
-				FEA182261F30EDBE009DBA19 /* BerserkerCaster.wav in Resources */,
-				FEA182481F30EDBE009DBA19 /* OrcBarracks.dae in Resources */,
-				FEA182101F30EDBE009DBA19 /* HumanBase.bmp in Resources */,
-				FEA1821C1F30EDBE009DBA19 /* dirt.png in Resources */,
-				FEA1820C1F30EDBE009DBA19 /* CannonTowerWhat1.wav in Resources */,
-				FEA182491F30EDBE009DBA19 /* OrcBarracks.mdx in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		CA6573ED1EF4CFF300E4CED1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CA9A09771EF719C20018437D /* Team.swift in Sources */,
-				CA15DCCF1F116F7500720E34 /* Environment.swift in Sources */,
-				CA15DCD11F116F7500720E34 /* Missile.swift in Sources */,
-				CA15DCCD1F116F7500720E34 /* BaseObject.swift in Sources */,
-				CA15DD401F11762800720E34 /* Human.swift in Sources */,
-				FE68F89E1EF85A9F003E9716 /* GameScene.swift in Sources */,
-				CA15DD3E1F11761600720E34 /* Orc.swift in Sources */,
-				CA15DCD01F116F7500720E34 /* HealthBar.swift in Sources */,
-				CAB305BB1F09AC6900B7621A /* Hud.swift in Sources */,
-				CAB305B11F08AEED00B7621A /* BuildMenu.swift in Sources */,
-				CA15DCD31F116F7500720E34 /* Units.swift in Sources */,
-				CAC3B4741EF5987F008DD4EA /* Extensions.swift in Sources */,
-				FE68F89F1EF85A9F003E9716 /* GameViewController.swift in Sources */,
-				FEA1824E1F30FFE2009DBA19 /* ObjectMenu.swift in Sources */,
-				CAC3B4761EF60DA2008DD4EA /* Player.swift in Sources */,
-				CAB305B71F08D5DE00B7621A /* BaseAI.swift in Sources */,
-				CA15DCCE1F116F7500720E34 /* Buildings.swift in Sources */,
-				CA6573F51EF4CFF300E4CED1 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		CA6573FE1EF4CFF300E4CED1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA6573FF1EF4CFF300E4CED1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CA6574031EF4CFF300E4CED1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA6574041EF4CFF300E4CED1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		CA6574071EF4CFF300E4CED1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CA6574081EF4CFF300E4CED1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CA65740A1EF4CFF300E4CED1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MRGX8T9A4Y;
-				INFOPLIST_FILE = NexusAttack/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CobbWeb.NexusAttack;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		CA65740B1EF4CFF300E4CED1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MRGX8T9A4Y;
-				INFOPLIST_FILE = NexusAttack/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CobbWeb.NexusAttack;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		CA6573EC1EF4CFF300E4CED1 /* Build configuration list for PBXProject "NexusAttack" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CA6574071EF4CFF300E4CED1 /* Debug */,
-				CA6574081EF4CFF300E4CED1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CA6574091EF4CFF300E4CED1 /* Build configuration list for PBXNativeTarget "NexusAttack" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CA65740A1EF4CFF300E4CED1 /* Debug */,
-				CA65740B1EF4CFF300E4CED1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = CA6573E91EF4CFF300E4CED1 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>101BD4E9522F3C590D34674D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-NexusAttack.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-NexusAttack/Pods-NexusAttack.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1A3878C4161CEFE2F6208768</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>6CF77FE4F7F2E3A9DE4CB94F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-NexusAttack/Pods-NexusAttack-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>80D059418EAA746E91D78E1C</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_NexusAttack.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>85E07426770576CB261F3D56</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-NexusAttack/Pods-NexusAttack-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>8C355FE95198CE8D7810B056</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>101BD4E9522F3C590D34674D</string>
+				<string>D9820C79E6935EB5633B6DE3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A3D47F1A86B72403C3688924</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>80D059418EAA746E91D78E1C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCBD1F116F7500720E34</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA15DCC21F116F7500720E34</string>
+				<string>CA2438D41F3637520067F263</string>
+				<string>CA15DCC31F116F7500720E34</string>
+				<string>CA15DCC41F116F7500720E34</string>
+				<string>CA15DCC51F116F7500720E34</string>
+				<string>CA15DCC61F116F7500720E34</string>
+				<string>CA15DCCA1F116F7500720E34</string>
+				<string>CA15DCC71F116F7500720E34</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Engine</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCC21F116F7500720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>BaseObject.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCC31F116F7500720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Buildings.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCC41F116F7500720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Environment.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCC51F116F7500720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>HealthBar.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCC61F116F7500720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Missile.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCC71F116F7500720E34</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA15DD3D1F11761600720E34</string>
+				<string>CA15DD3F1F11762800720E34</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Objects</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCCA1F116F7500720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Units.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DCCD1F116F7500720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DCC21F116F7500720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA15DCCE1F116F7500720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DCC31F116F7500720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA15DCCF1F116F7500720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DCC41F116F7500720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA15DCD01F116F7500720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DCC51F116F7500720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA15DCD11F116F7500720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DCC61F116F7500720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA15DCD31F116F7500720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DCCA1F116F7500720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA15DD3D1F11761600720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Orc.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DD3E1F11761600720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DD3D1F11761600720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA15DD3F1F11762800720E34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Human.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA15DD401F11762800720E34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA15DD3F1F11762800720E34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438AF1F319EAA0067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Militia.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438B01F319EAA0067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438AF1F319EAA0067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438B11F32F3100067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Shockwave.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438B21F32F3100067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438B11F32F3100067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438B31F32F3E50067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Shockwave.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438B41F32F3E50067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438B31F32F3E50067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438B51F3310830067F263</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA2438B61F3310830067F263</string>
+				<string>FE786B561F33BBE2001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Farm</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438B61F3310830067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Farm.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438B71F3310830067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438B61F3310830067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438B81F3315F60067F263</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA2438B91F3315F60067F263</string>
+				<string>CA2438BA1F3315F60067F263</string>
+				<string>CA2438BB1F3315F60067F263</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Fortress</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438B91F3315F60067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Fortress.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438BA1F3315F60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>GreatHall.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438BB1F3315F60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Stronghold.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438BC1F3315F60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438B91F3315F60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438BD1F3315F60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438BA1F3315F60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438BE1F3315F60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438BB1F3315F60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438BF1F331DF60067F263</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA2438C01F331DF60067F263</string>
+				<string>CA2438C11F331DF60067F263</string>
+				<string>CA2438C21F331DF60067F263</string>
+				<string>CA2438C31F331DF60067F263</string>
+				<string>CA2438C41F331DF60067F263</string>
+				<string>CA2438C51F331DF60067F263</string>
+				<string>CA2438C61F331DF60067F263</string>
+				<string>CA2438C71F331DF60067F263</string>
+				<string>CA2438C81F331DF60067F263</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Shaman</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C01F331DF60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Blue_Glow2.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C11F331DF60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>lensflare1A.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C21F331DF60067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>LightningBolt.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C31F331DF60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>LightningBolt.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C41F331DF60067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Shaman.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C51F331DF60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Shaman.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C61F331DF60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Shaman.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C71F331DF60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Shockwave10.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C81F331DF60067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Zap1.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438C91F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C01F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438CA1F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C11F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438CB1F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C21F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438CC1F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C31F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438CD1F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C41F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438CE1F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C51F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438CF1F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C61F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438D01F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C71F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438D11F331DF60067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438C81F331DF60067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438D21F3635BB0067F263</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Grunt.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438D31F3635BB0067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438D21F3635BB0067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438D41F3637520067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>BaseObject+Extensions.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438D51F3637520067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438D41F3637520067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA2438D61F364AFE0067F263</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA2438D71F364AFE0067F263</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Multiplayer</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438D71F364AFE0067F263</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NetworkPlayer.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA2438D81F364AFE0067F263</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA2438D71F364AFE0067F263</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA6573E81EF4CFF300E4CED1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA6573F31EF4CFF300E4CED1</string>
+				<string>CA6573F21EF4CFF300E4CED1</string>
+				<string>8C355FE95198CE8D7810B056</string>
+				<string>A3D47F1A86B72403C3688924</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6573E91EF4CFF300E4CED1</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0830</string>
+				<key>LastUpgradeCheck</key>
+				<string>0830</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>CobbWeb</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>CA6573F01EF4CFF300E4CED1</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>8.3.2</string>
+						<key>DevelopmentTeam</key>
+						<string>MRGX8T9A4Y</string>
+						<key>ProvisioningStyle</key>
+						<string>Automatic</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>CA6573EC1EF4CFF300E4CED1</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>CA6573E81EF4CFF300E4CED1</string>
+			<key>productRefGroup</key>
+			<string>CA6573F21EF4CFF300E4CED1</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>CA6573F01EF4CFF300E4CED1</string>
+			</array>
+		</dict>
+		<key>CA6573EC1EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>CA6574071EF4CFF300E4CED1</string>
+				<string>CA6574081EF4CFF300E4CED1</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>CA6573ED1EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>CA9A09771EF719C20018437D</string>
+				<string>CA15DCCF1F116F7500720E34</string>
+				<string>CA15DCD11F116F7500720E34</string>
+				<string>CA15DCCD1F116F7500720E34</string>
+				<string>CA15DD401F11762800720E34</string>
+				<string>CA2438D81F364AFE0067F263</string>
+				<string>FE68F89E1EF85A9F003E9716</string>
+				<string>CA2438D51F3637520067F263</string>
+				<string>CA15DD3E1F11761600720E34</string>
+				<string>CA15DCD01F116F7500720E34</string>
+				<string>CAB305BB1F09AC6900B7621A</string>
+				<string>CAB305B11F08AEED00B7621A</string>
+				<string>CA15DCD31F116F7500720E34</string>
+				<string>CAC3B4741EF5987F008DD4EA</string>
+				<string>FE68F89F1EF85A9F003E9716</string>
+				<string>FEA1824E1F30FFE2009DBA19</string>
+				<string>CAC3B4761EF60DA2008DD4EA</string>
+				<string>CAB305B71F08D5DE00B7621A</string>
+				<string>CA15DCCE1F116F7500720E34</string>
+				<string>CA6573F51EF4CFF300E4CED1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>CA6573EE1EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D697D7A8A8846CEFB1505296</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>CA6573EF1EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>FE786B4D1F33B85E001931DB</string>
+				<string>FEA182471F30EDBE009DBA19</string>
+				<string>FEA182301F30EDBE009DBA19</string>
+				<string>FE786B111F33AFFB001931DB</string>
+				<string>FE786B511F33B85E001931DB</string>
+				<string>FEA182451F30EDBE009DBA19</string>
+				<string>FEA182381F30EDBE009DBA19</string>
+				<string>FE786B3E1F33B85E001931DB</string>
+				<string>FE786B571F33BBE2001931DB</string>
+				<string>FE786B551F33B85E001931DB</string>
+				<string>FEA182211F30EDBE009DBA19</string>
+				<string>FEA182241F30EDBE009DBA19</string>
+				<string>FEA182251F30EDBE009DBA19</string>
+				<string>FEA1820F1F30EDBE009DBA19</string>
+				<string>FE786B421F33B85E001931DB</string>
+				<string>FEA182271F30EDBE009DBA19</string>
+				<string>CA2438BE1F3315F60067F263</string>
+				<string>FEA182161F30EDBE009DBA19</string>
+				<string>FE786B541F33B85E001931DB</string>
+				<string>FEA182191F30EDBE009DBA19</string>
+				<string>FE786B501F33B85E001931DB</string>
+				<string>FE786B3D1F33B85E001931DB</string>
+				<string>FE786B431F33B85E001931DB</string>
+				<string>FEA182051F30EDBE009DBA19</string>
+				<string>CA2438BC1F3315F60067F263</string>
+				<string>FEA182151F30EDBE009DBA19</string>
+				<string>CA2438B41F32F3E50067F263</string>
+				<string>FEA1821F1F30EDBE009DBA19</string>
+				<string>FE786B171F33AFFB001931DB</string>
+				<string>FE786B141F33AFFB001931DB</string>
+				<string>FE786AED1F33AFB3001931DB</string>
+				<string>FEA182041F30EDBE009DBA19</string>
+				<string>FE786B491F33B85E001931DB</string>
+				<string>FEA182141F30EDBE009DBA19</string>
+				<string>FEA1823A1F30EDBE009DBA19</string>
+				<string>FEA182441F30EDBE009DBA19</string>
+				<string>FE786B471F33B85E001931DB</string>
+				<string>FEA1820D1F30EDBE009DBA19</string>
+				<string>FEA182061F30EDBE009DBA19</string>
+				<string>FEA1821B1F30EDBE009DBA19</string>
+				<string>CA6574001EF4CFF300E4CED1</string>
+				<string>FEA182091F30EDBE009DBA19</string>
+				<string>FE786B4A1F33B85E001931DB</string>
+				<string>FE786B461F33B85E001931DB</string>
+				<string>FEA182111F30EDBE009DBA19</string>
+				<string>FEA1821E1F30EDBE009DBA19</string>
+				<string>FEA182181F30EDBE009DBA19</string>
+				<string>CA2438CA1F331DF60067F263</string>
+				<string>FE786B451F33B85E001931DB</string>
+				<string>FEA1820A1F30EDBE009DBA19</string>
+				<string>FEA1821A1F30EDBE009DBA19</string>
+				<string>FE786B0C1F33AFFB001931DB</string>
+				<string>CA2438B71F3310830067F263</string>
+				<string>CA2438CD1F331DF60067F263</string>
+				<string>FEA182121F30EDBE009DBA19</string>
+				<string>FE786B151F33AFFB001931DB</string>
+				<string>FEA182461F30EDBE009DBA19</string>
+				<string>CA6574021EF4CFF300E4CED1</string>
+				<string>FEA182131F30EDBE009DBA19</string>
+				<string>CA2438B21F32F3100067F263</string>
+				<string>CA2438CB1F331DF60067F263</string>
+				<string>FEA1820E1F30EDBE009DBA19</string>
+				<string>FE786B401F33B85E001931DB</string>
+				<string>FEA1824A1F30EDBE009DBA19</string>
+				<string>FE786B121F33AFFB001931DB</string>
+				<string>FEA1824B1F30EDBE009DBA19</string>
+				<string>FE786AEB1F33AFB3001931DB</string>
+				<string>FE786B191F33AFFB001931DB</string>
+				<string>CA2438BD1F3315F60067F263</string>
+				<string>FEA182201F30EDBE009DBA19</string>
+				<string>FE786B4E1F33B85E001931DB</string>
+				<string>CA2438D11F331DF60067F263</string>
+				<string>FE786B0E1F33AFFB001931DB</string>
+				<string>FEA182071F30EDBE009DBA19</string>
+				<string>CA2438CC1F331DF60067F263</string>
+				<string>CA2438CE1F331DF60067F263</string>
+				<string>FEA1820B1F30EDBE009DBA19</string>
+				<string>FEA1824C1F30EDBE009DBA19</string>
+				<string>FE786AEC1F33AFB3001931DB</string>
+				<string>FE786B131F33AFFB001931DB</string>
+				<string>FE786B411F33B85E001931DB</string>
+				<string>FEA182391F30EDBE009DBA19</string>
+				<string>FEA1821D1F30EDBE009DBA19</string>
+				<string>FE786B481F33B85E001931DB</string>
+				<string>CA2438B01F319EAA0067F263</string>
+				<string>CA2438D01F331DF60067F263</string>
+				<string>FE786B4F1F33B85E001931DB</string>
+				<string>FEA182081F30EDBE009DBA19</string>
+				<string>CA6574051EF4CFF300E4CED1</string>
+				<string>FE786B441F33B85E001931DB</string>
+				<string>CA2438C91F331DF60067F263</string>
+				<string>FE786B161F33AFFB001931DB</string>
+				<string>FE786B4C1F33B85E001931DB</string>
+				<string>FEA182431F30EDBE009DBA19</string>
+				<string>FE786B521F33B85E001931DB</string>
+				<string>FE786AEA1F33AFB3001931DB</string>
+				<string>FE786B4B1F33B85E001931DB</string>
+				<string>FEA182261F30EDBE009DBA19</string>
+				<string>CA2438CF1F331DF60067F263</string>
+				<string>FEA182481F30EDBE009DBA19</string>
+				<string>FE786B181F33AFFB001931DB</string>
+				<string>FE786B1A1F33AFFB001931DB</string>
+				<string>FE786B0D1F33AFFB001931DB</string>
+				<string>FE786B0F1F33AFFB001931DB</string>
+				<string>FE786B101F33AFFB001931DB</string>
+				<string>CA2438D31F3635BB0067F263</string>
+				<string>FEA182101F30EDBE009DBA19</string>
+				<string>FEA1821C1F30EDBE009DBA19</string>
+				<string>FE786B0B1F33AFFB001931DB</string>
+				<string>FEA1820C1F30EDBE009DBA19</string>
+				<string>FE786B531F33B85E001931DB</string>
+				<string>FE786B3F1F33B85E001931DB</string>
+				<string>FEA182491F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>CA6573F01EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>CA6574091EF4CFF300E4CED1</string>
+			<key>buildPhases</key>
+			<array>
+				<string>1A3878C4161CEFE2F6208768</string>
+				<string>CA6573ED1EF4CFF300E4CED1</string>
+				<string>CA6573EE1EF4CFF300E4CED1</string>
+				<string>CA6573EF1EF4CFF300E4CED1</string>
+				<string>85E07426770576CB261F3D56</string>
+				<string>6CF77FE4F7F2E3A9DE4CB94F</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>NexusAttack</string>
+			<key>productName</key>
+			<string>NexusAttack</string>
+			<key>productReference</key>
+			<string>CA6573F11EF4CFF300E4CED1</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>CA6573F11EF4CFF300E4CED1</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>NexusAttack.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>CA6573F21EF4CFF300E4CED1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA6573F11EF4CFF300E4CED1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6573F31EF4CFF300E4CED1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA65740E1EF4D9DF00E4CED1</string>
+				<string>CA6573F41EF4CFF300E4CED1</string>
+				<string>CAC3B4731EF5987F008DD4EA</string>
+				<string>CA6573FE1EF4CFF300E4CED1</string>
+				<string>CA6574011EF4CFF300E4CED1</string>
+				<string>CA6574031EF4CFF300E4CED1</string>
+				<string>CA6574061EF4CFF300E4CED1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>NexusAttack</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6573F41EF4CFF300E4CED1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6573F51EF4CFF300E4CED1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA6573F41EF4CFF300E4CED1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA6573FE1EF4CFF300E4CED1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA6573FF1EF4CFF300E4CED1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6573FF1EF4CFF300E4CED1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6574001EF4CFF300E4CED1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA6573FE1EF4CFF300E4CED1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA6574011EF4CFF300E4CED1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6574021EF4CFF300E4CED1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA6574011EF4CFF300E4CED1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA6574031EF4CFF300E4CED1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA6574041EF4CFF300E4CED1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6574041EF4CFF300E4CED1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6574051EF4CFF300E4CED1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA6574031EF4CFF300E4CED1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA6574061EF4CFF300E4CED1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6574071EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INFINITE_RECURSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_SUSPICIOUS_MOVE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>10.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_ACTIVE_COMPILATION_CONDITIONS</key>
+				<string>DEBUG</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>CA6574081EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INFINITE_RECURSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_SUSPICIOUS_MOVE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>10.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Owholemodule</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>CA6574091EF4CFF300E4CED1</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>CA65740A1EF4CFF300E4CED1</string>
+				<string>CA65740B1EF4CFF300E4CED1</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>CA65740A1EF4CFF300E4CED1</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>101BD4E9522F3C590D34674D</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>MRGX8T9A4Y</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NexusAttack/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>CobbWeb.NexusAttack</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>CA65740B1EF4CFF300E4CED1</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>D9820C79E6935EB5633B6DE3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>MRGX8T9A4Y</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NexusAttack/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>CobbWeb.NexusAttack</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>CA65740E1EF4D9DF00E4CED1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CA6574191EF4DA3B00E4CED1</string>
+				<string>CA15DCBD1F116F7500720E34</string>
+				<string>CAB305B51F08D5DE00B7621A</string>
+				<string>CA2438D61F364AFE0067F263</string>
+				<string>CAB305AF1F08AE5C00B7621A</string>
+				<string>FE68F89B1EF85A9F003E9716</string>
+				<string>FEA181B21F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Game</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA6574191EF4DA3B00E4CED1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CAC3B4751EF60DA2008DD4EA</string>
+				<string>CA9A09761EF719C20018437D</string>
+				<string>CAB305BA1F09AC6900B7621A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA9A09761EF719C20018437D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Team.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CA9A09771EF719C20018437D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA9A09761EF719C20018437D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CAB305AF1F08AE5C00B7621A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CAB305B01F08AEED00B7621A</string>
+				<string>FEA1824D1F30FFE2009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Menu</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAB305B01F08AEED00B7621A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>BuildMenu.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAB305B11F08AEED00B7621A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CAB305B01F08AEED00B7621A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CAB305B51F08D5DE00B7621A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CAB305B61F08D5DE00B7621A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>AI</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAB305B61F08D5DE00B7621A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>BaseAI.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAB305B71F08D5DE00B7621A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CAB305B61F08D5DE00B7621A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CAB305BA1F09AC6900B7621A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Hud.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAB305BB1F09AC6900B7621A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CAB305BA1F09AC6900B7621A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CAC3B4731EF5987F008DD4EA</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Extensions.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAC3B4741EF5987F008DD4EA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CAC3B4731EF5987F008DD4EA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CAC3B4751EF60DA2008DD4EA</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Player.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAC3B4761EF60DA2008DD4EA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CAC3B4751EF60DA2008DD4EA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D697D7A8A8846CEFB1505296</key>
+		<dict>
+			<key>fileRef</key>
+			<string>80D059418EAA746E91D78E1C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D9820C79E6935EB5633B6DE3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-NexusAttack.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-NexusAttack/Pods-NexusAttack.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE68F89B1EF85A9F003E9716</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE68F89D1EF85A9F003E9716</string>
+				<string>FE68F89C1EF85A9F003E9716</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>ViewControllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE68F89C1EF85A9F003E9716</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>GameScene.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE68F89D1EF85A9F003E9716</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>GameViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE68F89E1EF85A9F003E9716</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE68F89C1EF85A9F003E9716</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE68F89F1EF85A9F003E9716</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE68F89D1EF85A9F003E9716</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786AE51F33AFB3001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786AE61F33AFB3001931DB</string>
+				<string>FE786AE71F33AFB3001931DB</string>
+				<string>FE786AE81F33AFB3001931DB</string>
+				<string>FE786AE91F33AFB3001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Beastiary</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AE61F33AFB3001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Base.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AE71F33AFB3001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Beastiary.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AE81F33AFB3001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Beastiary.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AE91F33AFB3001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Beastiary.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AEA1F33AFB3001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AE61F33AFB3001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786AEB1F33AFB3001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AE71F33AFB3001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786AEC1F33AFB3001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AE81F33AFB3001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786AED1F33AFB3001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AE91F33AFB3001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786AF51F33AFFB001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786AF61F33AFFB001931DB</string>
+				<string>FE786AF71F33AFFB001931DB</string>
+				<string>FE786AF81F33AFFB001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Kodo Beast</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AF61F33AFFB001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>KodoBeast.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AF71F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>KodoBeast.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AF81F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>KotoBeast.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AF91F33AFFB001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786AFA1F33AFFB001931DB</string>
+				<string>FE786AFB1F33AFFB001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>SpiritLodge</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AFA1F33AFFB001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>SpiritLodge.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AFB1F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>SpiritLodge.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AFC1F33AFFB001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786AFD1F33AFFB001931DB</string>
+				<string>FE786AFE1F33AFFB001931DB</string>
+				<string>FE786AFF1F33AFFB001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Tauren</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AFD1F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Tauran.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AFE1F33AFFB001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Tauren.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786AFF1F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Tauren.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B001F33AFFB001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B011F33AFFB001931DB</string>
+				<string>FE786B021F33AFFB001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>TaurenTotem</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B011F33AFFB001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>TaurenTotem.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B021F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>TaurenTotem.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B031F33AFFB001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B041F33AFFB001931DB</string>
+				<string>FE786B051F33AFFB001931DB</string>
+				<string>FE786B061F33AFFB001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>WarMill</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B041F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Forge.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B051F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>LumberHut.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B061F33AFFB001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>WarMill.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B071F33AFFB001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B081F33AFFB001931DB</string>
+				<string>FE786B091F33AFFB001931DB</string>
+				<string>FE786B0A1F33AFFB001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Wind Rider</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B081F33AFFB001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>WindRider.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B091F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>WindRider.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B0A1F33AFFB001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>WyvernRider.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B0B1F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AF61F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B0C1F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AF71F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B0D1F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AF81F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B0E1F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AFA1F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B0F1F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AFB1F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B101F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AFD1F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B111F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AFE1F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B121F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786AFF1F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B131F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B011F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B141F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B021F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B151F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B041F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B161F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B051F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B171F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B061F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B181F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B081F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B191F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B091F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B1A1F33AFFB001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B0A1F33AFFB001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B1B1F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B1C1F33B85E001931DB</string>
+				<string>FE786B1D1F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>ArcaneSanctum</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B1C1F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>ArcaneSanctum.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B1D1F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>ArcaneSanctum.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B1E1F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B1F1F33B85E001931DB</string>
+				<string>FE786B201F33B85E001931DB</string>
+				<string>FE786B211F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Footman</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B1F1F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Footman.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B201F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Footman.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B211F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Footman.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B221F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B231F33B85E001931DB</string>
+				<string>FE786B241F33B85E001931DB</string>
+				<string>FE786B251F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Gryphon</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B231F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Gryphon.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B241F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Gryphon.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B251F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Gryphon.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B261F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B271F33B85E001931DB</string>
+				<string>FE786B281F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>GryphonAviary</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B271F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>GriffonAviary.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B281F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>GryphonAviary.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B291F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B2A1F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Knight</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B2A1F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Knight.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B2B1F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B2C1F33B85E001931DB</string>
+				<string>FE786B2D1F33B85E001931DB</string>
+				<string>FE786B2E1F33B85E001931DB</string>
+				<string>FE786B2F1F33B85E001931DB</string>
+				<string>FE786B301F33B85E001931DB</string>
+				<string>FE786B311F33B85E001931DB</string>
+				<string>FE786B321F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Rifleman</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B2C1F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Rifleman.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B2D1F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Rifleman.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B2E1F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Rifleman.max</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B2F1F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Rifleman.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B301F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Shockwave.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B311F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Shockwave.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B321F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Shockwave.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B331F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B341F33B85E001931DB</string>
+				<string>FE786B351F33B85E001931DB</string>
+				<string>FE786B361F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Sorceress</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B341F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Sorceress.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B351F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Sorceress.FBX</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B361F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Sorceress.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B371F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B381F33B85E001931DB</string>
+				<string>FE786B391F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>TownHall</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B381F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>TownHall.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B391F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>TownHallCastleKeep.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B3A1F33B85E001931DB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B3B1F33B85E001931DB</string>
+				<string>FE786B3C1F33B85E001931DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Workshop</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B3B1F33B85E001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Factory.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B3C1F33B85E001931DB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Workshop.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B3D1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B1C1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B3E1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B1D1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B3F1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B1F1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B401F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B201F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B411F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B211F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B421F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B231F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B431F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B241F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B441F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B251F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B451F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B271F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B461F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B281F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B471F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B2A1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B481F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B2C1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B491F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B2D1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B4A1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B2E1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B4B1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B2F1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B4C1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B301F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B4D1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B311F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B4E1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B321F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B4F1F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B341F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B501F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B351F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B511F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B361F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B521F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B381F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B531F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B391F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B541F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B3B1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B551F33B85E001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B3C1F33B85E001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE786B561F33BBE2001931DB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>House.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE786B571F33BBE2001931DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE786B561F33BBE2001931DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA181B21F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FEA181B31F30EDBE009DBA19</string>
+				<string>FEA181CF1F30EDBE009DBA19</string>
+				<string>FEA181DA1F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Assets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181B31F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786B1B1F33B85E001931DB</string>
+				<string>FE786B1E1F33B85E001931DB</string>
+				<string>FE786B221F33B85E001931DB</string>
+				<string>FE786B261F33B85E001931DB</string>
+				<string>FE786B291F33B85E001931DB</string>
+				<string>FE786B2B1F33B85E001931DB</string>
+				<string>FE786B331F33B85E001931DB</string>
+				<string>FE786B371F33B85E001931DB</string>
+				<string>FE786B3A1F33B85E001931DB</string>
+				<string>CA2438B81F3315F60067F263</string>
+				<string>CA2438B51F3310830067F263</string>
+				<string>FEA181B41F30EDBE009DBA19</string>
+				<string>FEA181BD1F30EDBE009DBA19</string>
+				<string>FEA181C81F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Human</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181B41F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FEA181B51F30EDBE009DBA19</string>
+				<string>FEA181B61F30EDBE009DBA19</string>
+				<string>FEA181B71F30EDBE009DBA19</string>
+				<string>FEA181B81F30EDBE009DBA19</string>
+				<string>FEA181B91F30EDBE009DBA19</string>
+				<string>FEA181BA1F30EDBE009DBA19</string>
+				<string>FEA181BB1F30EDBE009DBA19</string>
+				<string>FEA181BC1F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>HumanBarracks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181B51F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>DeathSmug.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181B61F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Doodads0.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181B71F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Garrison.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181B81F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>HumanBarracks.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181B91F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>HumanBarracks.mdl</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181BA1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>HumanBarracks.mdx</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181BB1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>HumanBarracksWhat1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181BC1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>HumanBase.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181BD1F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FEA181BE1F30EDBE009DBA19</string>
+				<string>FEA181BF1F30EDBE009DBA19</string>
+				<string>FEA181C01F30EDBE009DBA19</string>
+				<string>FEA181C11F30EDBE009DBA19</string>
+				<string>FEA181C21F30EDBE009DBA19</string>
+				<string>FEA181C31F30EDBE009DBA19</string>
+				<string>FEA181C41F30EDBE009DBA19</string>
+				<string>FEA181C51F30EDBE009DBA19</string>
+				<string>FEA181C61F30EDBE009DBA19</string>
+				<string>FEA181C71F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>HumanTower</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181BE1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>CannonTowerWhat1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181BF1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>DeathSmug.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C01F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Doodads0-0.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C11F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>GuardTowerWhat1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C21F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>HumanBase.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C31F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>HumanTower.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C41F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>HumanTower.mdx</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C51F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Tower.blp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C61F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Tower.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C71F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>WatchTowerWhat1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C81F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FEA181C91F30EDBE009DBA19</string>
+				<string>CA2438AF1F319EAA0067F263</string>
+				<string>FEA181CB1F30EDBE009DBA19</string>
+				<string>FEA181CC1F30EDBE009DBA19</string>
+				<string>CA2438B11F32F3100067F263</string>
+				<string>CA2438B31F32F3E50067F263</string>
+				<string>FEA181CD1F30EDBE009DBA19</string>
+				<string>FEA181CE1F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Militia</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181C91F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>gutz.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181CB1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Militia.mdx</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181CC1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>Militia_Portrait.mdx</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181CD1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>PeasantMilitia.blp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181CE1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>PeasantMilitia.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181CF1F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FEA181D01F30EDBE009DBA19</string>
+				<string>FEA181D11F30EDBE009DBA19</string>
+				<string>FEA181D21F30EDBE009DBA19</string>
+				<string>FEA181D31F30EDBE009DBA19</string>
+				<string>FEA181D41F30EDBE009DBA19</string>
+				<string>FEA181D51F30EDBE009DBA19</string>
+				<string>FEA181D61F30EDBE009DBA19</string>
+				<string>FEA181D71F30EDBE009DBA19</string>
+				<string>FEA181D81F30EDBE009DBA19</string>
+				<string>FEA181D91F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Map</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D01F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>dirt.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D11F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>grass.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D21F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>grass_short.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D31F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.tiff</string>
+			<key>path</key>
+			<string>Ground002.tif</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D41F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.tiff</string>
+			<key>path</key>
+			<string>Ground002.tif.001.tif</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D51F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>map2.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D61F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>Spawn1.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D71F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>spawn2.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D81F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>tileMap.tm</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181D91F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>tileMap2.tm</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181DA1F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FE786AF51F33AFFB001931DB</string>
+				<string>FE786AF91F33AFFB001931DB</string>
+				<string>FE786AFC1F33AFFB001931DB</string>
+				<string>FE786B001F33AFFB001931DB</string>
+				<string>FE786B031F33AFFB001931DB</string>
+				<string>FE786B071F33AFFB001931DB</string>
+				<string>FE786AE51F33AFB3001931DB</string>
+				<string>CA2438BF1F331DF60067F263</string>
+				<string>FEA181DB1F30EDBE009DBA19</string>
+				<string>FEA181FC1F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Orc</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181DB1F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FEA181DC1F30EDBE009DBA19</string>
+				<string>FEA181DD1F30EDBE009DBA19</string>
+				<string>CA2438D21F3635BB0067F263</string>
+				<string>FEA181E61F30EDBE009DBA19</string>
+				<string>FEA181EE1F30EDBE009DBA19</string>
+				<string>FEA181EF1F30EDBE009DBA19</string>
+				<string>FEA181F01F30EDBE009DBA19</string>
+				<string>FEA181F91F30EDBE009DBA19</string>
+				<string>FEA181FA1F30EDBE009DBA19</string>
+				<string>FEA181FB1F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Grunt</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181DC1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>BerserkerCaster.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181DD1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>Grun6.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181E61F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>GruntDeath.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181EE1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>GruntReady1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181EF1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>GruntRunning.DAE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181F01F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>GruntWarcry1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181F91F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>GruntYesAttack1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181FA1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>GruntYesAttack2.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181FB1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>GruntYesAttack3.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181FC1F30EDBE009DBA19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FEA181FD1F30EDBE009DBA19</string>
+				<string>FEA181FE1F30EDBE009DBA19</string>
+				<string>FEA181FF1F30EDBE009DBA19</string>
+				<string>FEA182001F30EDBE009DBA19</string>
+				<string>FEA182011F30EDBE009DBA19</string>
+				<string>FEA182021F30EDBE009DBA19</string>
+				<string>FEA182031F30EDBE009DBA19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>OrcBarracks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181FD1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>Base.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181FE1F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>DeathSmug.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA181FF1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml.dae</string>
+			<key>path</key>
+			<string>OrcBarracks.dae</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA182001F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>OrcBarracks.mdx</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA182011F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.wav</string>
+			<key>path</key>
+			<string>OrcBarracksWhat1.wav</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA182021F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>OrcBarraks.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA182031F30EDBE009DBA19</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.bmp</string>
+			<key>path</key>
+			<string>OrcBirth.bmp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA182041F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181B51F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182051F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181B61F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182061F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181B71F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182071F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181B81F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182081F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181B91F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182091F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181BA1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1820A1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181BB1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1820B1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181BC1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1820C1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181BE1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1820D1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181BF1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1820E1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C01F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1820F1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C11F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182101F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C21F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182111F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C31F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182121F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C41F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182131F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C51F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182141F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C61F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182151F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C71F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182161F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181C91F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182181F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181CB1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182191F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181CC1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1821A1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181CD1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1821B1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181CE1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1821C1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D01F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1821D1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D11F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1821E1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D21F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1821F1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D31F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182201F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D41F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182211F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D51F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182241F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D81F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182251F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181D91F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182261F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181DC1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182271F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181DD1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182301F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181E61F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182381F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181EE1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182391F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181EF1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1823A1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181F01F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182431F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181F91F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182441F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181FA1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182451F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181FB1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182461F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181FD1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182471F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181FE1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182481F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA181FF1F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA182491F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA182001F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1824A1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA182011F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1824B1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA182021F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1824C1F30EDBE009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA182031F30EDBE009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEA1824D1F30FFE2009DBA19</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ObjectMenu.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEA1824E1F30FFE2009DBA19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEA1824D1F30FFE2009DBA19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>CA6573E91EF4CFF300E4CED1</string>
+</dict>
+</plist>

@@ -10,9 +10,26 @@
 import SceneKit
 import GameplayKit
 
+ enum GameResult: Int {
+    case winner
+    case loser
+ }
+ 
 var globalGameUtility: GameUtilityDelegate!
 
+ protocol GameSceneDelegate {
+    func updatedPlayerGold(gold: Int)
+    func gameEndedWithResult(result: GameResult)
+ }
+ 
+ protocol SpawnDelegate {
+    func didSpawn(object: BaseObject)
+    func didDie(object: BaseObject)
+ }
+ 
 class GameScene: SCNScene {
+    var gameDelegate: GameSceneDelegate?
+    var spawnDelegate: SpawnDelegate?
     var startTime: TimeInterval = 0.0
     var incomeTimer: TimeInterval = 0
     
@@ -23,8 +40,8 @@ class GameScene: SCNScene {
     var base: SCNNode!
     var units = [Unit]()
     var missiles = [Missile]()
-    let team1 = Team(id: 1, color: UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1))
-    let team2 = Team(id: 2, color: UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1))
+    let team1 = Team(id: 1, color: UIColor.blue)
+    let team2 = Team(id: 2, color: UIColor.red)
     var nexus1: Nexus!
     var nexus2: Nexus!
     
@@ -63,6 +80,7 @@ class GameScene: SCNScene {
     }
     
     func update(dt: TimeInterval) {
+        gameDelegate?.updatedPlayerGold(gold: player1.gold)
         incomeTimer += dt
         if (incomeTimer > 15) {
             incomeTimer -= 15
@@ -114,7 +132,7 @@ class GameScene: SCNScene {
         let floor = Floor()
         worldNode.addChildNode(floor)
         
-        nexus1 = Nexus(player: player1, position: SCNVector3(x: -46, y: 0, z:0))
+        nexus1 = TownHall(player: player1, position: SCNVector3(x: -46, y: 0, z:0))
         nexus2 = Nexus(player: player2, position: SCNVector3(x: 46, y: 0, z:0))
         
         worldNode.addChildNode(nexus1)
@@ -158,9 +176,10 @@ protocol GameUtilityDelegate {
     func spawn(unit: Unit) -> Bool
     func spawn(building: Building) -> Bool
     func spawn(missile: Missile)
-    func unitDidDie(unit: Unit)
+    func unitWillDie(unit: Unit)
     func buildingDidDie(building: Building)
     func missileDidDie(missile: Missile)
+    func nexusDestroyed(nexus: Nexus)
 }
 
 extension GameScene: GameUtilityDelegate {
@@ -257,6 +276,7 @@ extension GameScene: GameUtilityDelegate {
             self.units.append(unit)
             unit.team.add(unit: unit)
             worldNode.addChildNode(unit)
+            spawnDelegate?.didSpawn(object: unit)
             print("Spawned Unit at:", unit.position.to_int2())
             return true
         }
@@ -275,9 +295,18 @@ extension GameScene: GameUtilityDelegate {
             self.buildings.append(building)
             building.team.add(building: building)
             worldNode.addChildNode(building)
+            spawnDelegate?.didSpawn(object: building)
             return true
         } else {
             print("Can't place there")
+            return false
+        }
+    }
+    
+    func canSpawn(building: Building) -> Bool {
+        if let _ = building.occupiedNodesInGraph(graph: graph, generateNodes: false) {
+            return true
+        } else {
             return false
         }
     }
@@ -287,10 +316,11 @@ extension GameScene: GameUtilityDelegate {
         worldNode.addChildNode(missile)
     }
     
-    func unitDidDie(unit: Unit) {
+    func unitWillDie(unit: Unit) {
+        guard unit.alive else { return } // Make sure this is the first call
+        
         let enemyTeam = self.enemyTeamFor(team: unit.team)
         enemyTeam.players.forEach { (player) in
-            // TODO: fix for multiplayer
             player.addMinerals(unit.mineralValue)
         }
         
@@ -319,6 +349,13 @@ extension GameScene: GameUtilityDelegate {
         if let index = self.missiles.index(of: missile) {
             self.missiles.remove(at: index)
         }
+    }
+    
+    func nexusDestroyed(nexus: Nexus) {
+        print("Game Over")
+        let result: GameResult = nexus is TownHall ? .winner : .loser
+        gameDelegate?.gameEndedWithResult(result: result)
+        self.isPaused = true
     }
 }
 

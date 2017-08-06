@@ -16,12 +16,22 @@ enum HealthBarSize {
 
 class HealthBar: BaseObject {
     let bgColor = UIColor(red: 22/255, green: 26/255, blue: 30/255, alpha: 1)
-    var maxHealth: Float
-    var health: Float {
+    let damageLabel = SCNText(string: nil, extrusionDepth: 1)
+    var maxHealth: Int
+    var oldY: Float = 0
+    var health: Int {
         didSet {
             if let bar = self.bar {
-                bar.width = (CGFloat(health/maxHealth) * self.width)
+                bar.width = ((CGFloat(health)/CGFloat(maxHealth)) * self.width)
                 barNode.position.x = Float((bar.width/2) - (width/2))
+                if health == maxHealth && !showsProgress{
+                    oldY = self.position.y
+                    self.position.y = 1000
+                    //forEachChild(runAction: { $0.isHidden = true })
+                } else {
+                    //forEachChild(runAction: { $0.isHidden = false })
+                    self.position.y = oldY
+                }
             }
         }
     }
@@ -43,7 +53,7 @@ class HealthBar: BaseObject {
     var progressBar: SCNBox?
     var progressBarNode: SCNNode?
     
-    init(maxHealth: Float, position: SCNVector3, size: HealthBarSize, showsProgress: Bool) {
+    init(maxHealth: Int, position: SCNVector3, size: HealthBarSize, showsProgress: Bool) {
         self.maxHealth = maxHealth
         self.health = maxHealth
         self.size = size
@@ -92,6 +102,8 @@ class HealthBar: BaseObject {
             progressBar!.materials.first?.diffuse.contents = UIColor.init(red: 0, green: 177/255, blue: 1, alpha: 1)
             progressBarNode = addGeometry(model: progressBar!)
             progressBarNode!.position.y = 0
+        } else {
+            self.position.y = 1000
         }
         
         self.eulerAngles.x = -0.3
