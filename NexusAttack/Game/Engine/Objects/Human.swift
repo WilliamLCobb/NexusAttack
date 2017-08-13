@@ -15,6 +15,7 @@ class HumanBarracks: BuildingSpawner {
     var bodyModel: SCNSphere!
     
     override func configureNode() {
+        name = "Barracks"
         attackRadius = 3
         size = int2(2, 2)
         health = 2000
@@ -22,7 +23,8 @@ class HumanBarracks: BuildingSpawner {
     }
     
     override func configureModel() {
-        self.setModel(named: "HumanBarracks", scale: 0.01)
+        super.configureModel()
+        self.setModel(named: "HumanBarracks", scale: 0.007)
         
         self.position.y = 0
         
@@ -41,7 +43,7 @@ class HumanBarracks: BuildingSpawner {
     }
     
     override func copy() -> Any {
-        return HumanBarracks.init(player: self.owner, position: self.position, target: self.target)
+        return HumanBarracks.init(player: self.owner, position: self.position)
     }
 }
 
@@ -56,7 +58,8 @@ class HumanTower: Tower {
     }
     
     override func configureModel() {
-        self.setModel(named: "HumanTower", scale: 0.01)
+        super.configureModel()
+        self.setModel(named: "HumanTower", scale: 0.007)
         
         self.position.y = 0.5
         
@@ -78,17 +81,19 @@ class ArcaneSanctum: BuildingSpawner {
     var bodyModel: SCNSphere!
     
     override func configureNode() {
+        super.configureModel()
+        name = "Arcane Sanctum"
         attackRadius = 3
         size = int2(2, 2)
         health = 2000
-        cost = 200
+        cost = 150
     }
     
     override func configureModel() {
-        self.setModel(named: "ArcaneSanctum", scale: 0.01)
+        self.setModel(named: "ArcaneSanctum", scale: 0.007)
         
         self.position.y = 0
-        healthBar = addHealthBar(y: 2.5, health: health, size: .large, showsProgress: true)
+        healthBar = addHealthBar(y: 3.5, health: health, size: .large, showsProgress: true)
         
         let collisionBody = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(geometry: collisionBody, options: nil))
@@ -103,7 +108,7 @@ class ArcaneSanctum: BuildingSpawner {
     }
     
     override func copy() -> Any {
-        return ArcaneSanctum.init(player: self.owner, position: self.position, target: self.target)
+        return ArcaneSanctum.init(player: self.owner, position: self.position)
     }
 }
 
@@ -111,6 +116,8 @@ class GryphonAviary: BuildingSpawner {
     var bodyModel: SCNSphere!
     
     override func configureNode() {
+        super.configureModel()
+        name = "Aviary"
         attackRadius = 3
         size = int2(2, 2)
         health = 2000
@@ -118,7 +125,7 @@ class GryphonAviary: BuildingSpawner {
     }
     
     override func configureModel() {
-        self.setModel(named: "GryphonAviary", scale: 0.01)
+        self.setModel(named: "GryphonAviary", scale: 0.007)
         
         self.position.y = 0
         
@@ -138,7 +145,7 @@ class GryphonAviary: BuildingSpawner {
     }
     
     override func copy() -> Any {
-        return GryphonAviary.init(player: self.owner, position: self.position, target: self.target)
+        return GryphonAviary.init(player: self.owner, position: self.position)
     }
 }
 
@@ -146,6 +153,7 @@ class Workshop: BuildingSpawner {
     var bodyModel: SCNSphere!
     
     override func configureNode() {
+        name = "Workshop"
         attackRadius = 3
         size = int2(2, 2)
         health = 2000
@@ -153,7 +161,8 @@ class Workshop: BuildingSpawner {
     }
     
     override func configureModel() {
-        self.setModel(named: "Workshop", scale: 0.01)
+        super.configureModel()
+        self.setModel(named: "Workshop", scale: 0.007)
         
         self.position.y = 0
         
@@ -173,7 +182,7 @@ class Workshop: BuildingSpawner {
     }
     
     override func copy() -> Any {
-        return Workshop.init(player: self.owner, position: self.position, target: self.target)
+        return Workshop.init(player: self.owner, position: self.position)
     }
 }
 
@@ -181,6 +190,7 @@ class Farm: BuildingSpawner {
     var bodyModel: SCNSphere!
     
     override func configureNode() {
+        name = "Farm"
         attackRadius = 3
         size = int2(2, 2)
         health = 2000
@@ -188,7 +198,8 @@ class Farm: BuildingSpawner {
     }
     
     override func configureModel() {
-        self.setModel(named: "Farm", scale: 0.01)
+        super.configureModel()
+        self.setModel(named: "Farm", scale: 0.007)
         
         self.position.y = 0
         
@@ -208,7 +219,7 @@ class Farm: BuildingSpawner {
     }
     
     override func copy() -> Any {
-        return Farm.init(player: self.owner, position: self.position, target: self.target)
+        return Farm.init(player: self.owner, position: self.position)
     }
 }
 
@@ -216,16 +227,16 @@ class TownHall: Nexus {
     var bodyModel: SCNSphere!
     
     override func configureModel() {
-        
-        self.setModel(named: "TownHall", scale: 0.01)
+        super.configureModel()
+        self.setModel(named: "TownHall", scale: 0.007)
         
         self.position.y = 0
-        healthBar = addHealthBar(y: 2.5, health: health, size: .large, showsProgress: false)
+        healthBar = addHealthBar(y: 3.5, health: health, size: .large, showsProgress: false)
         
         let collisionBody = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(geometry: collisionBody, options: nil))
         self.physicsBody?.friction = 0
-
+        self.physicsBody?.velocityFactor = SCNVector3(x: 0, y: 0, z: 0)
     }
 }
 
@@ -233,14 +244,14 @@ class TownHall: Nexus {
 
 class Militia: AutoUnit {
     let radius: CGFloat = 0.4
-    let damageLow = 10
-    let damageHigh = 20
+    let damageLow = 15
+    let damageHigh = 25
     
     var bodyModel: SCNSphere!
     var body: SCNNode!
     
     override func configureNode() {
-        health = 100
+        health = 110
         targetingRange = 8
         attackRange = 1.5
         mineralValue = 2
@@ -289,8 +300,8 @@ class Militia: AutoUnit {
 
 class Footman: AutoUnit {
     let radius: CGFloat = 0.4
-    let damageLow = 15
-    let damageHigh = 25
+    let damageLow = 20
+    let damageHigh = 30
     
     var bodyModel: SCNSphere!
     var body: SCNNode!
@@ -345,18 +356,18 @@ class Footman: AutoUnit {
 
 class Rifleman: AutoUnit {
     let radius: CGFloat = 0.4
-    let damageLow = 15
+    let damageLow = 25
     let damageHigh = 30
     
     var bodyModel: SCNSphere!
     var body: SCNNode!
     
     override func configureNode() {
-        health = 80
+        health = 100
         targetingRange = 9
         attackRange = 6
         mineralValue = 3
-        attackSpeed = 1.5
+        attackSpeed = 1.8
     }
     
     override func configureModel() {
@@ -387,9 +398,9 @@ class Rifleman: AutoUnit {
         case .idle:
             break
         case .running:
-            self.runAnimationFrom(start: 30, to: 60, repeats: true)
+            self.runAnimationFrom(start: 12.3, to: 15, repeats: true)
         case .attacking:
-            self.runAnimationFrom(start: 12.3, to: 13.5, repeats: false)
+            self.runAnimationFrom(start: 14, to: 15.3 , repeats: false)
         }
     }
     
@@ -401,18 +412,18 @@ class Rifleman: AutoUnit {
 
 class Sorceress: AutoUnit {
     let radius: CGFloat = 0.4
-    let damageLow = 20
-    let damageHigh = 40
+    let damageLow = 25
+    let damageHigh = 35
     
     var bodyModel: SCNSphere!
     var body: SCNNode!
     
     override func configureNode() {
-        health = 90
+        health = 100
         targetingRange = 9
         attackRange = 5
         mineralValue = 3
-        attackSpeed = 2.5
+        attackSpeed = 2.3
     }
     
     override func configureModel() {

@@ -14,6 +14,14 @@ class Building: BaseOwnedObject, AttackableObject {
     var level: Int = 1
     var size: int2!
     var cost: Int!
+    var p: SCNVector3!
+    
+    lazy var placingFloor: SCNNode = {
+        let floor = SCNBox(width: CGFloat(self.size.x), height: 0.1, length: CGFloat(self.size.y), chamferRadius: 0)
+        let node = SCNNode(geometry: floor)
+        node.position = SCNVector3(0, 0.15, 0)
+        return node
+    }()
     
     var health: Int = 100 {
         didSet {
@@ -23,11 +31,19 @@ class Building: BaseOwnedObject, AttackableObject {
     
     init(player: Player, position: SCNVector3) {
         super.init(player: player)
-        self.position = position
+        p = position
+        self.position = p
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func configureModel() {
+        super.configureModel()
+        if let position = p {
+            self.position = p
+        } 
     }
     
     override func attackedWithDamage(damage: Int) {
@@ -40,6 +56,23 @@ class Building: BaseOwnedObject, AttackableObject {
     override func die() {
         super.die()
         self.gameUtility.buildingDidDie(building: self)
+    }
+    
+    func showPlacingFloor() {
+        self.addChildNode(placingFloor)
+    }
+    
+    func hidePlacingFloor() {
+        placingFloor.removeFromParentNode()
+    }
+    
+    override func setEmissionColor(_ color: UIColor) {
+        super.setEmissionColor(color)
+        if color == UIColor.black {
+            placingFloor.geometry?.materials.first?.diffuse.contents = UIColor(red: 0, green: 1, blue: 0, alpha: 0.5)
+        } else {
+            placingFloor.geometry?.materials.first?.diffuse.contents = color
+        }
     }
     
 //    @discardableResult override func setModel(named name: String, scale: Float) -> SCNNode {
@@ -73,7 +106,7 @@ class Building: BaseOwnedObject, AttackableObject {
 //        }
         var dx = 0
         var dy = 1
-        let numNodes = ((x * 2) + (y * 2) - 4)
+        let numNodes = (((x * 2) + (y * 2) - 4) * 4)
         for _ in 0..<numNodes {
             let thisPosition = int2(myPosition.x + x, myPosition.y + y)
             if (self.gameUtility.isValidNodeInGrid(nodePosition: thisPosition)) {
@@ -87,7 +120,8 @@ class Building: BaseOwnedObject, AttackableObject {
             x += dx
             y += dy
         }
-        assertionFailure()
+        // No Target
+        //assertionFailure()
         return myPosition
     }
     
@@ -145,15 +179,13 @@ class Tower: Building {
 class BuildingSpawner: Building {
     // Seconds passed until next unit spawns
     var spawnRate: Double = 20
-    var spawnTime: TimeInterval = 19
+    var spawnTime: TimeInterval = 15
+    
     
     var target: Building
     
-    init(player: Player,
-         position: SCNVector3,
-         target: Building) {
-        
-        self.target = target
+    required override init(player: Player, position: SCNVector3) {
+        self.target = player.target
         super.init(player: player, position: position)
     }
     
@@ -209,13 +241,14 @@ class Nexus: Building {
     }
     
     override func configureModel() {
-        let baseModel = SCNPyramid(width: 3, height: 4, length: 3)
-        baseModel.materials.first?.diffuse.contents = self.owner.team.color
-        let base = addGeometry(model: baseModel)
-        self.position.y = 0
-        
-        healthBar = addHealthBar(y: 3.5, health: health, size: .large, showsProgress: false)
-        self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: base, options: nil))
+        super.configureModel()
+//        let baseModel = SCNPyramid(width: 3, height: 4, length: 3)
+//        baseModel.materials.first?.diffuse.contents = self.owner.team.color
+//        let base = addGeometry(model: baseModel)
+//        self.position.y = 0
+//        
+//        healthBar = addHealthBar(y: 3.5, health: health, size: .large, showsProgress: false)
+        //self.physicsBody = SCNPhysicsBody(type: .static, shape: SCNPhysicsShape(node: base, options: nil))
     }
     
     override func die() {
@@ -253,7 +286,7 @@ class Nexus: Building {
 //    }
 //    
 //    override func copy() -> Any {
-//        return AttackSpawner.init(player: self.owner, position: self.position, target: self.target)
+//        return AttackSpawner.init(player: self.owner, position: self.position)
 //    }
 //}
 //
@@ -286,6 +319,6 @@ class Nexus: Building {
 //    }
 //    
 //    override func copy() -> Any {
-//        return RangedSpawner(player: self.owner, position: self.position, target: self.target)
+//        return RangedSpawner(player: self.owner, position: self.position)
 //    }
 //}

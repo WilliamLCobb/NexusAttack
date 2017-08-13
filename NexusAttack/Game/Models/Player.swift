@@ -13,6 +13,7 @@ class Player {
     var name: String
     var color: UIColor
     var gold: Int
+    var target: Building!
     private var goldSpent: Int = 0
     var income: Int {
         return 10 + (goldSpent / 50) * 1
@@ -24,7 +25,7 @@ class Player {
         self.name = name
         self.color = color
         self.team = team
-        self.gold = 2000
+        self.gold = 400
     }
     
     func addMinerals(_ gold: Int) {

@@ -25,12 +25,12 @@ class HealthBar: BaseObject {
                 bar.width = ((CGFloat(health)/CGFloat(maxHealth)) * self.width)
                 barNode.position.x = Float((bar.width/2) - (width/2))
                 if health == maxHealth && !showsProgress{
-                    oldY = self.position.y
-                    self.position.y = 1000
+                    //oldY = self.position.y
+                    //self.position.y = 1000
                     //forEachChild(runAction: { $0.isHidden = true })
                 } else {
                     //forEachChild(runAction: { $0.isHidden = false })
-                    self.position.y = oldY
+                    //self.position.y = oldY
                 }
             }
         }
@@ -103,7 +103,7 @@ class HealthBar: BaseObject {
             progressBarNode = addGeometry(model: progressBar!)
             progressBarNode!.position.y = 0
         } else {
-            self.position.y = 1000
+            //self.position.y = 1000
         }
         
         self.eulerAngles.x = -0.3

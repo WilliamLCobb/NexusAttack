@@ -42,6 +42,7 @@ class BaseObject: SCNNode {
     override var physicsBody: SCNPhysicsBody? {
         didSet {
             physicsBody?.isAffectedByGravity = false
+            physicsBody?.mass = 1000
         }
     }
     
@@ -105,6 +106,11 @@ class BaseObject: SCNNode {
     func beginAnimation(animation: AnimationType) {
         // override
         fatalError()
+    }
+    
+    func networkObjects() -> [Any] {
+        let objects: [Any] = [self.position]
+        return objects
     }
     
     // Creates a time lock useful for locking animations or actions

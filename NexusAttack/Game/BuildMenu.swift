@@ -26,11 +26,30 @@ struct BuildMenuItem {
 
 class MenuCollectionView: UICollectionView {
     var selectionDelegate: MenuDelegate?
+    var oldCell: BuildMenuCell? // Hack
+    var lastTime: TimeInterval = 0
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        if let cell = view?.superview as? BuildMenuCell {
-            self.selectionDelegate?.selectedBuilding(building: cell.item.building)
+        if event!.timestamp > lastTime {
+            lastTime = event!.timestamp
+            //canSelect = false
+            let view = super.hitTest(point, with: event)
+            if let cell = view?.superview as? BuildMenuCell { // TODO: Terrible hack
+                cell.select()
+                if let oldCell = self.oldCell {
+                    if oldCell != cell {
+                        oldCell.deselect()
+                        self.selectionDelegate?.selectedBuilding(building: cell.item.building)
+                    } else {
+                        self.selectionDelegate?.selectedBuilding(building: cell.item.building)
+                    }
+                } else {
+                    self.selectionDelegate?.selectedBuilding(building: cell.item.building)
+                }
+                oldCell = cell
+            }
+        } else {
+            print("rejected")
         }
         return nil
     }
@@ -64,6 +83,10 @@ class BuildMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func deselect() {
+        collectionView.oldCell?.deselect()
+    }
+    
     func toggleMenu() {
         if (showing) {
             showing = false
@@ -88,7 +111,7 @@ class BuildMenuView: UIView {
 
 extension BuildMenuView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let item = items[indexPath.row]
+        print("Selected")
     }
 }
 
@@ -108,13 +131,12 @@ extension BuildMenuView: UICollectionViewDataSource {
 }
 
 class BuildMenuCell: UICollectionViewCell {
-    var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+    var imageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 32, height: 32))
     var title = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
     var item: BuildMenuItem!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        imageView.frame = self.bounds
         self.contentView.addSubview(imageView)
         self.contentView.addSubview(title)
         
@@ -127,6 +149,14 @@ class BuildMenuCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func select() {
+        self.backgroundColor = .green
+    }
+    
+    func deselect() {
+        self.backgroundColor = .clear
     }
     
     func configure(item: BuildMenuItem) {

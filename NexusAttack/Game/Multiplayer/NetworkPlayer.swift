@@ -8,40 +8,49 @@
 
 import Foundation
 import SceneKit
-import CocoaAsyncSocket
 
-class NetworkPlayer: NSObject, GCDAsyncSocketDelegate {
-    var player: Player
-    var gameScene: GameScene
+protocol NetworkPlayerDelegae {
+}
+
+class NetworkPlayer: WCSocketDelegate {
+    var player: Player {
+        didSet {
+            socket.player = player
+        }
+    }
     var gameUtility: GameUtilityDelegate
     var objects = [BaseObject]()
-    var socket: GCDAsyncSocket!
+    var socket: WCSocket
     
-    init(gameScene: GameScene, player: Player) {
-        self.gameScene = gameScene
+    init(player: Player, networkRole: ConnectionRole) {
         self.player = player
         gameUtility = globalGameUtility
-        super.init()
-        socket = GCDAsyncSocket(delegate: self, delegateQueue: nil)
-        if ((try? socket.connect(toHost: "192.168.0.7", onPort: 5020)) == nil) {
-            assertionFailure("Unable to connect")
-        }
-        socket.readData(to: "!".data(using: String.Encoding.utf8)!, withTimeout: 30, tag: 0)
+        socket = WCSocket(withPlayer:player, role: networkRole)
+    }
+    
+    func connectToHost(_ host: String) {
+        socket.connectToHost(host)
+    }
+    
+    func sendObject(object: BaseObject) {
+        socket.sendObject(object)
+    }
+    
+    func receivedObject(object: BuildingSpawner, atTime: TimeInterval) {
+        let currentTime = gameUtility.currentTime
+        object.spawnTime += currentTime - atTime
+        _ = gameUtility.spawn(building: object)
+    }
+    
+    func startGame() {
+        
+    }
+    
+    func updatedPlayer(player: Player) {
+        
     }
     
     func update(dt: TimeInterval) {
         
-    }
-    
-    func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-        print("Disconnected!")
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        print("Read Data:", data)
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        print("Connected to", host)
     }
 }

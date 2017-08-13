@@ -28,6 +28,7 @@ var globalGameUtility: GameUtilityDelegate!
  }
  
 class GameScene: SCNScene {
+    var currentTime: TimeInterval = 0
     var gameDelegate: GameSceneDelegate?
     var spawnDelegate: SpawnDelegate?
     var startTime: TimeInterval = 0.0
@@ -66,13 +67,15 @@ class GameScene: SCNScene {
         super.init()
         globalGameUtility = self
         
+        nexus1 = TownHall(player: player1, position: SCNVector3(x: -46, y: 0, z:0))
+        nexus2 = Fortress(player: player2, position: SCNVector3(x: 46, y: 0, z:0))
+        
+        player1.target = nexus2
+        player2.target = nexus1
+        
         startTime = CACurrentMediaTime()
         
         self.rootNode.addChildNode(worldNode)
-        
-        loadMap()
-
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,6 +83,7 @@ class GameScene: SCNScene {
     }
     
     func update(dt: TimeInterval) {
+        currentTime += dt
         gameDelegate?.updatedPlayerGold(gold: player1.gold)
         incomeTimer += dt
         if (incomeTimer > 15) {
@@ -132,9 +136,6 @@ class GameScene: SCNScene {
         let floor = Floor()
         worldNode.addChildNode(floor)
         
-        nexus1 = TownHall(player: player1, position: SCNVector3(x: -46, y: 0, z:0))
-        nexus2 = Nexus(player: player2, position: SCNVector3(x: 46, y: 0, z:0))
-        
         worldNode.addChildNode(nexus1)
         team1.add(building: nexus1)
         _=spawn(building: nexus1)
@@ -169,6 +170,7 @@ class GameScene: SCNScene {
 }
 
 protocol GameUtilityDelegate {
+    var currentTime: TimeInterval { get }
     func searchForValidNode(from position: int2, skip: Int) -> GKGridGraphNode?
     func pathFrom(start: int2, end: int2) -> [GKGridGraphNode]?
     func isValidNodeInGrid(nodePosition: vector_int2) -> Bool

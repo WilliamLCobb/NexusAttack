@@ -33,6 +33,7 @@ class Missile: BaseOwnedObject {
     }
     
     override func configureModel() {
+        super.configureModel()
         self.constraints = [SCNLookAtConstraint.init(target: target)]
         let bodyModel = SCNCone(topRadius: 0.05, bottomRadius: 0.1, height: 0.3)
         bodyModel.materials.first?.diffuse.contents = self.owner.color
@@ -41,24 +42,27 @@ class Missile: BaseOwnedObject {
         self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         self.physicsBody?.velocityFactor.y = 0
         self.physicsBody?.collisionBitMask = 0
-        self.physicsBody?.type = .kinematic
+        self.physicsBody?.type = .dynamic
+        position.y = 0.5
     }
     
     override func update(dt: TimeInterval) {
-        guard let target = target else {
+        guard let target = target,
+            target.alive
+        else {
             die()
             return
         }
         
-        var currentDistance = self.presentation.position.simpleDistanceTo(vector: target.presentation.position)
+        let currentDistance = self.presentation.position.simpleDistanceTo(vector: target.presentation.position)
         //if let attackRadius = target.attackRadius {
         //    currentDistance -= pow(attackRadius, 2)
         //}
-        if (currentDistance < 0.3) {
+        if (currentDistance < 0.5) {
             target.attackedWithDamage(damage: self.damage)
             die()
         } else {
-            let progress = flightDistance - currentDistance
+            //let progress = flightDistance - currentDistance
             let currentRotation = (self.presentation.rotation.w * self.presentation.rotation.y + (Float.pi / 2))
             physicsBody?.velocity.x = cos(currentRotation) * self.speed
             physicsBody?.velocity.z = -sin(currentRotation) * self.speed
@@ -66,10 +70,8 @@ class Missile: BaseOwnedObject {
     }
     
     override func die() {
-        DispatchQueue.main.async {
-            self.gameUtility.missileDidDie(missile: self)
-            super.die()
-        }
+        self.gameUtility.missileDidDie(missile: self)
+        super.die()
     }
 }
 

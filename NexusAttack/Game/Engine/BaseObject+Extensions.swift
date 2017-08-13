@@ -17,7 +17,7 @@ extension BaseObject {
             let clonedNode = node.clone()
             if clonedNode is Unit {
                 clonedNode.forEachChild(runAction: { node in
-                    node.geometry = node.geometry?.copy() as? SCNGeometry
+                    //node.geometry = node.geometry?.copy() as? SCNGeometry
                 })
             }
         }
